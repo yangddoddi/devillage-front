@@ -5,9 +5,8 @@ export const Footer = () => {
   return (
     <footer className={styles.footer}>
       <GithubOutlined className={styles.icon} />
-      <p>Contact Us</p>
-      <p>Admin</p>
       <p>2022 @YangEunChan</p>
+      <p>Contact Us?</p>
     </footer>
   );
 };

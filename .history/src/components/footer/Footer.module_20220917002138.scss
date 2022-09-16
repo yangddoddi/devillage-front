@@ -21,4 +21,10 @@
     font-size: 80px;
     margin-bottom: 20px;
     cursor: pointer;
+
+    &:hover {
+        color: plum;
+        transform: rotate(180);
+        transition: 300ms;
+    }
 }

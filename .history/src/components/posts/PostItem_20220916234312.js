@@ -10,10 +10,10 @@ export const PostItem = () => {
           <p>지존 코딩 고수 ㄷ ㄷ</p>
         </div>
         <div className={styles.boardItem_left_bottom}>
-          <span>#개발자</span>
+          <span>#헛소리</span>
           <br />
           <span>
-            2022.10.23&nbsp;&nbsp;|&nbsp;&nbsp;
+            2022.10.23&nbsp;&nbsp;
             <EyeOutlined />
             102
           </span>

@@ -6,7 +6,9 @@ export const Footer = () => {
     <footer className={styles.footer}>
       <GithubOutlined className={styles.icon} />
       <p>Contact Us</p>
-      <p>Admin</p>
+      <br />
+      <br />
+      <br />
       <p>2022 @YangEunChan</p>
     </footer>
   );

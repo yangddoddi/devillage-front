@@ -21,4 +21,8 @@
     font-size: 80px;
     margin-bottom: 20px;
     cursor: pointer;
+
+    &:hover {
+        color: pink;
+    }
 }
