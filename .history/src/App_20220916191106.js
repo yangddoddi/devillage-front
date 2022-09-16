@@ -1,8 +1,7 @@
 import logo from "./logo.svg";
-import "./App.scss";
+import "./App.css";
 import { RouterConfig } from "./router/RouterConfig";
-import { Header } from "./components/header/Header";
-import { Footer } from "./components/footer/Footer";
+import { Header } from "./components/Header";
 
 function App() {
   return (
