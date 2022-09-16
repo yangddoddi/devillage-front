@@ -1,0 +1,33 @@
+
+.main {
+    height: 100%;
+}
+
+.boardItem {
+    display: flex;
+    margin-top: 50px;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px;
+    padding: 50px;
+    height: 50%;
+
+    h1 {
+        font-weight: bold;
+        font-size: 32px;
+    }
+
+    p {
+        font-weight: 600;
+        font-size: 20px;
+    }
+}
+
+.boardItem_right {
+    img {
+        border-radius: 15px;
+        width: 350px;
+        height: 250px;
+    }
+}
