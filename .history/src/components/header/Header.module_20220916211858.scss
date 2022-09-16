@@ -1,6 +1,6 @@
 
 .nav {
-    background-color: rgba(0,0,0,0.1);
+    background-color: rgba(0,0,0,0.2);
     width: 100%;
     height: 100px;
     display: flex;
@@ -45,7 +45,6 @@
 
 .searchAndLogin {
     display: flex;
-    align-items: center;
     padding: 70px;
     font-size: 20px;
 
@@ -53,8 +52,7 @@
         background-color: #292965;
         color: white;
         width: 100px;
-        height: 40px;
-        border-radius: 30px;
+        height: 20px;
         outline: none;
         border: none;
         cursor: pointer;
@@ -63,6 +61,5 @@
     .searchLogo {
         cursor: pointer;
         margin-right: 20px;
-        
     }
 }

@@ -1,6 +1,5 @@
 import React from "react";
 import styles from "./Header.module.scss";
-import { SearchOutlined } from "@ant-design/icons";
 
 export const Header = () => {
   return (
@@ -16,9 +15,7 @@ export const Header = () => {
         <li className={styles.listItem}>중고거래</li>
       </ul>
       <div className={styles.searchAndLogin}>
-        <div className={styles.searchLogo}>
-          <SearchOutlined />
-        </div>
+        <div className={styles.searchLogo}>Search</div>
         <button className={styles.loginBtn}>Login</button>
       </div>
     </nav>

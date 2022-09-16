@@ -1,9 +1,6 @@
-* {
-  font-size: 200px;
-}
-
 .App {
   text-align: center;
+  box-sizing: border-box;
 }
 
 .App-logo {

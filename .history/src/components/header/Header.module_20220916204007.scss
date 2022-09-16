@@ -1,0 +1,17 @@
+
+.nav {
+    background-color: yellow;
+    width: 100%;
+    height: 70px;
+    padding: 10px 50px 10px 50px;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    display: flex;
+}
+
+.list {
+    display: flex;
+    list-style: none;
+    margin: 10px;
+}

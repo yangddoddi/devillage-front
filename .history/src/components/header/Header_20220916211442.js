@@ -1,6 +1,5 @@
 import React from "react";
 import styles from "./Header.module.scss";
-import { SearchOutlined } from "@ant-design/icons";
 
 export const Header = () => {
   return (
