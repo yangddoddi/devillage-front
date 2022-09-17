@@ -1,4 +1,4 @@
-export const deleteToken = async (refreshToken) => {
+export const requestToken = async (refreshToken) => {
   const response = await fetch("http://localhost:8080/auth/token", {
     method: "DELETE",
     headers: {

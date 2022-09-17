@@ -1,9 +1,8 @@
 import styles from "./MyPage.module.scss";
-import { Link, useNavigate } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import { getRefreshToken, removeRefreshToken } from "../../store/Storage";
-import { deleteToken } from "../../api/DeleteToken";
-import { removeToken } from "../../store/Auth";
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { getRefreshToken } from "../../store/Storage";
+import { Logout } from "../logout/Logout";
 
 export const MyPage = () => {
   const { accessToken } = useSelector((state) => state.token);

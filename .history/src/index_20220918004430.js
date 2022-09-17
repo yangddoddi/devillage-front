@@ -5,7 +5,7 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import axios from "axios";
 import { configureStore } from "@reduxjs/toolkit";
-import tokenReducer from "./store/Auth";
+import { tokenReducer } from "./store/Auth";
 import { CookiesProvider } from "react-cookie";
 import { Provider } from "react-redux";
 

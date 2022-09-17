@@ -16,8 +16,8 @@ export const MyPage = () => {
   const onClickHandler = async () => {
     const result = await deleteToken(refreshToken);
     if (result.status === 200) {
-      removeRefreshToken();
-      dispatch(removeToken());
+      dispatch(removeRefreshToken());
+
       navi("/");
     } else {
       alert("로그아웃 실패");

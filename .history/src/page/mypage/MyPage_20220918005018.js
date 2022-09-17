@@ -3,7 +3,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getRefreshToken, removeRefreshToken } from "../../store/Storage";
 import { deleteToken } from "../../api/DeleteToken";
-import { removeToken } from "../../store/Auth";
 
 export const MyPage = () => {
   const { accessToken } = useSelector((state) => state.token);
@@ -17,7 +16,7 @@ export const MyPage = () => {
     const result = await deleteToken(refreshToken);
     if (result.status === 200) {
       removeRefreshToken();
-      dispatch(removeToken());
+      dispatch({ type: "DELETE_TOKEN" });
       navi("/");
     } else {
       alert("로그아웃 실패");

@@ -1,28 +1,16 @@
 import styles from "./MyPage.module.scss";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { getRefreshToken, removeRefreshToken } from "../../store/Storage";
-import { deleteToken } from "../../api/DeleteToken";
-import { removeToken } from "../../store/Auth";
+import { getRefreshToken, removeRefreshToken } from "../../storeage/Cookie";
+import { DeleteToken } from "../../storeage/Token";
 
 export const MyPage = () => {
   const { accessToken } = useSelector((state) => state.token);
 
   const dispatch = useDispatch();
-  const navi = useNavigate();
+  const navigate = useNavigate;
 
   const refreshToken = getRefreshToken();
-
-  const onClickHandler = async () => {
-    const result = await deleteToken(refreshToken);
-    if (result.status === 200) {
-      removeRefreshToken();
-      dispatch(removeToken());
-      navi("/");
-    } else {
-      alert("로그아웃 실패");
-    }
-  };
 
   return (
     <div className={styles.myPage}>
@@ -30,7 +18,7 @@ export const MyPage = () => {
         <li>마이페이지</li>
         <li>북마크</li>
         <li>글쓰기</li>
-        <li className={styles.logout} onClick={onClickHandler}>
+        <li className={styles.logout} onClick={onLogoutHandler}>
           로그아웃
         </li>
       </ul>

@@ -7,7 +7,7 @@ import {
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { setRefreshCookie } from "../../store/Storage";
+import { setRefreshCookie } from "../../storeage/storage";
 import { auth } from "../../api/PostToken";
 
 export const Login = () => {
