@@ -18,7 +18,7 @@ export const Login = () => {
             axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
         }).catch(err => {
             console.log(err);
-        });
+        )};
 
   return (
     <div>

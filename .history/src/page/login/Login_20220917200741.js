@@ -8,18 +8,6 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 
 export const Login = () => {
-
-    const onLoginHandler = (e) => {
-        e.preventDefault();
-        const email = e.target.email.value;
-        const password = e.target.password.value;
-        axios.post("/auth", { email, password }).then(res => {
-            const { token } = res.data;
-            axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-        }).catch(err => {
-            console.log(err);
-        });
-
   return (
     <div>
       <div className={styles.loginContainer}>
@@ -35,7 +23,7 @@ export const Login = () => {
                 placeholder="Password"
               />
             </form>
-            <div className={styles.loginBtn} onClick={onLoginHandler}>Login</div>
+            <div className={styles.loginBtn}>Login</div>
           </div>
           <GithubLoginButton
             style={{

@@ -6,9 +6,8 @@ import reportWebVitals from "./reportWebVitals";
 import axios from "axios";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-axios.defaults.baseURL = "http://localhost:8080"; // 요청할 기본 URL
-axios.defaults.withCredentials = true; // 쿠키 전달
-axios.defaults.headers.post["Content-Type"] = "application/json"; // POST 요청 시 Content-Type
+axios.defaults.baseURL = "http://localhost:8080";
+axios.defaults.withCredentials = true;
 
 root.render(
   <React.StrictMode>

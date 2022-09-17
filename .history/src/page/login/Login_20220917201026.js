@@ -18,7 +18,7 @@ export const Login = () => {
             axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
         }).catch(err => {
             console.log(err);
-        });
+        )};
 
   return (
     <div>
@@ -35,7 +35,7 @@ export const Login = () => {
                 placeholder="Password"
               />
             </form>
-            <div className={styles.loginBtn} onClick={onLoginHandler}>Login</div>
+            <div className={styles.loginBtn}>Login</div>
           </div>
           <GithubLoginButton
             style={{
