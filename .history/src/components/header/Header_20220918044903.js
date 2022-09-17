@@ -29,7 +29,7 @@ export const Header = (props) => {
   };
 
   const onClickNotice = () => {
-    props.sendCategory("notice");
+    props.setCategory("notice");
   };
 
   const onClickRanking = () => {
@@ -41,21 +41,17 @@ export const Header = (props) => {
   };
 
   const onClickQna = () => {
-    props.sendCategory("qna");
+    props.setCategory("qna");
   };
 
   const onClickFree = () => {
-    props.sendCategory("free");
-  };
-
-  const onClickLogo = () => {
-    props.sendCategory("all");
+    props.setCategory("free");
   };
 
   return (
     <>
       <nav className={styles.nav}>
-        <div className={styles.logo} as={Link} to="/main" onClick={onClickLogo}>
+        <div className={styles.logo} as={Link} to="/main">
           <Link to="/" style={{ color: "black" }}>
             Code<span>States</span>
           </Link>

@@ -46,6 +46,7 @@ export const Header = (props) => {
 
   const onClickFree = () => {
     props.sendCategory("free");
+    console.log("free");
   };
 
   const onClickLogo = () => {

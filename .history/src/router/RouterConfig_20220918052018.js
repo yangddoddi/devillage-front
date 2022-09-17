@@ -5,10 +5,14 @@ import { Footer } from "../components/footer/Footer";
 import { Login } from "../page/login/Login";
 import { Join } from "../page/join/Join";
 import { PostEditor } from "../components/posts/PostEditor";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 export const RouterConfig = () => {
   const [category, setCategory] = useState("all");
+
+  useState(() => {
+    console.log(category);
+  }, [category]);
 
   const sendCategory = (category) => {
     setCategory(category);

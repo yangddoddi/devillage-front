@@ -14,6 +14,10 @@ export const RouterConfig = () => {
     setCategory(category);
   };
 
+  useEffect(() => {
+    console.log("라우터" + category);
+  }, [category]);
+
   return (
     <BrowserRouter>
       <Header sendCategory={sendCategory} />

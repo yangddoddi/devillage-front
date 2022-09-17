@@ -7,12 +7,13 @@ import { Link } from "react-router-dom";
 import { MyPage } from "../../page/mypage/MyPage";
 import { useSelector, useDispatch } from "react-redux";
 
-export const Header = (props) => {
+export const Header = () => {
   const [searchBox, setSearchBox] = useState(false);
   const onClickHandler = () => {
     setSearchBox(!searchBox);
   };
 
+  const dispatch = useDispatch();
   const { accessToken } = useSelector((state) => state.token);
 
   useEffect(() => {
@@ -29,33 +30,16 @@ export const Header = (props) => {
   };
 
   const onClickNotice = () => {
-    props.sendCategory("notice");
-  };
+    dispatch.apply();
+  }
 
   const onClickRanking = () => {
     alert("준비중입니다.");
-  };
-
-  const onClickStudy = () => {
-    alert("준비중입니다.");
-  };
-
-  const onClickQna = () => {
-    props.sendCategory("qna");
-  };
-
-  const onClickFree = () => {
-    props.sendCategory("free");
-  };
-
-  const onClickLogo = () => {
-    props.sendCategory("all");
-  };
 
   return (
     <>
       <nav className={styles.nav}>
-        <div className={styles.logo} as={Link} to="/main" onClick={onClickLogo}>
+        <div className={styles.logo} as={Link} to="/main">
           <Link to="/" style={{ color: "black" }}>
             Code<span>States</span>
           </Link>
@@ -67,7 +51,7 @@ export const Header = (props) => {
           <li className={styles.listItem} onClick={onClickRanking}>
             회원랭킹
           </li>
-          <li className={styles.listItem} onClick={onClickFree}>
+          <li className={styles.listItem} onClick={onClickFreeBoard}>
             자유게시판
           </li>
           <li className={styles.listItem} onClick={onClickQna}>

@@ -29,7 +29,7 @@ export const Header = (props) => {
   };
 
   const onClickNotice = () => {
-    props.sendCategory("notice");
+    sendCategory("notice");
   };
 
   const onClickRanking = () => {

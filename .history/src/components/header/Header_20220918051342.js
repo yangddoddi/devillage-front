@@ -23,13 +23,17 @@ export const Header = (props) => {
     }
   }, [searchBox]);
 
+  const sendCategory = (category) => {
+    props.getCategory(category);
+  };
+
   const [myPage, setMyPage] = useState(false);
   const onClickMyPage = () => {
     setMyPage(!myPage);
   };
 
   const onClickNotice = () => {
-    props.sendCategory("notice");
+    props.setCategory("notice");
   };
 
   const onClickRanking = () => {
@@ -41,15 +45,17 @@ export const Header = (props) => {
   };
 
   const onClickQna = () => {
-    props.sendCategory("qna");
+    props.setCategory("qna");
   };
 
   const onClickFree = () => {
-    props.sendCategory("free");
+    props.setCategory("free");
+    sendCategory;
   };
 
   const onClickLogo = () => {
-    props.sendCategory("all");
+    props.setCategory("all");
+    sendCategory("all");
   };
 
   return (

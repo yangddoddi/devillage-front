@@ -10,19 +10,25 @@ export const Main = (props) => {
   const [page, setPage] = useState(1);
   const [posts, setPosts] = useState([]);
   const [total, setTotal] = useState(0);
+  const [category, setCategory] = useState("all");
 
   const getPosts = async () => {
     const result = await axios.get(
-      `http://localhost:8080/posts?category=${props.category}?page=${page}&size=10`
+      `http://localhost:8080/posts?category=${category}?page=${page}&size=10`
     );
     setPosts(result.data.content);
     setTotal(result.data.totalElements);
     setLoading(false);
   };
 
-  useEffect(() => {
-    getPosts();
-  }, [page, props.category]);
+  useEffect(
+    () => {
+      getPosts();
+      console.log(props);
+    },
+    [page],
+    [props]
+  );
 
   return (
     <div className={styles.main}>

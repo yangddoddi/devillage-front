@@ -5,15 +5,13 @@ import { SearchOutlined } from "@ant-design/icons";
 import { SearchBox } from "../searchBox/SearchBox";
 import { Link } from "react-router-dom";
 import { MyPage } from "../../page/mypage/MyPage";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
-export const Header = (props) => {
+export const Header = () => {
   const [searchBox, setSearchBox] = useState(false);
   const onClickHandler = () => {
     setSearchBox(!searchBox);
   };
-
-  const { accessToken } = useSelector((state) => state.token);
 
   useEffect(() => {
     if (searchBox) {
@@ -28,52 +26,28 @@ export const Header = (props) => {
     setMyPage(!myPage);
   };
 
-  const onClickNotice = () => {
-    props.sendCategory("notice");
-  };
-
-  const onClickRanking = () => {
-    alert("준비중입니다.");
-  };
-
-  const onClickStudy = () => {
-    alert("준비중입니다.");
-  };
-
-  const onClickQna = () => {
-    props.sendCategory("qna");
-  };
-
-  const onClickFree = () => {
-    props.sendCategory("free");
-  };
-
-  const onClickLogo = () => {
-    props.sendCategory("all");
-  };
-
   return (
     <>
       <nav className={styles.nav}>
-        <div className={styles.logo} as={Link} to="/main" onClick={onClickLogo}>
+        <div className={styles.logo} as={Link} to="/main">
           <Link to="/" style={{ color: "black" }}>
             Code<span>States</span>
           </Link>
         </div>
         <ul className={styles.list}>
-          <li className={styles.listItem} onClick={onClickNotice}>
+          <li className={styles.listItem} onClick={onClickNoticeBoard}>
             공지사항
           </li>
-          <li className={styles.listItem} onClick={onClickRanking}>
+          <li className={styles.listItem} onClick={onClickRankingBoard}>
             회원랭킹
           </li>
-          <li className={styles.listItem} onClick={onClickFree}>
+          <li className={styles.listItem} onClick={onClickFreeBoard}>
             자유게시판
           </li>
-          <li className={styles.listItem} onClick={onClickQna}>
+          <li className={styles.listItem} onClick={onClickQnABoard}>
             Q&A
           </li>
-          <li className={styles.listItem} onClick={onClickStudy}>
+          <li className={styles.listItem} onClick={onClickStudyBoard}>
             강의
           </li>
         </ul>
@@ -82,20 +56,14 @@ export const Header = (props) => {
             <SearchOutlined />
           </div>
           <button className={styles.loginBtn}>
-            {accessToken ? (
-              <Link style={{ color: "white" }} onClick={onClickMyPage}>
-                MyPage
-              </Link>
-            ) : (
-              <Link to="/login" style={{ color: "white" }}>
-                Login
-              </Link>
-            )}
+            <Link to="/login" style={{ color: "white" }}>
+              Login
+            </Link>
           </button>
         </div>
       </nav>
       {searchBox ? <SearchBox /> : null}
-      {myPage ? <MyPage /> : null}
+      <MyPage />
     </>
   );
 };

@@ -13,6 +13,7 @@ export const Header = (props) => {
     setSearchBox(!searchBox);
   };
 
+  const dispatch = useDispatch();
   const { accessToken } = useSelector((state) => state.token);
 
   useEffect(() => {
@@ -29,7 +30,7 @@ export const Header = (props) => {
   };
 
   const onClickNotice = () => {
-    props.sendCategory("notice");
+    props.getCategory("notice");
   };
 
   const onClickRanking = () => {
@@ -40,22 +41,10 @@ export const Header = (props) => {
     alert("준비중입니다.");
   };
 
-  const onClickQna = () => {
-    props.sendCategory("qna");
-  };
-
-  const onClickFree = () => {
-    props.sendCategory("free");
-  };
-
-  const onClickLogo = () => {
-    props.sendCategory("all");
-  };
-
   return (
     <>
       <nav className={styles.nav}>
-        <div className={styles.logo} as={Link} to="/main" onClick={onClickLogo}>
+        <div className={styles.logo} as={Link} to="/main">
           <Link to="/" style={{ color: "black" }}>
             Code<span>States</span>
           </Link>
@@ -67,7 +56,7 @@ export const Header = (props) => {
           <li className={styles.listItem} onClick={onClickRanking}>
             회원랭킹
           </li>
-          <li className={styles.listItem} onClick={onClickFree}>
+          <li className={styles.listItem} onClick={onClickFreeBoard}>
             자유게시판
           </li>
           <li className={styles.listItem} onClick={onClickQna}>

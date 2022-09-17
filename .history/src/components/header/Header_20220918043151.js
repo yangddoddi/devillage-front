@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import { MyPage } from "../../page/mypage/MyPage";
 import { useSelector, useDispatch } from "react-redux";
 
-export const Header = (props) => {
+export const Header = () => {
   const [searchBox, setSearchBox] = useState(false);
   const onClickHandler = () => {
     setSearchBox(!searchBox);
@@ -28,54 +28,20 @@ export const Header = (props) => {
     setMyPage(!myPage);
   };
 
-  const onClickNotice = () => {
-    props.sendCategory("notice");
-  };
-
-  const onClickRanking = () => {
-    alert("준비중입니다.");
-  };
-
-  const onClickStudy = () => {
-    alert("준비중입니다.");
-  };
-
-  const onClickQna = () => {
-    props.sendCategory("qna");
-  };
-
-  const onClickFree = () => {
-    props.sendCategory("free");
-  };
-
-  const onClickLogo = () => {
-    props.sendCategory("all");
-  };
-
   return (
     <>
       <nav className={styles.nav}>
-        <div className={styles.logo} as={Link} to="/main" onClick={onClickLogo}>
+        <div className={styles.logo} as={Link} to="/main">
           <Link to="/" style={{ color: "black" }}>
             Code<span>States</span>
           </Link>
         </div>
         <ul className={styles.list}>
-          <li className={styles.listItem} onClick={onClickNotice}>
-            공지사항
-          </li>
-          <li className={styles.listItem} onClick={onClickRanking}>
-            회원랭킹
-          </li>
-          <li className={styles.listItem} onClick={onClickFree}>
-            자유게시판
-          </li>
-          <li className={styles.listItem} onClick={onClickQna}>
-            Q&A
-          </li>
-          <li className={styles.listItem} onClick={onClickStudy}>
-            강의
-          </li>
+          <li className={styles.listItem}>공지사항</li>
+          <li className={styles.listItem}>회원랭킹</li>
+          <li className={styles.listItem}>자유게시판</li>
+          <li className={styles.listItem}>Q&A</li>
+          <li className={styles.listItem}>강의</li>
         </ul>
         <div className={styles.searchAndLogin}>
           <div className={styles.searchLogo} onClick={onClickHandler}>

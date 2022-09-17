@@ -5,15 +5,16 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { Pagination } from "antd";
 
-export const Main = (props) => {
+export const Main = () => {
   const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(1);
   const [posts, setPosts] = useState([]);
   const [total, setTotal] = useState(0);
+  const [category, setCategory] = useState("all");
 
   const getPosts = async () => {
     const result = await axios.get(
-      `http://localhost:8080/posts?category=${props.category}?page=${page}&size=10`
+      `http://localhost:8080/posts?category=${category}?page=${page}&size=10`
     );
     setPosts(result.data.content);
     setTotal(result.data.totalElements);
@@ -22,7 +23,7 @@ export const Main = (props) => {
 
   useEffect(() => {
     getPosts();
-  }, [page, props.category]);
+  }, [page]);
 
   return (
     <div className={styles.main}>

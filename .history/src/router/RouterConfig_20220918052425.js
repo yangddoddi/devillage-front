@@ -10,6 +10,10 @@ import { useEffect, useState } from "react";
 export const RouterConfig = () => {
   const [category, setCategory] = useState("all");
 
+  useEffect(() => {
+    console.log("category" + category);
+  }, [category]);
+
   const sendCategory = (category) => {
     setCategory(category);
   };

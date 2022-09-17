@@ -22,6 +22,7 @@ export const Main = (props) => {
 
   useEffect(() => {
     getPosts();
+    console.log("이거요" + props.category);
   }, [page, props.category]);
 
   return (

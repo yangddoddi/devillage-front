@@ -5,20 +5,18 @@ import { Footer } from "../components/footer/Footer";
 import { Login } from "../page/login/Login";
 import { Join } from "../page/join/Join";
 import { PostEditor } from "../components/posts/PostEditor";
-import { useEffect, useState } from "react";
 
 export const RouterConfig = () => {
   const [category, setCategory] = useState("all");
-
-  const sendCategory = (category) => {
-    setCategory(category);
+  const onClickCategory = (e) => {
+    setCategory(e.target.value);
   };
 
   return (
     <BrowserRouter>
-      <Header sendCategory={sendCategory} />
+      <Header />
       <Routes>
-        <Route path="/*" element={<Main category={category} />} />
+        <Route path="/*" element={<Main />} />
         <Route path="/login" element={<Login />} />
         <Route path="/join" element={<Join />} />
         <Route path="/posts/*" element={<PostEditor />} />

@@ -20,9 +20,14 @@ export const Main = (props) => {
     setLoading(false);
   };
 
-  useEffect(() => {
-    getPosts();
-  }, [page, props.category]);
+  useEffect(
+    () => {
+      getPosts();
+      console.log(props);
+    },
+    [page],
+    [props]
+  );
 
   return (
     <div className={styles.main}>
