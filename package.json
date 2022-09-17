@@ -8,6 +8,8 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "@toast-ui/editor-plugin-color-syntax": "^3.1.0",
+    "@toast-ui/react-editor": "^3.2.0",
     "antd": "^4.23.1",
     "axios": "^0.27.2",
     "material-table": "^2.0.3",
