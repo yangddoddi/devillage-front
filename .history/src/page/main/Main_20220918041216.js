@@ -13,35 +13,23 @@ export const Main = () => {
 
   const getPosts = async () => {
     const result = await axios.get(
-      `http://localhost:8080/posts?category=all?page=${page}&size=10`
+      `http://localhost:8080/posts?page=${page}&size=10`
     );
     setPosts(result.data.content);
     setTotal(result.data.totalElements);
     setLoading(false);
   };
 
-  useEffect(() => {
-    getPosts();
-  }, [page]);
-
   return (
     <div className={styles.main}>
       <div className={styles.imgBox} />
       <div className={styles.bottomContainer}>
         <PostsList ListName={"Recent Posts"}>
-          {!loading &&
-            posts.map((item) => (
-              <PostItem
-                key={item.id}
-                id={item.id}
-                title={item.title}
-                tag={item.tag}
-                content={item.content}
-                photo={item.photo}
-                createdAt={item.createdAt}
-                view={item.view}
-              />
-            ))}
+          <PostItem />
+          <PostItem />
+          <PostItem />
+          <PostItem />
+          <PostItem />
         </PostsList>
         <Pagination
           defaultCurrent={1}

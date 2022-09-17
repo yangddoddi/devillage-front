@@ -13,16 +13,12 @@ export const Main = () => {
 
   const getPosts = async () => {
     const result = await axios.get(
-      `http://localhost:8080/posts?category=all?page=${page}&size=10`
+      `http://localhost:8080/posts?page=${page}&size=10`
     );
     setPosts(result.data.content);
     setTotal(result.data.totalElements);
     setLoading(false);
   };
-
-  useEffect(() => {
-    getPosts();
-  }, [page]);
 
   return (
     <div className={styles.main}>
@@ -37,7 +33,7 @@ export const Main = () => {
                 title={item.title}
                 tag={item.tag}
                 content={item.content}
-                photo={item.photo}
+                thumbnail={item.thumbnail}
                 createdAt={item.createdAt}
                 view={item.view}
               />

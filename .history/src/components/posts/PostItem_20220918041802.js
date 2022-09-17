@@ -12,7 +12,7 @@ export const PostItem = ({
   view,
 }) => {
   return (
-    <div className={styles.boardItem} id={id}>
+    <div className={styles.boardItem}>
       <div className={styles.boardItem_left}>
         <div className={styles.boardItem_left_top}>
           <h1>{title}</h1>

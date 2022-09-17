@@ -1,30 +1,21 @@
 import styles from "./PostItem.module.scss";
 import { EyeOutlined } from "@ant-design/icons";
 
-export const PostItem = ({
-  key,
-  id,
-  title,
-  tag,
-  content,
-  photo,
-  createdAt,
-  view,
-}) => {
+export const PostItem = ({ post }) => {
   return (
-    <div className={styles.boardItem} id={id}>
+    <div className={styles.boardItem}>
       <div className={styles.boardItem_left}>
         <div className={styles.boardItem_left_top}>
-          <h1>{title}</h1>
-          <p>{content}</p>
+          <h1>제가 한 코딩 보실 분 ㅋㅋ</h1>
+          <p>지존 코딩 고수 ㄷ ㄷ</p>
         </div>
         <div className={styles.boardItem_left_bottom}>
-          <span>{tag}</span>
+          <span>#개발자</span>
           <br />
           <span>
-            {createdAt}&nbsp;&nbsp;|&nbsp;&nbsp;
+            2022.10.23&nbsp;&nbsp;|&nbsp;&nbsp;
             <EyeOutlined />
-            {view}
+            102
           </span>
         </div>
       </div>

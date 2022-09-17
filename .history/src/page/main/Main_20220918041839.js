@@ -13,7 +13,7 @@ export const Main = () => {
 
   const getPosts = async () => {
     const result = await axios.get(
-      `http://localhost:8080/posts?category=all?page=${page}&size=10`
+      `http://localhost:8080/posts?page=${page}&size=10`
     );
     setPosts(result.data.content);
     setTotal(result.data.totalElements);
