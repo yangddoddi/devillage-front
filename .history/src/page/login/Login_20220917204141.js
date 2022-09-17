@@ -6,7 +6,6 @@ import {
 } from "react-social-login-buttons";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { login } from "../../utils/loginHandler";
 
 export const Login = () => {
   return (
@@ -24,7 +23,7 @@ export const Login = () => {
                 placeholder="Password"
               />
             </form>
-            <div className={styles.loginBtn} onClick={loginHandler()}>
+            <div className={styles.loginBtn} onClick={onLoginHandler}>
               Login
             </div>
           </div>

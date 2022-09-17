@@ -6,7 +6,7 @@ import {
 } from "react-social-login-buttons";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { login } from "../../utils/loginHandler";
+import { loginHandler } from "../../utils/loginHandler";
 
 export const Login = () => {
   return (
