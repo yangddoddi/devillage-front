@@ -5,6 +5,7 @@ import {
   AppleLoginButton,
 } from "react-social-login-buttons";
 import { Link, useNavigate } from "react-router-dom";
+import * as loginHandler from "../../utils/loginHandler";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { setRefreshCookie } from "../../storeage/Cookie";
@@ -26,12 +27,13 @@ export const Login = () => {
   };
 
   const onClickHandler = async () => {
-    const result = await auth(email, password);
-    if (result.status === 200) {
-      dispatch(setRefreshCookie(result.data));
+    const data = await auth.login(email, password);
+    if (data) {
+      loginHandler.login(data);
+      dispatch(setRefreshCookie());
       navi("/");
     } else {
-      alert("로그인 실패");
+      console.log(data.json());
     }
   };
 
@@ -41,7 +43,7 @@ export const Login = () => {
         <div className={styles.loginBox}>
           <div className={styles.loginTitle}>Login</div>
           <div className={styles.loginInput}>
-            <form className={styles.form}>
+            <form className={styles.form} onSubmit={onLoginHandler}>
               <input
                 className={styles.inputBox}
                 onChange={onChangeEmail}
@@ -56,9 +58,7 @@ export const Login = () => {
                 onChange={onChangePassword}
               />
             </form>
-            <div className={styles.loginBtn} onClick={onClickHandler}>
-              Login
-            </div>
+            <div className={styles.loginBtn}>Login</div>
           </div>
           <GithubLoginButton
             style={{

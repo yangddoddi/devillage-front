@@ -5,6 +5,8 @@ import {
   AppleLoginButton,
 } from "react-social-login-buttons";
 import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
+import { login } from "../../utils/loginHandler";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { setRefreshCookie } from "../../storeage/Cookie";
@@ -21,19 +23,8 @@ export const Login = () => {
     setEmail(e.target.value);
   };
 
-  const onChangePassword = (e) => {
+    const onChangePassword = (e) => {
     setPassword(e.target.value);
-  };
-
-  const onClickHandler = async () => {
-    const result = await auth(email, password);
-    if (result.status === 200) {
-      dispatch(setRefreshCookie(result.data));
-      navi("/");
-    } else {
-      alert("로그인 실패");
-    }
-  };
 
   return (
     <div>
@@ -41,24 +32,16 @@ export const Login = () => {
         <div className={styles.loginBox}>
           <div className={styles.loginTitle}>Login</div>
           <div className={styles.loginInput}>
-            <form className={styles.form}>
-              <input
-                className={styles.inputBox}
-                onChange={onChangeEmail}
-                type="text"
-                placeholder="ID"
-              />{" "}
+            <form className={styles.form} onSubmit={onLoginHandler}>
+              <input className={styles.inputBox} type="text" placeholder="ID" />{" "}
               <br />
               <input
                 className={styles.inputBox}
                 type="password"
                 placeholder="Password"
-                onChange={onChangePassword}
               />
             </form>
-            <div className={styles.loginBtn} onClick={onClickHandler}>
-              Login
-            </div>
+            <div className={styles.loginBtn}>Login</div>
           </div>
           <GithubLoginButton
             style={{

@@ -26,12 +26,13 @@ export const Login = () => {
   };
 
   const onClickHandler = async () => {
-    const result = await auth(email, password);
-    if (result.status === 200) {
-      dispatch(setRefreshCookie(result.data));
+    const data = await auth.login(email, password);
+    if (data) {
+      loginHandler.login(data);
+      dispatch(setRefreshCookie());
       navi("/");
     } else {
-      alert("로그인 실패");
+      console.log(data.json());
     }
   };
 
@@ -56,9 +57,7 @@ export const Login = () => {
                 onChange={onChangePassword}
               />
             </form>
-            <div className={styles.loginBtn} onClick={onClickHandler}>
-              Login
-            </div>
+            <div className={styles.loginBtn}>Login</div>
           </div>
           <GithubLoginButton
             style={{
