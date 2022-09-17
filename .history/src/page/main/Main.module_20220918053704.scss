@@ -46,21 +46,15 @@
     overflow: hidden;
 }
 
-.pencil {
-    position: fixed;
-    font-size: 30px;
-    bottom: 200px;
-    right: 200px;
-    cursor: pointer;
-    color: #292965;
-    transition: all 400ms;
-    z-index: 100;
-    background-color: white;
-    border-radius: 50%;
-    padding: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+.pencilContainer {
+    position: relative
+    max-width: 1200px;
+}
 
-    &:hover {
-        transform: scale(1.2);
-    }
+.pencil {
+    position:fixed;
+    font-size: 30px;
+    bottom:10%;
+    right: 10%;
+    max-width: 100px;
 }

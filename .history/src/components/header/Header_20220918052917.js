@@ -54,7 +54,7 @@ export const Header = (props) => {
   };
 
   const onSearchChangeHandler = (e) => {
-    setSearch(e.target.value);
+    props.sendSearch(e.target.value);
   };
 
   return (

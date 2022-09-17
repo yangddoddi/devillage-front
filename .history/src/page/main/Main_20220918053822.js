@@ -5,7 +5,6 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { Pagination } from "antd";
 import { EditOutlined } from "@ant-design/icons";
-import { Link } from "react-router-dom";
 
 export const Main = (props) => {
   const [loading, setLoading] = useState(true);
@@ -31,7 +30,7 @@ export const Main = (props) => {
     <div className={styles.main}>
       <div className={styles.imgBox} />
       <div className={styles.bottomContainer}>
-        <PostsList ListName={props.category}>
+        <PostsList ListName={"Recent Posts"}>
           {!loading &&
             posts.map((item) => (
               <PostItem
@@ -60,9 +59,6 @@ export const Main = (props) => {
           }}
         />
       </div>
-      <Link to="/posts">
-        <EditOutlined className={styles.pencil} />
-      </Link>
     </div>
   );
 };
