@@ -23,9 +23,7 @@ const store = configureStore({
 root.render(
   <React.StrictMode>
     <CookiesProvider>
-      <Provider store={store}>
-        <App />
-      </Provider>
+      <App />
     </CookiesProvider>
   </React.StrictMode>
 );
