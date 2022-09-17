@@ -1,5 +1,4 @@
 import { PostItem } from "../../components/posts/PostItem";
-import { PostsList } from "../../components/posts/PostsList";
 import styles from "./Main.module.scss";
 
 export const Main = () => {
@@ -7,13 +6,14 @@ export const Main = () => {
     <div className={styles.main}>
       <div className={styles.imgBox} />
       <div className={styles.bottomContainer}>
-        <PostsList ListName={"Recent Posts"}>
+        <div className={styles.title}>Recent Posts</div>
+        <div className={styles.boardContainer}>
           <PostItem />
           <PostItem />
           <PostItem />
           <PostItem />
           <PostItem />
-        </PostsList>
+        </div>
       </div>
     </div>
   );

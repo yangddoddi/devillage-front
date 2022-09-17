@@ -4,7 +4,6 @@ import {
   GoogleLoginButton,
   AppleLoginButton,
 } from "react-social-login-buttons";
-import { Link } from "react-router-dom";
 
 export const Login = () => {
   return (

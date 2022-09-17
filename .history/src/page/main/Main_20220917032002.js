@@ -7,13 +7,8 @@ export const Main = () => {
     <div className={styles.main}>
       <div className={styles.imgBox} />
       <div className={styles.bottomContainer}>
-        <PostsList ListName={"Recent Posts"}>
-          <PostItem />
-          <PostItem />
-          <PostItem />
-          <PostItem />
-          <PostItem />
-        </PostsList>
+        <div className={styles.title}>Recent Posts</div>
+        <PostsList ListName={"Recent Posts"} />
       </div>
     </div>
   );
