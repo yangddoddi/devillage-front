@@ -1,0 +1,28 @@
+
+.myPage {
+    position: absolute;
+    right: 30px;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 50px;
+    background-color: white;
+    width: 200px;
+    height: 200px;
+    font-size: 18px;
+    font-weight: 600;
+    color: rgba(0, 0, 0, 0.5);
+
+    ul {
+        list-style: none;
+    }
+
+    li {
+        padding: 10px;
+        cursor: pointer;
+    }
+
+    .logout {
+        background-color: lightblue;
+        width: 100%;
+    }
+}

@@ -11,6 +11,4 @@ export const Logout = () => {
   const navi = useNavigate();
 
   const refreshToken = getRefreshToken();
-
-  return <div>aa</div>;
 };

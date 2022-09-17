@@ -4,7 +4,7 @@ import styles from "./Header.module.scss";
 import { SearchOutlined } from "@ant-design/icons";
 import { SearchBox } from "../searchBox/SearchBox";
 import { Link } from "react-router-dom";
-import { MyPage } from "../../page/mypage/MyPage";
+import { MyPage } from '../../page/mypage/MyPage';
 
 export const Header = () => {
   const [searchBox, setSearchBox] = useState(false);
@@ -39,7 +39,6 @@ export const Header = () => {
         </div>
       </nav>
       {searchBox ? <SearchBox /> : null}
-      <MyPage />
-    </>
+    <MyPage />
   );
 };

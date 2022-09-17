@@ -10,7 +10,5 @@ export const Logout = () => {
   const dispatch = useDispatch();
   const navi = useNavigate();
 
-  const refreshToken = getRefreshToken();
-
-  return <div>aa</div>;
+  const refreshToken = getCooki;
 };

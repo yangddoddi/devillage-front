@@ -1,5 +1,5 @@
 export const auth = async (email, password) => {
-  const response = await fetch("http://localhost:8080/auth", {
+  const response = await fetch("http://localhost:8080/auth/token", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
