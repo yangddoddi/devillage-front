@@ -1,0 +1,206 @@
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 1000px;
+    min-height: 800px;
+    margin: auto;
+    align-items: flex-start;
+}
+
+.postContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin-bottom: 20px;
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 120px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.profile {
+    display: flex;
+    align-items: flex-end;
+}
+
+.avatar {
+    font-size: 30px;
+    border: 1px solid lightgray;
+    border-radius: 50%;;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    background-color: lightgray;
+    margin-right: 10px;
+}
+
+.topContainer {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 100%;
+    height: 100px;
+}
+
+.profileRight {
+    p {
+        margin : 0px;
+    }
+}
+
+.bookMark {
+    position: absolute;
+    font-size: 25px;
+    font-weight: 300;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    right: 30px;
+    color: rgba(0, 0, 0, 0.6);
+    cursor: pointer;
+}
+
+.titleContainer {
+    height: 50px;
+}
+
+.title {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.contentContainer {
+    width: 100%;
+    min-height: 500px;
+    margin-top:20px;
+    border-top:rgba(0, 0, 0, 0.1) 1px solid;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+
+
+    h2 {
+        margin: 0px;
+    }
+}
+
+.contentBottomContainer {
+    width: 100%;
+}
+
+.btnContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 50px;
+}
+
+.likeBtn {
+    font-size: 30px;
+    cursor:pointer;
+}
+
+.like {
+    font-size: 20px;
+    margin-right: 10px;
+    margin-left: 10px;
+    border : none;
+    border-radius: 100%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color:white;
+    background-color: #4cb1fa;
+}
+
+.replyContainer {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin-top: 20px;
+}
+
+.replyItem {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin-top: 20px;
+    border: 1px solid lightgray;
+    padding: 20px;
+}
+
+.replyTop {
+
+    .replyAvatar {
+        font-size: 30px;
+        border: 1px solid lightgray;
+        border-radius: 50%;;
+        width: 50px;
+        height: 50px;
+        line-height: 50px;
+        background-color: lightgray;
+        margin-right: 10px;
+    }
+}
+
+
+.replyAvatar {
+    font-size: 20px;
+    border: 1px solid lightgray;
+    border-radius: 50%;;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    background-color: lightgray;
+    margin-right: 10px;
+}
+
+// .buttonContainer {
+//     display: flex;
+//     align-items: center;
+//     justify-content: space-between;
+//     width: 100%;
+//     height: 50px;
+//     margin-top: 20px;
+// }
+
+// .likeBtn {
+//     position: absolute;
+//     right: 30px;
+//     bottom: 30px;
+//     border-color: lightgray;
+//     color: black;
+//     border-radius: 20px;
+//     width: 120px;
+//     height: 50px;
+//     font-size: 18px;
+//     font-weight: 500;
+//     background-color: white;
+//     margin-top: 20px;
+//     color: rgba(0, 0, 0, 0.6);
+//     z-index: 20;
+
+//     &:hover {
+//         background-color: #4cb1fa;
+//         color: white;
+//     }
+// }
