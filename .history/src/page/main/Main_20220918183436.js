@@ -48,7 +48,7 @@ export const Main = (props) => {
     <div className={styles.main}>
       <div className={styles.imgBox} />
       <div className={styles.bottomContainer}>
-        <PostsList ListName={categoryName}>
+        <PostsList ListName={category}>
           {!loading &&
             posts.map((item) => (
               <PostItem

@@ -61,15 +61,13 @@ export const Header = (props) => {
     <>
       <nav className={styles.nav}>
         <div className={styles.logo} as={Link} to="/main" onClick={onClickLogo}>
-          <Link to="/board/all" style={{ color: "black" }}>
-            Dev_<span>illage</span>
+          <Link to="/" style={{ color: "black" }}>
+            Code<span>States</span>
           </Link>
         </div>
         <ul className={styles.list}>
           <li className={styles.listItem} onClick={onClickNotice}>
-            <Link to="/board/notice" style={{ color: "black" }}>
-              공지사항
-            </Link>
+            <Link to="/board/notice">공지사항</Link>
           </li>
           <li className={styles.listItem} onClick={onClickRanking}>
             회원랭킹

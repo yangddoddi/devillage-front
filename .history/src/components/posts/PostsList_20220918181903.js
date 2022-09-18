@@ -3,19 +3,20 @@ import { useParam } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 export const PostsList = ({ ListName, children }) => {
-  const [category, setCategory] = useState("all");
+  const { category } = useParam();
+  const [categoryName, setCategoryName] = useState("");
 
   useEffect(() => {
-    if (ListName === "qna") {
+    if (category === "qna") {
       setCategory("질문답변");
-    } else if (ListName === "all") {
+    } else if (category === "all") {
       setCategory("최근 게시물");
-    } else if (ListName === "notice") {
+    } else if (category === "notice") {
       setCategory("공지사항");
-    } else if (ListName === "free") {
+    } else if (category === "free") {
       setCategory("자유게시판");
     }
-  }, []);
+  }, [category]);
 
   return (
     <>

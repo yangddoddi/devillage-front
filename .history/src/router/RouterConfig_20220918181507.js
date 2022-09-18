@@ -10,17 +10,10 @@ import { PostView } from "../components/posts/PostView";
 import { Profiles } from "../page/mypage/Profiles";
 
 export const RouterConfig = () => {
-  const [category, setCategory] = useState("all");
-
-  const sendCategory = (category) => {
-    setCategory(category);
-  };
-
   return (
     <BrowserRouter>
       <Header sendCategory={sendCategory} />
       <Routes>
-        <Route path="/" element={<Main />} />
         <Route path="/board/:category" element={<Main category={category} />} />
         <Route path="/login" element={<Login />} />
         <Route path="/join" element={<Join />} />

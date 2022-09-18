@@ -35,7 +35,7 @@ export const Main = (props) => {
     } else if (category === "all") {
       setCategoryName("최근 게시물");
     } else if (category === "qna") {
-      setCategoryName("Q&A");
+      setCategoryName("장터");
     }
   };
 
@@ -48,7 +48,7 @@ export const Main = (props) => {
     <div className={styles.main}>
       <div className={styles.imgBox} />
       <div className={styles.bottomContainer}>
-        <PostsList ListName={categoryName}>
+        <PostsList ListName={category}>
           {!loading &&
             posts.map((item) => (
               <PostItem

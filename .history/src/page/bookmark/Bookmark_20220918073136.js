@@ -13,9 +13,6 @@ export const Main = (props) => {
   const [page, setPage] = useState(1);
   const [posts, setPosts] = useState([]);
   const [total, setTotal] = useState(0);
-  const [categoryName, setCategoryName] = useState("all");
-
-  const { category } = useParams();
 
   const getPosts = async () => {
     setLoading(true);
@@ -27,28 +24,15 @@ export const Main = (props) => {
     setLoading(false);
   };
 
-  const changeCategoryName = () => {
-    if (category === "notice") {
-      setCategoryName("공지사항");
-    } else if (category === "free") {
-      setCategoryName("자유게시판");
-    } else if (category === "all") {
-      setCategoryName("최근 게시물");
-    } else if (category === "qna") {
-      setCategoryName("Q&A");
-    }
-  };
-
   useEffect(() => {
     getPosts();
-    changeCategoryName();
   }, [page, props.category]);
 
   return (
     <div className={styles.main}>
       <div className={styles.imgBox} />
       <div className={styles.bottomContainer}>
-        <PostsList ListName={categoryName}>
+        <PostsList ListName={props.category}>
           {!loading &&
             posts.map((item) => (
               <PostItem

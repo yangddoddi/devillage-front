@@ -20,8 +20,7 @@ export const RouterConfig = () => {
     <BrowserRouter>
       <Header sendCategory={sendCategory} />
       <Routes>
-        <Route path="/" element={<Main />} />
-        <Route path="/board/:category" element={<Main category={category} />} />
+        <Route path="/board/:name" element={<Main category={category} />} />
         <Route path="/login" element={<Login />} />
         <Route path="/join" element={<Join />} />
         <Route path="/posts" element={<PostEditor />} />

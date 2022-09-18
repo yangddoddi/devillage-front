@@ -15,7 +15,7 @@ export const PostsList = ({ ListName, children }) => {
     } else if (ListName === "free") {
       setCategory("자유게시판");
     }
-  }, []);
+  }, [ListName]);
 
   return (
     <>

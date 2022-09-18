@@ -61,7 +61,7 @@ export const Header = (props) => {
     <>
       <nav className={styles.nav}>
         <div className={styles.logo} as={Link} to="/main" onClick={onClickLogo}>
-          <Link to="/board/all" style={{ color: "black" }}>
+          <Link to="/" style={{ color: "black" }}>
             Dev_<span>illage</span>
           </Link>
         </div>

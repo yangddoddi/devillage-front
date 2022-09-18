@@ -29,28 +29,12 @@ export const Header = (props) => {
     setMyPage(!myPage);
   };
 
-  const onClickNotice = () => {
-    props.sendCategory("notice");
-  };
-
   const onClickRanking = () => {
     alert("준비중입니다.");
   };
 
   const onClickStudy = () => {
     alert("준비중입니다.");
-  };
-
-  const onClickQna = () => {
-    props.sendCategory("qna");
-  };
-
-  const onClickFree = () => {
-    props.sendCategory("free");
-  };
-
-  const onClickLogo = () => {
-    props.sendCategory("all");
   };
 
   const onSearchChangeHandler = (e) => {
@@ -60,13 +44,13 @@ export const Header = (props) => {
   return (
     <>
       <nav className={styles.nav}>
-        <div className={styles.logo} as={Link} to="/main" onClick={onClickLogo}>
-          <Link to="/board/all" style={{ color: "black" }}>
-            Dev_<span>illage</span>
+        <div className={styles.logo} as={Link} to="/main">
+          <Link to="/board/main" style={{ color: "black" }}>
+            Code<span>States</span>
           </Link>
         </div>
         <ul className={styles.list}>
-          <li className={styles.listItem} onClick={onClickNotice}>
+          <li className={styles.listItem}>
             <Link to="/board/notice" style={{ color: "black" }}>
               공지사항
             </Link>
@@ -74,12 +58,12 @@ export const Header = (props) => {
           <li className={styles.listItem} onClick={onClickRanking}>
             회원랭킹
           </li>
-          <li className={styles.listItem} onClick={onClickFree}>
+          <li className={styles.listItem}>
             <Link to="/board/free" style={{ color: "black" }}>
               자유게시판
             </Link>
           </li>
-          <li className={styles.listItem} onClick={onClickQna}>
+          <li className={styles.listItem}>
             <Link to="/board/qna" style={{ color: "black" }}>
               Q&A
             </Link>
