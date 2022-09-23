@@ -1,0 +1,12 @@
+.myPage {
+  position: absolute;
+  right: 50px;
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 50px;
+  background-color: white;
+  width: 250px;
+  height: 300px;
+  font-size: 22px;
+  list-style: none;
+}/*# sourceMappingURL=MyPage.module_20220918001843.css.map */

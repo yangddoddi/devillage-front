@@ -1,0 +1,86 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 1000px;
+  height: 800px;
+  margin: auto;
+  align-items: flex-start;
+}
+
+.postContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  margin-bottom: 20px;
+  border: 1px solid lightgray;
+  border-radius: 10px;
+  padding: 20px;
+  margin-top: 120px;
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.profile {
+  display: flex;
+  align-items: flex-end;
+}
+
+.avatar {
+  font-size: 30px;
+  border: 1px solid lightgray;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  background-color: lightgray;
+  margin-right: 10px;
+}
+
+.topContainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 100%;
+  height: 100px;
+}
+
+.profileRight p {
+  margin: 0px;
+}
+
+.bookMark {
+  position: absolute;
+  font-size: 25px;
+  font-weight: 300;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  right: 30px;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.titleContainer {
+  height: 50px;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.contentContainer {
+  width: 100%;
+  min-height: 500px;
+  margin-top: 20px;
+  border-top: rgba(0, 0, 0, 0.1) 1px solid;
+  display: flex;
+}
+.contentContainer h2 {
+  margin: 0px;
+}/*# sourceMappingURL=PostView.module_20220918235636.css.map */

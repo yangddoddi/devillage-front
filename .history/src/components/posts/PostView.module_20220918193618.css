@@ -1,0 +1,36 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 1000px;
+  height: 800px;
+  margin: auto;
+  align-items: flex-start;
+}
+
+.postContainer {
+  width: 100%;
+}
+
+.bookMark, .avatar {
+  font-size: 30px;
+}
+
+.topContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  padding-top: 100px;
+}
+
+.titleContainer {
+  height: 100%;
+}
+
+.contentContainer {
+  width: 100%;
+  height: 100%;
+}/*# sourceMappingURL=PostView.module_20220918193618.css.map */

@@ -1,0 +1,24 @@
+.myPage {
+  position: absolute;
+  right: 30px;
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 30px;
+  background-color: white;
+  width: 200px;
+  height: 200px;
+  font-size: 18px;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.5);
+}
+.myPage ul {
+  list-style: none;
+}
+.myPage li {
+  padding: 10px;
+  cursor: pointer;
+}
+.myPage .logout {
+  background-color: lightblue;
+  width: 100%;
+}/*# sourceMappingURL=MyPage.module_20220918002301.css.map */

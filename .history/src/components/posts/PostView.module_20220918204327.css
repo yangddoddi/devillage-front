@@ -1,0 +1,60 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 1000px;
+  height: 800px;
+  margin: auto;
+  align-items: flex-start;
+}
+
+.postContainer {
+  width: 100%;
+  display: flex;
+}
+
+.profile {
+  display: flex;
+  align-items: flex-end;
+}
+
+.avatar {
+  font-size: 30px;
+  border: 1px solid lightgray;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  background-color: lightgray;
+  margin-right: 10px;
+}
+
+.topContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 100px;
+  padding-top: 100px;
+}
+
+.profileRight p {
+  margin: 0px;
+}
+
+.bookMark {
+  font-size: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.titleContainer {
+  height: 30px;
+}
+
+.contentContainer {
+  width: 100%;
+  height: 100%;
+}/*# sourceMappingURL=PostView.module_20220918204327.css.map */

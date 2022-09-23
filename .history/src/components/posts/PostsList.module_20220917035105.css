@@ -1,0 +1,33 @@
+.bottomContainer {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  max-width: 1800px;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 50px;
+}
+.bottomContainer .title {
+  font-size: 32px;
+  font-weight: bold;
+  cursor: default;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.boardContainer {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  max-width: 1600px;
+  justify-content: center;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.moreBtn {
+  background-color: transparent;
+  border: none;
+}/*# sourceMappingURL=PostsList.module_20220917035105.css.map */

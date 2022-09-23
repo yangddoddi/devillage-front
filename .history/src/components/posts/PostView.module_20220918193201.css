@@ -1,0 +1,32 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 1000px;
+  height: 800px;
+  margin: auto;
+  align-items: flex-start;
+}
+
+.postContainer {
+  width: 100%;
+}
+
+.topContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding-top: 100px;
+}
+
+.titleContainer {
+  height: 100%;
+}
+
+.contentContainer {
+  width: 100%;
+  height: 100%;
+}/*# sourceMappingURL=PostView.module_20220918193201.css.map */

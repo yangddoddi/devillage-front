@@ -1,0 +1,53 @@
+.nav {
+  background-color: rgba(0, 0, 0, 0.2);
+  width: 100%;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  justify-content: space-between;
+}
+
+.logo {
+  padding: 50px;
+  font-size: 40px;
+  font-weight: bold;
+}
+.logo span {
+  font-weight: 300;
+  margin-left: 5px;
+}
+
+.list {
+  display: flex;
+  list-style: none;
+  margin: 10px;
+  padding: 20px;
+  font-size: 18px;
+  font-weight: 600;
+}
+.list li {
+  margin: 10px;
+  padding: 20px;
+  cursor: pointer;
+}
+.list li:hover {
+  background-color: white;
+  border-radius: 15px;
+  transition: all 100ms;
+}
+
+.searchAndLogin {
+  display: flex;
+  padding: 50px;
+}
+.searchAndLogin .loginBtn {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+.searchAndLogin .searchLogo {
+  cursor: pointer;
+}/*# sourceMappingURL=Header.module_20220916211127.css.map */

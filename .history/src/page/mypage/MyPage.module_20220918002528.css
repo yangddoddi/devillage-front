@@ -1,0 +1,30 @@
+.myPage {
+  position: absolute;
+  right: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10px;
+  background-color: white;
+  width: 200px;
+  height: 200px;
+  font-size: 18px;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.5);
+}
+.myPage ul {
+  list-style: none;
+  width: 100%;
+  height: 100%;
+  padding: 0px;
+  margin: none;
+}
+.myPage li {
+  padding: 10px;
+  cursor: pointer;
+  width: 100%;
+}
+.myPage .logout {
+  background-color: lightblue;
+  width: 100%;
+}/*# sourceMappingURL=MyPage.module_20220918002528.css.map */

@@ -1,0 +1,11 @@
+.nav {
+  background-color: yellow;
+  width: 100%;
+  height: 70px;
+  padding: 10px 50px 10px 50px;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}/*# sourceMappingURL=Header.module_20220916203936.css.map */

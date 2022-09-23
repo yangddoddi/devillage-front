@@ -1,0 +1,11 @@
+body {
+  margin: auto;
+}
+
+.imgBox {
+  background-image: url("../../../public/image/web.jpeg");
+  background-size: contain;
+  width: 100%;
+  height: 80%;
+  max-width: 1600px;
+}/*# sourceMappingURL=Main.module_20220916214434.css.map */

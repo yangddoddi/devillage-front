@@ -1,0 +1,39 @@
+.loginContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  background-color: white;
+}
+
+.loginBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 400px;
+  height: 500px;
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.loginTitle {
+  font-size: 40px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.loginInput input {
+  width: 300px;
+  height: 40px;
+  border: 1px solid;
+  border-color: #f5f5f5;
+  border: 1px solid lightgray;
+  border-radius: 15px;
+  padding: 10px;
+  margin-bottom: 20px;
+}/*# sourceMappingURL=Login.module_20220917020840.css.map */

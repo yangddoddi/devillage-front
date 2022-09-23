@@ -1,0 +1,13 @@
+.container {
+  margin-top: 100px;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  background-color: yellow;
+}
+
+.profile {
+  background-color: red;
+  width: 1000px;
+  height: 600px;
+}/*# sourceMappingURL=Profiles.module_20220918064535.css.map */

@@ -1,0 +1,54 @@
+.main {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+}
+
+.imgBox {
+  background-image: url("../../../public/image/web3.jpeg");
+  background-size: cover;
+  width: 100%;
+  height: 500px;
+  max-width: 1600px;
+  background-position: 50%;
+}
+
+.bottomContainer {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  max-width: 1800px;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 50px;
+}
+.bottomContainer .title {
+  font-size: 32px;
+  font-weight: bold;
+  cursor: default;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.boardContainer {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  max-width: 1600px;
+  justify-content: center;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.pencil {
+  position: fixed;
+  font-size: 30px;
+  bottom: 400px;
+  right: 100px;
+  cursor: pointer;
+}/*# sourceMappingURL=Main.module_20220918054216.css.map */

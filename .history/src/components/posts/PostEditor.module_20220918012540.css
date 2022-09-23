@@ -1,0 +1,8 @@
+.editorContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 60%;
+  height: 80%;
+}/*# sourceMappingURL=PostEditor.module_20220918012540.css.map */

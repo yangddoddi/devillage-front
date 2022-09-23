@@ -1,0 +1,9 @@
+.container {
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  justify-content: flex-start;
+  align-items: center;
+}/*# sourceMappingURL=PostView.module_20220918190740.css.map */
