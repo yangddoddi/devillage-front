@@ -1,7 +1,10 @@
 import styles from "./Join.module.scss";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { join } from "../../store/Auth";
+import { setRefreshToken } from "../../store/Storage";
 import axios from "axios";
-import { redirect, useNavigate } from "react-router-dom";
+import originalRequest from "../../api/Interceptor";
 
 export const Join = () => {
   const [email, setEmail] = useState("");
@@ -9,7 +12,7 @@ export const Join = () => {
   const [passwordCheck, setPasswordCheck] = useState("");
   const [nickname, setNickname] = useState("");
 
-  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const onJoin = async (e) => {
     e.preventDefault();
@@ -17,23 +20,14 @@ export const Join = () => {
       alert("비밀번호가 일치하지 않습니다.");
       return;
     }
-    const response = await axios
-      .post("http://localhost:8080/auth/new", {
-        email,
-        password,
-        nickname,
-      })
-      .then((response) => {
-        if (response.status === 201) {
-          alert("회원가입이 완료되었습니다.");
-          navigate("/login");
-        }
-      })
-      .catch((error) => {
-        if (error.response.status === 409) {
-          alert("이미 존재하는 이메일입니다.");
-        }
-      });
+    const response = await axios.post("http://localhost:8080/auth/new", {
+      email,
+      password,
+      nickname,
+    });
+    if (response.status === 201) {
+      alert("회원가입 성공");
+    }
   };
 
   return (
@@ -64,7 +58,6 @@ export const Join = () => {
                 className={styles.inputBox}
                 type="passwordCheck"
                 placeholder="다시 한 번 입력해주세요."
-                onChange={(e) => setPasswordCheck(e.target.value)}
               />
               <br />
               <h3>닉네임</h3>

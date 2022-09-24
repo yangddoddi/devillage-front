@@ -4,6 +4,7 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import axios from "axios";
+import originalRequest from "./api/Interceptor";
 import { configureStore } from "@reduxjs/toolkit";
 import tokenReducer from "./store/Auth";
 import { CookiesProvider } from "react-cookie";
@@ -21,29 +22,26 @@ axios.interceptors.response.use(
     return response;
   },
   async (error) => {
-    const originalRequest = error.config;
-    if (error.response.status === 401 && !originalRequest._retry) {
+    if (error.response.status === 401) {
       originalRequest._retry = true;
-      return axios
-        .post("http://localhost:8080/auth/token/refresh", {
-          headers: {
-            RefreshToken: getRefreshToken(),
-          },
-        })
-        .then((res) => {
-          if (res.status === 201) {
-            const accessToken = res.data.accessToken;
-            const refreshToken = res.data.refreshToken;
-
-            axios.defaults.headers.common[
-              "Authorization"
-            ] = `Bearer ${accessToken}`;
-            setRefreshToken(refreshToken);
-            originalRequest.headers["Authorization"] = `Bearer ${accessToken}`;
-            return axios(originalRequest);
-          }
-        });
+      const res = await axios.post("http://localhost:8080/auth/token/refresh", {
+        headers: {
+          "Refresh-Token": getRefreshToken(),
+        },
+      });
+      if (res.status === 201) {
+        const accessToken = res.data.accessToken;
+        const refreshToken = res.data.refreshToken;
+        // 새로 받은 토큰 저장 및 원래 요청 다시 보내기
+        axios.defaults.headers.common[
+          "Authorization"
+        ] = `Bearer ${accessToken}`;
+        setRefreshToken(refreshToken);
+        originalRequest.headers["Authorization"] = `Bearer ${accessToken}`;
+        return axios(originalRequest);
+      }
     }
+    // 또 다시 오류 발생 시 오류 반환
     return Promise.reject(error);
   }
 );

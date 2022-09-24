@@ -9,8 +9,6 @@ export const Join = () => {
   const [passwordCheck, setPasswordCheck] = useState("");
   const [nickname, setNickname] = useState("");
 
-  const navigate = useNavigate();
-
   const onJoin = async (e) => {
     e.preventDefault();
     if (password !== passwordCheck) {
@@ -26,7 +24,7 @@ export const Join = () => {
       .then((response) => {
         if (response.status === 201) {
           alert("회원가입이 완료되었습니다.");
-          navigate("/login");
+          useNavigate().push("/login");
         }
       })
       .catch((error) => {
