@@ -12,7 +12,8 @@ export const postToken = async (email, password) => {
       password,
     }),
   });
-  return response;
+  const data = await response.json();
+  return data;
 };
 
 // const silentRefresh = async () => {

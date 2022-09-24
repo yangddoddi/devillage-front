@@ -12,7 +12,7 @@ export const postToken = async (email, password) => {
       password,
     }),
   });
-  return response;
+  return await response;
 };
 
 // const silentRefresh = async () => {

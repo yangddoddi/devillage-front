@@ -11,24 +11,27 @@ export const postToken = async (email, password) => {
       email,
       password,
     }),
-  });
-  return response;
+  })
+    .then(onLoginSuccess)
+    .catch((e) => console.log(e));
+  const data = await response.json();
+  return data;
 };
 
-// const silentRefresh = async () => {
-//   const response = await fetch("http://localhost:8080/auth/token/refresh", {
-//     method: "POST",
-//     headers: {
-//       "Refresh-Token": getRefreshToken(),
-//     },
-//   })
-//     .then(onLoginSuccess)
-//     .catch((error) => {
-//       console.log(error);
-//     });
-//   const data = await response.json();
-//   return data;
-// };
+const silentRefresh = async () => {
+  const response = await fetch("http://localhost:8080/auth/token/refresh", {
+    method: "POST",
+    headers: {
+      "Refresh-Token": getRefreshToken(),
+    },
+  })
+    .then(onLoginSuccess)
+    .catch((error) => {
+      console.log(error);
+    });
+  const data = await response.json();
+  return data;
+};
 
 // const onLoginSuccess = (response) => {
 //   // const { accessToken } = response.data;

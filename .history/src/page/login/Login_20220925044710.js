@@ -28,19 +28,16 @@ export const Login = () => {
 
   const onClickHandler = async () => {
     const result = await postToken(email, password);
+    console.log(result.json().then((data) => console.log(data)));
     if (result.status === 201) {
-      result.json().then((data) => {
-        const accessToken = data.accessToken;
-        const refreshToken = data.refreshToken;
-        axios.defaults.headers.common[
-          "Authorization"
-        ] = `Bearer ${accessToken}`;
-        setRefreshToken(refreshToken);
-        dispatch({ type: "LOGIN" });
-        navi("/");
-      });
+      console.log(result);
+      setRefreshToken(result.data.refreshToken);
+      axios.headers.common[
+        "Authorization"
+      ] = `Bearer ${result.data.accessToken}`;
+      navi("/");
     } else {
-      alert("로그인에 실패하였습니다.");
+      alert("로그인 실패");
     }
   };
 

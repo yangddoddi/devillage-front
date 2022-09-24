@@ -9,7 +9,6 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { setRefreshToken } from "../../store/Storage";
 import { postToken } from "../../api/PostToken";
-import axios from "axios";
 
 export const Login = () => {
   const navi = useNavigate();
@@ -29,18 +28,10 @@ export const Login = () => {
   const onClickHandler = async () => {
     const result = await postToken(email, password);
     if (result.status === 201) {
-      result.json().then((data) => {
-        const accessToken = data.accessToken;
-        const refreshToken = data.refreshToken;
-        axios.defaults.headers.common[
-          "Authorization"
-        ] = `Bearer ${accessToken}`;
-        setRefreshToken(refreshToken);
-        dispatch({ type: "LOGIN" });
-        navi("/");
-      });
+      setRefreshToken(result.data.refreshToken);
+      navi("/");
     } else {
-      alert("로그인에 실패하였습니다.");
+      alert("로그인 실패");
     }
   };
 

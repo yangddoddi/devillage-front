@@ -11,8 +11,27 @@ export const postToken = async (email, password) => {
       email,
       password,
     }),
-  });
-  return response;
+  })
+    .then(
+      (response) => {
+        if (response.status === 201) {
+          const accessToken = response.data.accessToken;
+          const refreshToken = response.data.refreshToken;
+          axios.defaults.headers.common[
+            "Authorization"
+          ] = `Bearer ${accessToken}`;
+          setRefreshToken(refreshToken);
+        }
+      },
+      (error) => {
+        console.log(error);
+      }
+    )
+    .catch((error) => {
+      console.log(error);
+    });
+  const data = await response.json();
+  return data;
 };
 
 // const silentRefresh = async () => {
