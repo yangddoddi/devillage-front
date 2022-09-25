@@ -13,11 +13,12 @@ export const PostEditor = () => {
 
   const [category, setCategory] = useState("자유게시판");
   const [title, setTitle] = useState("");
-  const [tags, setTags] = useState("");
+  const [tag, setTag] = useState("");
   const [content, setContent] = useState("");
 
   const onChangeEditor = () => {
     setContent(editorRef.current.getInstance().getHTML());
+    console.log(content);
   };
 
   const onChangeHandler = (e) => {
@@ -29,26 +30,17 @@ export const PostEditor = () => {
   };
 
   const onChangeTag = (e) => {
-    setTags(e.target.value);
+    setTag(e.target.value);
   };
 
-  const onSubmitHandler = (e) => {
-    e.preventDefault();
-    const data = {
-      category: category,
-      title: title,
-      tags: tags,
-      content: content,
-    };
-    axios
-      .post("http://localhost:8080/posts", data)
-      .then((res) => {
-        console.log(res);
-        alert("게시글이 등록되었습니다.");
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+  const onSubmitHandler = async () => {
+    const result = await axios.post("http://localhost:8080/posts", {
+      title,
+      tag,
+      content,
+      category,
+    });
+    console.log(result);
   };
 
   return (

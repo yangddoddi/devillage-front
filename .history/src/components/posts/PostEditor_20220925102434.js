@@ -29,7 +29,7 @@ export const PostEditor = () => {
   };
 
   const onChangeTag = (e) => {
-    setTags(e.target.value);
+    setTag(e.target.value);
   };
 
   const onSubmitHandler = (e) => {

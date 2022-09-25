@@ -51,11 +51,6 @@ export const PostView = () => {
       .then((res) => {
         console.log(res);
         setLike(!like);
-        if (like) {
-          alert("좋아요 취소");
-        } else {
-          alert("좋아요");
-        }
       })
       .catch((err) => {
         console.log(err);
@@ -68,11 +63,6 @@ export const PostView = () => {
       .then((res) => {
         console.log(res);
         setBookMark(!bookMark);
-        if (bookMark) {
-          alert("북마크를 해제했습니다.");
-        } else {
-          alert("북마크를 했습니다.");
-        }
       })
       .catch((err) => {
         console.log(err);

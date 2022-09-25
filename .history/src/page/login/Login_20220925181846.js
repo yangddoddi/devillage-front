@@ -55,7 +55,7 @@ export const Login = () => {
 
   const onClickHandler = async () => {
     axios
-      .post("http://localhost:8080/auth/token", {
+      .post("http://localhost:8080/auth", {
         email: email,
         password: password,
       })
@@ -82,11 +82,7 @@ export const Login = () => {
       })
       .catch((err) => {
         console.log(err);
-        if (err.response.status === 404) {
-          alert("이메일 혹은 비밀번호가 일치하지 않습니다.");
-        } else {
-          alert("로그인에 실패하였습니다.");
-        }
+        alert("로그인에 실패하였습니다.");
       });
   };
 

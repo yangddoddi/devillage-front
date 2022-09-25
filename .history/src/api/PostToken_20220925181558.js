@@ -1,25 +1,25 @@
-// import axios from "axios";
-// import { setRefreshToken, getRefreshToken } from "../store/Storage";
+import axios from "axios";
+import { setRefreshToken, getRefreshToken } from "../store/Storage";
 
-// export const postToken = async (email, password) => {
-//   const result = await axios
-//     .post(
-//       "http://localhost:8080/auth/token",
-//       {
-//         email: email,
-//         password: password,
-//       },
-//       {
-//         headers: {
-//           "Refresh-Token": getRefreshToken(),
-//         },
-//       }
-//     )
-//     .catch((error) => {
-
-//     });
-//   return result;
-// };
+export const postToken = async (email, password) => {
+  const result = await axios
+    .post(
+      "http://localhost:8080/auth/token",
+      {
+        email: email,
+        password: password,
+      },
+      {
+        headers: {
+          "Refresh-Token": getRefreshToken(),
+        },
+      }
+    )
+    .catch((error) => {
+      console.log(error);
+    });
+  return result;
+};
 
 // const silentRefresh = async () => {
 //   const response = await fetch("http://localhost:8080/auth/token/refresh", {

@@ -2,22 +2,18 @@
 // import { setRefreshToken, getRefreshToken } from "../store/Storage";
 
 // export const postToken = async (email, password) => {
-//   const result = await axios
-//     .post(
-//       "http://localhost:8080/auth/token",
-//       {
-//         email: email,
-//         password: password,
+//   const result = await axios.post(
+//     "http://localhost:8080/auth/token",
+//     {
+//       email: email,
+//       password: password,
+//     },
+//     {
+//       headers: {
+//         "Refresh-Token": getRefreshToken(),
 //       },
-//       {
-//         headers: {
-//           "Refresh-Token": getRefreshToken(),
-//         },
-//       }
-//     )
-//     .catch((error) => {
-
-//     });
+//     }
+//   );
 //   return result;
 // };
 

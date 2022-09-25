@@ -51,11 +51,7 @@ export const PostView = () => {
       .then((res) => {
         console.log(res);
         setLike(!like);
-        if (like) {
-          alert("좋아요 취소");
-        } else {
-          alert("좋아요");
-        }
+        alert("좋아요를 눌렀습니다.");
       })
       .catch((err) => {
         console.log(err);

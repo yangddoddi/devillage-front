@@ -55,7 +55,7 @@ export const Login = () => {
 
   const onClickHandler = async () => {
     axios
-      .post("http://localhost:8080/auth/token", {
+      .post("http://localhost:8080/auth", {
         email: email,
         password: password,
       })

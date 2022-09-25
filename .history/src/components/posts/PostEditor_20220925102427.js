@@ -13,7 +13,7 @@ export const PostEditor = () => {
 
   const [category, setCategory] = useState("자유게시판");
   const [title, setTitle] = useState("");
-  const [tags, setTags] = useState("");
+  const [tagss, setTag] = useState("");
   const [content, setContent] = useState("");
 
   const onChangeEditor = () => {
@@ -29,7 +29,7 @@ export const PostEditor = () => {
   };
 
   const onChangeTag = (e) => {
-    setTags(e.target.value);
+    setTag(e.target.value);
   };
 
   const onSubmitHandler = (e) => {
