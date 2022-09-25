@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import { UserOutlined } from "@ant-design/icons";
-import { useSelector } from "react-redux";
 
 export const Profiles = () => {
   const [nickname, setNickname] = useState("");
@@ -12,20 +11,17 @@ export const Profiles = () => {
   const [email, setEmail] = useState("");
   const [lastModifiedAt, setLastModifiedAt] = useState("");
 
-  const userId = useSelector((state) => state.token.userId);
-
-  const { id } = useParams();
+  const { userId } = useParams();
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8080/users/profile/${id}`)
+      .get(`http://localhost:8080/users/${userId}`)
       .then((res) => {
-        console.log(res);
         setNickname(res.data.nickname);
         setProfileImage(res.data.profileImage);
-        setIntroduce(res.data.getStatusMessage);
+        setIntroduce(res.data.introduce);
         setEmail(res.data.email);
-        setLastModifiedAt(res.data.passwordModifiedAt);
+        setLastModifiedAt(res.data.lastModifiedAt);
       })
       .catch((err) => {
         console.log(err);

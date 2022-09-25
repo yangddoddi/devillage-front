@@ -19,11 +19,12 @@ export const MyPage = () => {
   useEffect(() => {
     if (!isLogin) {
       alert("로그인이 필요한 서비스입니다.");
-      navi("/login");
+      navi("/");
     }
   }, []);
 
   const dispatch = useDispatch();
+  const navi = useNavigate();
 
   const refreshToken = getRefreshToken();
 

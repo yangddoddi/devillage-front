@@ -23,6 +23,13 @@ export const MyPage = () => {
     }
   }, []);
 
+  useEffect(() => {
+    console.log(userId);
+    axios.get(`http://localhost:8080/users/profile/${userId}`).then((res) => {
+      console.log(res);
+    });
+  }, []);
+
   const dispatch = useDispatch();
 
   const refreshToken = getRefreshToken();

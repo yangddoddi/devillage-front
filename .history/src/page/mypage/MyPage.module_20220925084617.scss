@@ -24,7 +24,7 @@
         margin: none;
     }
 
-    li {
+    li, link {
         padding: 10px;
         cursor: pointer;
         width: 100%;
@@ -33,15 +33,6 @@
             background-color: #292965;
             color: white;
             transition: all 400ms;
-        }
-    }
-
-    .link {
-        text-decoration: none;
-        color: rgba(0, 0, 0, 0.7);
-
-        &:hover {
-            color: white;
         }
     }
 

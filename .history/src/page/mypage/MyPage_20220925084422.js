@@ -4,26 +4,12 @@ import { useSelector, useDispatch } from "react-redux";
 import { getRefreshToken, removeRefreshToken } from "../../store/Storage";
 import { deleteToken } from "../../api/DeleteToken";
 import { removeToken } from "../../store/Auth";
-import { useEffect } from "react";
-import axios from "axios";
-import jwtDecode from "jwt-decode";
-import { setToken } from "../../store/Auth";
-import { setRefreshToken } from "../../store/Storage";
-import { Dispatch } from "redux";
 
 export const MyPage = () => {
-  const { isLogin, userId } = useSelector((state) => state.token);
-
-  const navi = useNavigate();
-
-  useEffect(() => {
-    if (!isLogin) {
-      alert("로그인이 필요한 서비스입니다.");
-      navi("/login");
-    }
-  }, []);
+  const { accessToken } = useSelector((state) => state.token);
 
   const dispatch = useDispatch();
+  const navi = useNavigate();
 
   const refreshToken = getRefreshToken();
 
@@ -42,9 +28,7 @@ export const MyPage = () => {
     <div className={styles.myPage}>
       <ul className={styles.myPageList}>
         <li>
-          <Link to="/users/*" className={styles.link}>
-            마이페이지
-          </Link>
+          <Link to="/users/*">마이페이지</Link>
         </li>
         <li>북마크</li>
         <li>

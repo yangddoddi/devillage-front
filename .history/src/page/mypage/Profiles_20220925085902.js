@@ -3,34 +3,13 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import { UserOutlined } from "@ant-design/icons";
-import { useSelector } from "react-redux";
 
 export const Profiles = () => {
   const [nickname, setNickname] = useState("");
   const [profileImage, setProfileImage] = useState("");
   const [introduce, setIntroduce] = useState("");
   const [email, setEmail] = useState("");
-  const [lastModifiedAt, setLastModifiedAt] = useState("");
-
-  const userId = useSelector((state) => state.token.userId);
-
-  const { id } = useParams();
-
-  useEffect(() => {
-    axios
-      .get(`http://localhost:8080/users/profile/${id}`)
-      .then((res) => {
-        console.log(res);
-        setNickname(res.data.nickname);
-        setProfileImage(res.data.profileImage);
-        setIntroduce(res.data.getStatusMessage);
-        setEmail(res.data.email);
-        setLastModifiedAt(res.data.passwordModifiedAt);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
+  const [lastLogin, setLastLogin] = useState("");
 
   return (
     <div className={styles.container}>

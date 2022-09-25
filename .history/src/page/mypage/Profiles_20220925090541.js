@@ -23,9 +23,9 @@ export const Profiles = () => {
         console.log(res);
         setNickname(res.data.nickname);
         setProfileImage(res.data.profileImage);
-        setIntroduce(res.data.getStatusMessage);
+        setIntroduce(res.data.introduce);
         setEmail(res.data.email);
-        setLastModifiedAt(res.data.passwordModifiedAt);
+        setLastModifiedAt(res.data.lastModifiedAt);
       })
       .catch((err) => {
         console.log(err);

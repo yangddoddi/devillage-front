@@ -139,7 +139,11 @@ export const Header = (props) => {
           </div>
           <button className={styles.loginBtn}>
             {isLogin ? (
-              <Link style={{ color: "white" }} onClick={onClickMyPage}>
+              <Link
+                to="/users/*"
+                style={{ color: "white" }}
+                onClick={onClickMyPage}
+              >
                 MyPage
               </Link>
             ) : (
