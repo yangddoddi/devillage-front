@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, HashRouter } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Header } from "../components/header/Header";
 import { Main } from "../page/main/Main";
 import { Footer } from "../components/footer/Footer";
@@ -21,7 +21,7 @@ export const RouterConfig = () => {
   };
 
   return (
-    <HashRouter>
+    <BrowserRouter>
       <Header sendCategory={sendCategory} />
       <Routes>
         <Route path="/" element={<Main />} />
@@ -36,6 +36,6 @@ export const RouterConfig = () => {
         <Route path="/test" element={<Temp />} />
       </Routes>
       <Footer />
-    </HashRouter>
+    </BrowserRouter>
   );
 };

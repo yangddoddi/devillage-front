@@ -21,7 +21,7 @@ export const RouterConfig = () => {
   };
 
   return (
-    <HashRouter>
+    <HashRouter basename={process.env.PUBLIC_URL}>
       <Header sendCategory={sendCategory} />
       <Routes>
         <Route path="/" element={<Main />} />

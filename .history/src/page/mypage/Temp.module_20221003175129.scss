@@ -1,0 +1,10 @@
+
+.businessCard {
+  display: flex;
+  flex-direction: column;
+}
+
+.businessCard__text {
+    font-size: 1.5rem;
+    font-weight: bold;
+}

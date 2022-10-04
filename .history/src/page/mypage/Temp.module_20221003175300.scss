@@ -1,0 +1,14 @@
+
+.businessCard {
+    width: 400px;
+    height: 200px;
+  display: flex;
+  flex-direction: column;
+}
+
+.businessCard__text {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 20px;
+}
