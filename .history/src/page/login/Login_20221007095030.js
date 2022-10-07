@@ -98,7 +98,7 @@ export const Login = () => {
   };
 
   const onClickGoogleLogin = () => {
-    window.location.href = `http://${SERVER}/oauth2/authorization/google`;
+    window.location.href = "http://localhost:8080/oauth2/authorization/google";
   };
 
   return (

@@ -43,7 +43,7 @@ export const Profiles = () => {
 
   useEffect(() => {
     axios
-      .get(`http://${SERVER}/users/profile/${id}`)
+      .get(`http://localhost:8080/users/profile/${id}`)
       .then((res) => {
         console.log(res);
         setNickname(res.data.nickname);

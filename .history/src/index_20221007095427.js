@@ -13,7 +13,7 @@ import tokenReducer from "./store/Auth";
 import { SERVER } from "./util/Variables";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-axios.defaults.baseURL = SERVER; // 요청할 기본 URL
+axios.defaults.baseURL = "http://localhost:8080"; // 요청할 기본 URL
 axios.defaults.withCredentials = true; // 쿠키 전달
 
 axios.defaults.headers.post["Content-Type"] = "application/json"; // POST 요청 시 Content-Type

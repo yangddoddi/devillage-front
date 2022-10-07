@@ -8,7 +8,7 @@ export const Footer = () => {
         <GithubOutlined className={styles.icon} />
       </a>
       <p>
-        <a href="https://github.com/Dev-illage/Devillage">Contact Us</a>
+        <a href="https://github.com/Dev-illage">Contact Us</a>
       </p>
       <p>Admin</p>
       <p>

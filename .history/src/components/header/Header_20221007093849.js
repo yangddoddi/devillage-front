@@ -37,7 +37,7 @@ export const Header = (props) => {
     if (getRefreshToken()) {
       axios
         .post(
-          `http://${SERVER}/auth/token/refresh`,
+          "http://localhost:8080/auth/token/refresh",
           {},
           {
             headers: {

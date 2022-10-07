@@ -50,7 +50,7 @@ export const PostEditor = () => {
     };
 
     axios
-      .post(`http://${SERVER}/posts`, body, {
+      .post("http://localhost:8080/posts", body, {
         headers: {
           "Content-Type": "application/json",
         },

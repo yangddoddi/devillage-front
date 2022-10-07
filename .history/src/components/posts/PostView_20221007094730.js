@@ -66,7 +66,7 @@ export const PostView = () => {
 
   const onClickBookmarkHandler = () => {
     axios
-      .post(`http://${SERVER}/posts/${id}/bookmark`)
+      .post(`http://`${SERVER}`/posts/${id}/bookmark`)
       .then((res) => {
         console.log(res);
         setBookMark(!bookMark);

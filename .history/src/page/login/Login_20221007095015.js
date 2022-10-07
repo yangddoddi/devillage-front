@@ -94,11 +94,11 @@ export const Login = () => {
   };
 
   const onClickGithubLogin = () => {
-    window.location.href = `http://${SERVER}/oauth2/authorization/github`;
+    window.location.href = "http://localhost:8080/oauth2/authorization/github";
   };
 
   const onClickGoogleLogin = () => {
-    window.location.href = `http://${SERVER}/oauth2/authorization/google`;
+    window.location.href = "http://localhost:8080/oauth2/authorization/google";
   };
 
   return (

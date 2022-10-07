@@ -49,7 +49,7 @@ export const PostView = () => {
 
   const onClickLikeBtnHandler = () => {
     axios
-      .post(`http://${SERVER}/posts/${id}/like`)
+      .post(`http://localhost:8080/posts/${id}/like`)
       .then((res) => {
         setLike(!like);
         setLikeCount(res.data.like);
@@ -66,7 +66,7 @@ export const PostView = () => {
 
   const onClickBookmarkHandler = () => {
     axios
-      .post(`http://${SERVER}/posts/${id}/bookmark`)
+      .post(`http://localhost:8080/posts/${id}/bookmark`)
       .then((res) => {
         console.log(res);
         setBookMark(!bookMark);
