@@ -1,0 +1,203 @@
+
+
+
+.container {
+    margin-top: 100px;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+}
+
+.profile {
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    width: 1000px;
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    
+
+    .profileTop {
+        display: flex;
+        border-bottom: 1px solid lightgray;
+        align-items: flex-start;
+
+    }
+
+    .profileImg {
+        font-size: 70px;
+        border: 1px solid lightgray;
+        border-radius: 50%;
+        width: 130px;
+        height: 130px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 20px;
+        background-color: lightgray;
+        color: white;
+    }
+
+    .editBtn {
+        right: 100px;
+        border-color: lightgray;
+        color: black;
+        border-radius: 20px;
+        width: 120px;
+        height: 50px;
+        font-size: 18px;
+        font-weight: 500;
+        background-color: white;
+        margin-top: 20px;
+        color: rgba(0, 0, 0, 0.6);
+
+        &:hover {
+            background-color: #4cb1fa;
+            color: white;
+            transition: 300ms;
+            border: none;
+        }
+        cursor: pointer;
+
+    }
+
+    .profileInfo {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        font-size: 14px;
+        padding: 20px;
+        width: 350px;
+
+        .name {
+            font-size: 24px;
+            font-weight: 600;
+        }
+
+        .email {
+            color: rgba(0, 0, 0, 0.5);
+        }
+    }
+    
+    .editBtn {
+
+    }
+}
+
+.profileBottom {
+    display: flex;
+    padding-top: 50px;
+    justify-content: space-between;
+    width: 600px;
+    padding-bottom: 40px;
+
+    border-bottom: 1px solid lightgray;
+
+    p {
+        color : rgba(0, 0, 0, 0.7);
+    }
+}
+
+.introduce {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    font-size: 13px;
+    padding: 0px;
+    width: 300px;
+    height: 40px;
+    border-top: 1px solid lightgray;
+    padding-top: 10px;
+}
+
+.last {
+    width: 600px;
+    display : flex;
+    padding-top: 20px;
+}
+
+.deleteBtn {
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.5);
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+
+
+.nickname {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.inputBox {
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    resize: none;
+
+    &:last-child {
+        width: 300px;
+    }
+}
+
+.passwordModal {
+    display: flex;
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+    flex-direction: column;
+    justify-content: center;
+    padding: 30px;
+    width: 450px;
+    height: 500px;
+    background-color: white;
+    border-radius: 10px;
+    border: 1px solid lightgray;
+    z-index: 1000;
+
+    h1 {
+        text-align: center;
+        font-size: 24px;
+        font-weight: 600;
+        margin-bottom: 40px;
+    }
+
+    p {
+        font-size: 15px;
+        font-weight: 400;
+        margin-bottom: 10px;
+    }
+
+    .passwordInput {
+        width: 300px;
+        height: 30px;
+        border: 1px solid lightgray;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        padding: 0px;
+    }
+
+    .passwordBtn {
+        display: flex;
+    }
+
+    button {
+        width: 80px;
+        height: 30px;
+        border: none;
+        border-radius: 10px;
+        background-color: #4cb1fa;
+        color: white;
+        font-size: 15px;
+        font-weight: 600;
+        cursor: pointer;
+        margin-bottom: 20px;
+    }
+}
