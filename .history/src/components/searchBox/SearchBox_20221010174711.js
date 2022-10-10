@@ -11,11 +11,9 @@ export const SearchBox = () => {
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
-    axios
-      .get(`http://localhost:8080/posts/search?q=${search}&page=1&size=10`)
-      .then((res) => {
-        console.log(res);
-      });
+    axios.get(`http://localhost:8080/posts/search?q=${search}`).then((res) => {
+      console.log(res);
+    });
   };
 
   return (
