@@ -86,19 +86,19 @@ export const PostView = () => {
       });
   }, [id]);
 
-  // useEffect(() => {
-  //   axios
-  //     .get(`${SERVER}/posts/${id}/comments`)
-  //     .then((res) => {
-  //       console.log(res);
-  //       const data = res.data.data;
-  //       setReply(data);
-  //       setReplyCount(data.pageInfo.totalElements);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // }, [id]);
+  useEffect(() => {
+    axios
+      .get(`${SERVER}/posts/${id}/comments`)
+      .then((res) => {
+        console.log(res);
+        const data = res.data.data;
+        setReply(data);
+        setReplyCount(data.pageInfo.totalElements);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [id]);
 
   useEffect(() => {
     axios
@@ -159,115 +159,86 @@ export const PostView = () => {
     setReportContent(e.target.value);
   };
 
-  const submitReport = () => {
-    axios
-      .post(
-        `${SERVER}/posts/${id}/report`,
-        {
-          reportType: reportReason,
-          content: reportContent,
-        },
-        {
-          headers: {
-            Authorization: `Bearer ` + localStorage.getItem("accessToken"),
-          },
-        }
-      )
-      .then((res) => {
-        console.log(res);
-        alert("신고가 접수되었습니다.");
-        setReportModal(false);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
+  const onClickReportSubmit = () => {
+    axios;
 
-  const onClickXBtn = () => {
-    setReportModal(false);
-  };
-
-  return (
-    <>
-      <div className={styles.container}>
-        <div className={styles.postContainer}>
-          <h1 className={styles.category}>자유게시판</h1>
-          <div className={styles.topContainer}>
-            <div className={styles.titleContainer}>
-              <h2 className={styles.title}>{title}</h2>
-            </div>
-            <div className={styles.profile}>
-              <div className={styles.profileLeft}>
-                <UserOutlined className={styles.avatar} />
+    return (
+      <>
+        <div className={styles.container}>
+          <div className={styles.postContainer}>
+            <h1 className={styles.category}>자유게시판</h1>
+            <div className={styles.topContainer}>
+              <div className={styles.titleContainer}>
+                <h2 className={styles.title}>{title}</h2>
               </div>
-              <div className={styles.profileRight}>
-                <p className={styles.author}>{author}</p>
-                <span>{createdAt}</span> · <EyeOutlined />
-                <span>{clicks}</span> ·{" "}
-                <span>{isModified ? "수정됨" : "원본"}</span>
-              </div>
-              {!bookmarkLike ? (
-                <BookOutlined
-                  className={styles.bookMark}
-                  onClick={onClickBookmarkHandler}
-                />
-              ) : (
-                <BookFilled
-                  style={{ color: "#4cb1fa" }}
-                  className={styles.bookMark}
-                  onClick={onClickBookmarkHandler}
-                />
-              )}
-            </div>
-          </div>
-          <div className={styles.contentContainer}>
-            <Viewer initialValue={content} ref={viewRef} />
-            <div className={styles.contentBottomContainer}>
-              <div className={styles.tagContainer}>
-                {tags.length != 0 &&
-                  tags.map((tag) => (
-                    <span className={styles.tag} key={tag.tagId}>
-                      #{tag.name}
-                    </span>
-                  ))}
-              </div>
-              <div className={styles.btnContainer}>
-                {postLike ? (
-                  <LikeFilled
-                    style={{ color: "#4cb1fa" }}
-                    onClick={onClickLikeBtnHandler}
-                    className={styles.likeBtnActive}
+              <div className={styles.profile}>
+                <div className={styles.profileLeft}>
+                  <UserOutlined className={styles.avatar} />
+                </div>
+                <div className={styles.profileRight}>
+                  <p className={styles.author}>{author}</p>
+                  <span>{createdAt}</span> · <EyeOutlined />
+                  <span>{clicks}</span> ·{" "}
+                  <span>{isModified ? "수정됨" : "원본"}</span>
+                </div>
+                {!bookmarkLike ? (
+                  <BookOutlined
+                    className={styles.bookMark}
+                    onClick={onClickBookmarkHandler}
                   />
                 ) : (
-                  <LikeOutlined
-                    className={styles.likeBtn}
-                    onClick={onClickLikeBtnHandler}
+                  <BookFilled
+                    style={{ color: "#4cb1fa" }}
+                    className={styles.bookMark}
+                    onClick={onClickBookmarkHandler}
                   />
                 )}
-                <div className={styles.like} onClick={onClickLikeBtnHandler}>
-                  {likeCount}
-                </div>
               </div>
-              <div className={styles.reportBtn} onClick={onClickReportBtn}>
-                <AlertOutlined />
-                신고
+            </div>
+            <div className={styles.contentContainer}>
+              <Viewer initialValue={content} ref={viewRef} />
+              <div className={styles.contentBottomContainer}>
+                <div className={styles.tagContainer}>
+                  {tags.length != 0 &&
+                    tags.map((tag) => (
+                      <span className={styles.tag} key={tag.tagId}>
+                        #{tag.name}
+                      </span>
+                    ))}
+                </div>
+                <div className={styles.btnContainer}>
+                  {postLike ? (
+                    <LikeFilled
+                      style={{ color: "#4cb1fa" }}
+                      onClick={onClickLikeBtnHandler}
+                      className={styles.likeBtnActive}
+                    />
+                  ) : (
+                    <LikeOutlined
+                      className={styles.likeBtn}
+                      onClick={onClickLikeBtnHandler}
+                    />
+                  )}
+                  <div className={styles.like} onClick={onClickLikeBtnHandler}>
+                    {likeCount}
+                  </div>
+                </div>
+                <div className={styles.reportBtn} onClick={onClickReportBtn}>
+                  <AlertOutlined />
+                  신고
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <div className={styles.replyContainer}>
-          <h2>댓글 {replyCount}개</h2>
-          <Reply postId={id} reply={reply} setReply={setReply}>
-            <ReplyOfComment />
-          </Reply>
-        </div>
-        <ReplyEditor postId={id} />
-      </div>
-      {reportModal && (
-        <div className={styles.reportModal}>
-          <div className={styles.xBtn} onClick={onClickXBtn}>
-            X
+          <div className={styles.replyContainer}>
+            <h2>댓글 {replyCount}개</h2>
+            <Reply postId={id} reply={reply} setReply={setReply}>
+              <ReplyOfComment />
+            </Reply>
           </div>
+          <ReplyEditor postId={id} />
+        </div>
+        <div className={styles.reportModal}>
           <h1>신고 사유</h1>
           <select className={styles.select} onChange={onChangeReportSelect}>
             <option value="1">광고</option>
@@ -281,9 +252,9 @@ export const PostView = () => {
             placeholder="신고 사유를 입력해주세요. (200자 이내)"
             maxLength={200}
           />
-          <button onClick={submitReport}>신고</button>
+          <button>신고</button>
         </div>
-      )}
-    </>
-  );
+      </>
+    );
+  };
 };

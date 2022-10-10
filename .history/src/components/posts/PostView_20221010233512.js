@@ -86,19 +86,19 @@ export const PostView = () => {
       });
   }, [id]);
 
-  // useEffect(() => {
-  //   axios
-  //     .get(`${SERVER}/posts/${id}/comments`)
-  //     .then((res) => {
-  //       console.log(res);
-  //       const data = res.data.data;
-  //       setReply(data);
-  //       setReplyCount(data.pageInfo.totalElements);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // }, [id]);
+  useEffect(() => {
+    axios
+      .get(`${SERVER}/posts/${id}/comments`)
+      .then((res) => {
+        console.log(res);
+        const data = res.data.data;
+        setReply(data);
+        setReplyCount(data.pageInfo.totalElements);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [id]);
 
   useEffect(() => {
     axios

@@ -218,7 +218,6 @@ position: relative;
         &:hover {
             background-color: red;
             color: white;
-            transition: 300ms;
         }
     }
 }
@@ -231,17 +230,4 @@ position: relative;
     border: 1px solid lightgray;
     border-radius: 10px;
     
-}
-
-.xBtn {
-    position: absolute;
-    right: 20px;
-    top: 10px;
-    font-size: 20px;
-    color: rgba(0, 0, 0, 0.6);
-    cursor: pointer;
-
-    &:hover {
-        color: red;
-    }
 }

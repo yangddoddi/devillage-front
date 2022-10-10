@@ -42,8 +42,6 @@ export const PostView = () => {
   const [postLike, setPostLike] = useState(false);
   const [bookmarkLike, setBookmarkLike] = useState(false);
   const [reportModal, setReportModal] = useState(false);
-  const [reportReason, setReportReason] = useState(0);
-  const [reportContent, setReportContent] = useState("");
 
   const { id } = useParams();
 
@@ -86,19 +84,19 @@ export const PostView = () => {
       });
   }, [id]);
 
-  // useEffect(() => {
-  //   axios
-  //     .get(`${SERVER}/posts/${id}/comments`)
-  //     .then((res) => {
-  //       console.log(res);
-  //       const data = res.data.data;
-  //       setReply(data);
-  //       setReplyCount(data.pageInfo.totalElements);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // }, [id]);
+  useEffect(() => {
+    axios
+      .get(`${SERVER}/posts/${id}/comments`)
+      .then((res) => {
+        console.log(res);
+        const data = res.data.data;
+        setReply(data);
+        setReplyCount(data.pageInfo.totalElements);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [id]);
 
   useEffect(() => {
     axios
@@ -150,42 +148,6 @@ export const PostView = () => {
   };
 
   const viewRef = useRef();
-
-  const onChangeReportSelect = (e) => {
-    setReportReason(e.target.value);
-  };
-
-  const onChangeReportContent = (e) => {
-    setReportContent(e.target.value);
-  };
-
-  const submitReport = () => {
-    axios
-      .post(
-        `${SERVER}/posts/${id}/report`,
-        {
-          reportType: reportReason,
-          content: reportContent,
-        },
-        {
-          headers: {
-            Authorization: `Bearer ` + localStorage.getItem("accessToken"),
-          },
-        }
-      )
-      .then((res) => {
-        console.log(res);
-        alert("신고가 접수되었습니다.");
-        setReportModal(false);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-
-  const onClickXBtn = () => {
-    setReportModal(false);
-  };
 
   return (
     <>
@@ -252,6 +214,13 @@ export const PostView = () => {
                 <AlertOutlined />
                 신고
               </div>
+              <div>
+                <h1>신고 사유</h1>
+                <textarea
+                  className={styles.reportReason}
+                  placeholder="신고 사유를 입력해주세요."
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -263,27 +232,6 @@ export const PostView = () => {
         </div>
         <ReplyEditor postId={id} />
       </div>
-      {reportModal && (
-        <div className={styles.reportModal}>
-          <div className={styles.xBtn} onClick={onClickXBtn}>
-            X
-          </div>
-          <h1>신고 사유</h1>
-          <select className={styles.select} onChange={onChangeReportSelect}>
-            <option value="1">광고</option>
-            <option value="2">욕설</option>
-            <option value="3">도배</option>
-            <option value="4">기타</option>
-          </select>
-          <textarea
-            className={styles.reportReason}
-            onChange={onChangeReportContent}
-            placeholder="신고 사유를 입력해주세요. (200자 이내)"
-            maxLength={200}
-          />
-          <button onClick={submitReport}>신고</button>
-        </div>
-      )}
     </>
   );
 };

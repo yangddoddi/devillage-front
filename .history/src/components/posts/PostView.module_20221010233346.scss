@@ -235,13 +235,7 @@ position: relative;
 
 .xBtn {
     position: absolute;
-    right: 20px;
-    top: 10px;
+    right: 30px;
+    top: 20px;
     font-size: 20px;
-    color: rgba(0, 0, 0, 0.6);
-    cursor: pointer;
-
-    &:hover {
-        color: red;
-    }
 }
