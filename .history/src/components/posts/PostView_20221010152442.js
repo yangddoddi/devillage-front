@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import "@toast-ui/editor/dist/toastui-editor-viewer.css";
 import { Viewer } from "@toast-ui/react-editor";
 import axios from "axios";
@@ -24,6 +24,8 @@ import { LikeFilled } from "@ant-design/icons";
 import { BookFilled } from "@ant-design/icons";
 
 export const PostView = () => {
+  const viewerRef = useRef();
+
   const [post, setPost] = useState({});
   const [like, setLike] = useState(false);
   const [bookMark, setBookMark] = useState(false);
@@ -80,8 +82,6 @@ export const PostView = () => {
         // Comment 필요
         console.log("data.content " + data.content);
         console.log("content " + content);
-        // viewRef.current.props.initialValue = data.content;
-        viewRef.current.getInstance().setMarkdown(data.content);
       })
       .catch((err) => {
         console.log(err);
@@ -134,8 +134,6 @@ export const PostView = () => {
       });
   };
 
-  const viewRef = useRef();
-
   return (
     <>
       <div className={styles.container}>
@@ -170,7 +168,7 @@ export const PostView = () => {
             </div>
           </div>
           <div className={styles.contentContainer}>
-            <Viewer initialValue={content} ref={viewRef} />
+            <Viewer initialValue={content} ref={editorRef} />
             <div className={styles.contentBottomContainer}>
               <div className={styles.tagContainer}>
                 {tags.length != 0 &&

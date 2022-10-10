@@ -81,7 +81,8 @@ export const PostView = () => {
         console.log("data.content " + data.content);
         console.log("content " + content);
         // viewRef.current.props.initialValue = data.content;
-        viewRef.current.getInstance().setMarkdown(data.content);
+        console.log(viewRef.current.props.initialValue);
+        console.log(viewRef);
       })
       .catch((err) => {
         console.log(err);
@@ -170,7 +171,7 @@ export const PostView = () => {
             </div>
           </div>
           <div className={styles.contentContainer}>
-            <Viewer initialValue={content} ref={viewRef} />
+            <Viewer initialValue={content} el={viewRef} />
             <div className={styles.contentBottomContainer}>
               <div className={styles.tagContainer}>
                 {tags.length != 0 &&

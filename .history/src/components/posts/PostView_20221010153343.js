@@ -80,8 +80,6 @@ export const PostView = () => {
         // Comment 필요
         console.log("data.content " + data.content);
         console.log("content " + content);
-        // viewRef.current.props.initialValue = data.content;
-        viewRef.current.getInstance().setMarkdown(data.content);
       })
       .catch((err) => {
         console.log(err);
@@ -134,7 +132,7 @@ export const PostView = () => {
       });
   };
 
-  const viewRef = useRef();
+  const ref = useRef();
 
   return (
     <>

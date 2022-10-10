@@ -81,7 +81,8 @@ export const PostView = () => {
         console.log("data.content " + data.content);
         console.log("content " + content);
         // viewRef.current.props.initialValue = data.content;
-        viewRef.current.getInstance().setMarkdown(data.content);
+        console.log(viewRef.current.props.initialValue);
+        console.log(viewRef.innerHTML);
       })
       .catch((err) => {
         console.log(err);
