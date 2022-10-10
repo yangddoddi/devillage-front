@@ -65,7 +65,7 @@ export const Login = () => {
   const onClickHandler = async () => {
     const instance = axios.create();
     instance.defaults.headers.common["Authorization"] = "";
-    instance
+    axios
       .post(`${SERVER}/auth/token`, {
         email: email,
         password: password,

@@ -120,19 +120,6 @@ export const Profiles = () => {
     setModal(false);
     axios
       .patch(`${SERVER}/users/password`, {
-        password: originalPassword,
-        updatePassword: password,
-      })
-      .then((res) => {
-        setModal(false);
-      })
-      .catch((err) => {
-        if (err.response.status === 409) {
-          alert("비밀번호가 일치하지 않습니다.");
-        } else {
-          console.log(err);
-        }
-      });
   };
 
   return (
@@ -236,12 +223,7 @@ export const Profiles = () => {
             </div>
           )}
           <div className={styles.passwordBtn}>
-            <button
-              className={styles.passwordBtn2}
-              onClick={onClickPasswordEditBtn}
-            >
-              확인
-            </button>
+            <button className={styles.passwordBtn2} onClick={onClickPasswordEditBtn}>확인</button>
             <button className={styles.passwordBtn1} onClick={onClickModalBtn}>
               취소
             </button>

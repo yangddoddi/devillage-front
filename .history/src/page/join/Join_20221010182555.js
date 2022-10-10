@@ -19,7 +19,7 @@ export const Join = () => {
       return;
     }
     const instance = axios.create();
-    instance.defaults.headers.common["Authorization"] = "";
+    instance.defaults.headers.common["Authorization"] = ";";
 
     const response = await instance
       .post(`${SERVER}/auth/new`, {

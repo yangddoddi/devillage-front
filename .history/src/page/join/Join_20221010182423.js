@@ -18,10 +18,7 @@ export const Join = () => {
       alert("비밀번호가 일치하지 않습니다.");
       return;
     }
-    const instance = axios.create();
-    instance.defaults.headers.common["Authorization"] = "";
-
-    const response = await instance
+    const response = await axios
       .post(`${SERVER}/auth/new`, {
         email,
         password,
