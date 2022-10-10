@@ -1,6 +1,5 @@
 import styles from "./PostItem.module.scss";
 import { EyeOutlined } from "@ant-design/icons";
-import { Link, useNavigate } from "react-router-dom";
 
 export const PostItem = ({
   key,
@@ -28,34 +27,20 @@ export const PostItem = ({
     lastModifiedAt,
     tags
   );
-  const navigate = useNavigate();
-  const postClickHandler = () => {
-    navigate(`/posts/${id}`);
-  };
-
   return (
-    <div className={styles.boardItem} onClick={postClickHandler}>
+    <div className={styles.boardItem}>
       <div className={styles.boardItem_left}>
         <div className={styles.boardItem_left_top}>
-          <h1>{title.length > 20 ? title.substring(0, 20) + "..." : title}</h1>
-          <p className={styles.content}>
-            {content.length > 100 ? content.substring(0, 100) + "..." : content}
-          </p>
+          <h1>{title}</h1>
+          <p>{content}</p>
         </div>
         <div className={styles.boardItem_left_bottom}>
           {tags.map((item) => (
-            <span className={styles.tag} key={item.tagId}>
-              #
-              {item.name.length > 10
-                ? item.name.slice(0, 10) + "... "
-                : item.name + " "}
-            </span>
+            <span>#{item.name} </span>
           ))}
           <br />
           <span>
-            {createdAt != null && createdAt.split("T")[0]}{" "}
-            {createdAt != null && createdAt.split("T")[1].split(".")[0]}
-            &nbsp;&nbsp;|&nbsp;&nbsp;
+            {createdAt.split("T")[0]} {createdAt.split("T")[1].split(".")[0]}
             <EyeOutlined />
             {clicks}
           </span>

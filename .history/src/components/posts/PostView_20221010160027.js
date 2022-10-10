@@ -217,7 +217,7 @@ export const PostView = () => {
             <ReplyOfComment />
           </Reply>
         </div>
-        <ReplyEditor postId={id} />
+        <ReplyEditor />
       </div>
     </>
   );

@@ -41,5 +41,9 @@
 }
 
 .tag {
-    color : #4cb1fa;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-wrap: break-word;
+    width: 100%;
 }

@@ -16,6 +16,18 @@ export const Main = (props) => {
   const [total, setTotal] = useState(0);
   const [categoryName, setCategoryName] = useState("all");
 
+  const [item, setItem] = useState({
+    id: "",
+    title: "",
+    content: "",
+    category: "",
+    createdAt: "",
+    userId: "",
+    file: "",
+    clicks: "",
+    lastModifiedAt: "",
+  });
+
   const { category } = useParams();
 
   const getPosts = async () => {
@@ -29,9 +41,9 @@ export const Main = (props) => {
 
     console.log(result.data);
     setPosts(post);
+    console.log(posts);
     setTotal(result.data.totalElements);
 
-    console.log(posts);
     setLoading(false);
   };
 
@@ -57,24 +69,22 @@ export const Main = (props) => {
       <div className={styles.imgBox} />
       <div className={styles.bottomContainer}>
         <PostsList ListName={categoryName}>
-          {posts.map((item) => {
-            const tem = item.item;
-            console.log(tem.tags);
-          })}
           {!loading &&
-            posts.map((item) => (
+            posts.length != 0 &&
+            posts.map((item) => 
+            console.log(item);(
+              
               <PostItem
-                key={item.item.id}
-                id={item.item.id}
-                title={item.item.title}
-                content={item.item.content}
-                category={item.item.category}
-                createdAt={item.item.createdAt}
-                userId={item.item.userId}
-                file={item.item.file}
-                clicks={item.item.clicks}
-                lastModifiedAt={item.item.lastModifiedAt}
-                tags={item.item.tags}
+                key={item.id}
+                id={item.id}
+                title={item.title}
+                content={item.content}
+                category={item.category}
+                createdAt={item.createdAt}
+                userId={item.userId}
+                file={item.file}
+                clicks={item.clicks}
+                lastModifiedAt={item.lastModifiedAt}
               />
             ))}
         </PostsList>

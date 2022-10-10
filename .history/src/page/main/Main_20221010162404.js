@@ -16,6 +16,18 @@ export const Main = (props) => {
   const [total, setTotal] = useState(0);
   const [categoryName, setCategoryName] = useState("all");
 
+  const [item, setItem] = useState({
+    id: "",
+    title: "",
+    content: "",
+    category: "",
+    createdAt: "",
+    userId: "",
+    file: "",
+    clicks: "",
+    lastModifiedAt: "",
+  });
+
   const { category } = useParams();
 
   const getPosts = async () => {
@@ -23,16 +35,13 @@ export const Main = (props) => {
     const result = await axios.get(
       `${SERVER}/posts?category=${props.category}&page=${page}&size=10`
     );
-    const post = result.data.data.map((item) => {
-      return { item };
-    });
-
-    console.log(result.data);
-    setPosts(post);
+    setItem(result.data);
     setTotal(result.data.totalElements);
 
-    console.log(posts);
     setLoading(false);
+    console.log(result.data);
+
+    console.log(item);
   };
 
   const changeCategoryName = () => {
@@ -57,24 +66,19 @@ export const Main = (props) => {
       <div className={styles.imgBox} />
       <div className={styles.bottomContainer}>
         <PostsList ListName={categoryName}>
-          {posts.map((item) => {
-            const tem = item.item;
-            console.log(tem.tags);
-          })}
           {!loading &&
-            posts.map((item) => (
+            item.map((item) => (
               <PostItem
-                key={item.item.id}
-                id={item.item.id}
-                title={item.item.title}
-                content={item.item.content}
-                category={item.item.category}
-                createdAt={item.item.createdAt}
-                userId={item.item.userId}
-                file={item.item.file}
-                clicks={item.item.clicks}
-                lastModifiedAt={item.item.lastModifiedAt}
-                tags={item.item.tags}
+                key={item.data.id}
+                id={item.data.id}
+                title={item.data.title}
+                content={item.data.content}
+                category={item.data.category}
+                createdAt={item.data.createdAt}
+                userId={item.data.userId}
+                file={item.data.file}
+                clicks={item.data.clicks}
+                lastModifiedAt={item.data.lastModifiedAt}
               />
             ))}
         </PostsList>

@@ -16,6 +16,19 @@ export const Main = (props) => {
   const [total, setTotal] = useState(0);
   const [categoryName, setCategoryName] = useState("all");
 
+  const [item, setItem] = useState({
+    id: "",
+    title: "",
+    content: "",
+    category: "",
+    createdAt: "",
+    userId: "",
+    file: "",
+    tag: [],
+    clicks: "",
+    lastModifiedAt: "",
+  });
+
   const { category } = useParams();
 
   const getPosts = async () => {
@@ -58,8 +71,8 @@ export const Main = (props) => {
       <div className={styles.bottomContainer}>
         <PostsList ListName={categoryName}>
           {posts.map((item) => {
-            const tem = item.item;
-            console.log(tem.tags);
+            console.log(item);
+            console.log(item.item.id);
           })}
           {!loading &&
             posts.map((item) => (
@@ -74,7 +87,6 @@ export const Main = (props) => {
                 file={item.item.file}
                 clicks={item.item.clicks}
                 lastModifiedAt={item.item.lastModifiedAt}
-                tags={item.item.tags}
               />
             ))}
         </PostsList>

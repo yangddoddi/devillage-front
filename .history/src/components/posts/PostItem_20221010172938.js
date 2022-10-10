@@ -1,6 +1,6 @@
 import styles from "./PostItem.module.scss";
 import { EyeOutlined } from "@ant-design/icons";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export const PostItem = ({
   key,
@@ -28,13 +28,8 @@ export const PostItem = ({
     lastModifiedAt,
     tags
   );
-  const navigate = useNavigate();
-  const postClickHandler = () => {
-    navigate(`/posts/${id}`);
-  };
-
   return (
-    <div className={styles.boardItem} onClick={postClickHandler}>
+    <div className={styles.boardItem}>
       <div className={styles.boardItem_left}>
         <div className={styles.boardItem_left_top}>
           <h1>{title.length > 20 ? title.substring(0, 20) + "..." : title}</h1>

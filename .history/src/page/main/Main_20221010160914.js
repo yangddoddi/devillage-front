@@ -23,16 +23,10 @@ export const Main = (props) => {
     const result = await axios.get(
       `${SERVER}/posts?category=${props.category}&page=${page}&size=10`
     );
-    const post = result.data.data.map((item) => {
-      return { item };
-    });
-
-    console.log(result.data);
-    setPosts(post);
+    setPosts(result.data.content);
     setTotal(result.data.totalElements);
-
-    console.log(posts);
     setLoading(false);
+    console.log(result.data);
   };
 
   const changeCategoryName = () => {
@@ -57,26 +51,20 @@ export const Main = (props) => {
       <div className={styles.imgBox} />
       <div className={styles.bottomContainer}>
         <PostsList ListName={categoryName}>
-          {posts.map((item) => {
-            const tem = item.item;
-            console.log(tem.tags);
-          })}
-          {!loading &&
+          {/* {!loading &&
             posts.map((item) => (
               <PostItem
-                key={item.item.id}
-                id={item.item.id}
-                title={item.item.title}
-                content={item.item.content}
-                category={item.item.category}
-                createdAt={item.item.createdAt}
-                userId={item.item.userId}
-                file={item.item.file}
-                clicks={item.item.clicks}
-                lastModifiedAt={item.item.lastModifiedAt}
-                tags={item.item.tags}
+                key={item.id}
+                id={item.id}
+                title={item.title}
+                tag={item.tag}
+                content={item.content}
+                photo={item.photo}
+                createdAt={item.createdAt}
+                view={item.view}
+                category={item.category}
               />
-            ))}
+            ))} */}
         </PostsList>
         <Pagination
           defaultCurrent={1}

@@ -15,6 +15,8 @@ export const ReplyEditor = ({ postId }) => {
     setContent(editorRef.current.getInstance().getHTML());
   };
 
+  const { postId } = useParams();
+
   const editorRef = useRef();
   const [content, setContent] = useState("");
 

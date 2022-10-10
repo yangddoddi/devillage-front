@@ -10,10 +10,12 @@ import axios from "axios";
 import { SERVER } from "../../util/Variables";
 import { useParams } from "react-router-dom";
 
-export const ReplyEditor = ({ postId }) => {
+export const ReplyEditor = () => {
   const onChangeEditor = () => {
     setContent(editorRef.current.getInstance().getHTML());
   };
+
+  const { postId } = useParams();
 
   const editorRef = useRef();
   const [content, setContent] = useState("");

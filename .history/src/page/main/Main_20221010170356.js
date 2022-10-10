@@ -74,7 +74,6 @@ export const Main = (props) => {
                 file={item.item.file}
                 clicks={item.item.clicks}
                 lastModifiedAt={item.item.lastModifiedAt}
-                tags={item.item.tags}
               />
             ))}
         </PostsList>

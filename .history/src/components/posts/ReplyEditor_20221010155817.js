@@ -6,37 +6,37 @@ import "tui-color-picker/dist/tui-color-picker.css";
 import "@toast-ui/editor-plugin-color-syntax/dist/toastui-editor-plugin-color-syntax.css";
 import { useRef } from "react";
 import { useState } from "react";
-import axios from "axios";
-import { SERVER } from "../../util/Variables";
-import { useParams } from "react-router-dom";
+import axios from 'axios';
+import { SERVER } from '../../util/Variables';
+import { useParams } from 'react-router-dom';
 
-export const ReplyEditor = ({ postId }) => {
+export const ReplyEditor = () => {
   const onChangeEditor = () => {
     setContent(editorRef.current.getInstance().getHTML());
   };
 
+  const postId = useParams();
+
   const editorRef = useRef();
   const [content, setContent] = useState("");
+  
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
-    axios
-      .post(
-        `${SERVER}/posts/${postId}/comments`,
-        { content: content },
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      )
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    axios.post(`${SERVER}/posts/${postId}/comments`, {content: content}, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+    .then(res => {
+      console.log(res);
+    })
+    .catch(err => {
+      console.log(err);
+    })
   };
+
+  axios.post(`${SERVER}/posts/${postId}/comments`, body, {
 
   return (
     <div className={styles.commentWriteContainer}>
@@ -53,9 +53,7 @@ export const ReplyEditor = ({ postId }) => {
           ref={editorRef}
           className={styles.editor}
         />
-        <button className={styles.commentBtn} onClick={onSubmitHandler}>
-          댓글 작성
-        </button>
+        <button className={styles.commentBtn}>댓글 작성</button>
       </div>
     </div>
   );

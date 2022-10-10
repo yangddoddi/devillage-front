@@ -11,7 +11,13 @@ import { ReplyOfComment } from "./ReplyOfComment";
 import { ReplyEditor } from "./ReplyEditor";
 import { ReplyOfCommentEditor } from "./ReplyOfCommentEditor";
 
-export const Reply = ({ children, postId, reply, setReply }) => {
+export const Reply = ({
+  children,
+  reply,
+  setReply,
+  replyCount,
+  setReplyCount,
+}) => {
   const [replyOfComment, setReplyOfComment] = useState(false);
 
   const onChangeEditor = () => {

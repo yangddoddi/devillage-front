@@ -78,6 +78,8 @@ export const PostView = () => {
         setPostLike(data.postLike);
         setBookmarkLike(data.bookmarkLike);
         // Comment 필요
+        console.log("data.content " + data.content);
+        console.log("content " + content);
         // viewRef.current.props.initialValue = data.content;
         viewRef.current.getInstance().setMarkdown(data.content);
       })
@@ -93,7 +95,7 @@ export const PostView = () => {
         console.log(res);
         const data = res.data.data;
         setReply(data);
-        setReplyCount(data.pageInfo.totalElements);
+        setReplyCount(data.length);
       })
       .catch((err) => {
         console.log(err);
@@ -116,6 +118,7 @@ export const PostView = () => {
       .post(`${SERVER}/posts/${id}/like`)
       .then((res) => {
         setPostLike(!postLike);
+        console.log(res);
         setLikeCount(res.data.like);
         if (postLike) {
           alert("좋아요 취소");
@@ -212,12 +215,12 @@ export const PostView = () => {
           </div>
         </div>
         <div className={styles.replyContainer}>
-          <h2>댓글 {replyCount}개</h2>
-          <Reply postId={id} reply={reply} setReply={setReply}>
+          <h2>댓글 2개</h2>
+          <Reply>
             <ReplyOfComment />
           </Reply>
         </div>
-        <ReplyEditor postId={id} />
+        <ReplyEditor />
       </div>
     </>
   );

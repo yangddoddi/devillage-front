@@ -59,7 +59,7 @@ export const Main = (props) => {
         <PostsList ListName={categoryName}>
           {posts.map((item) => {
             const tem = item.item;
-            console.log(tem.tags);
+            console.log(tem.tag);
           })}
           {!loading &&
             posts.map((item) => (
@@ -74,7 +74,6 @@ export const Main = (props) => {
                 file={item.item.file}
                 clicks={item.item.clicks}
                 lastModifiedAt={item.item.lastModifiedAt}
-                tags={item.item.tags}
               />
             ))}
         </PostsList>

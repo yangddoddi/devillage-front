@@ -212,12 +212,12 @@ export const PostView = () => {
           </div>
         </div>
         <div className={styles.replyContainer}>
-          <h2>댓글 {replyCount}개</h2>
-          <Reply postId={id} reply={reply} setReply={setReply}>
+          <h2>댓글 2개</h2>
+          <Reply>
             <ReplyOfComment />
           </Reply>
         </div>
-        <ReplyEditor postId={id} />
+        <ReplyEditor />
       </div>
     </>
   );
