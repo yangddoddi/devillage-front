@@ -33,8 +33,6 @@ axios.interceptors.request.use((config) => {
   return config;
 });
 
-let isTokenRefreshing = false;
-
 axios.interceptors.response.use(
   (response) => {
     return response;
@@ -43,36 +41,36 @@ axios.interceptors.response.use(
     const refreshToken = getRefreshToken();
     const originalRequest = error.config;
 
-    if (error.response.status === 401 && !isTokenRefreshing) {
-      const instance = axios.create();
-      delete instance.defaults.headers.common["Authorization"];
-      instance.defaults.headers.post["Content-Type"] = "application/json";
-      instance.defaults.headers.post["RefreshToken"] = `Bearer ${refreshToken}`;
-      isTokenRefreshing = true;
-      return instance
-        .post(`${SERVER}/auth/token/refresh`, {
-          headers: {
-            RefreshToken: `Bearer ` + refreshToken,
-          },
-        })
-        .then((res) => {
-          if (res.status === 200) {
-            const accessToken = res.data.accessToken;
-            const refreshToken = res.data.refreshToken;
-            parseJwt(accessToken);
-            localStorage.setItem("accessToken", accessToken);
-            axios.defaults.headers.common[
-              "Authorization"
-            ] = `Bearer ${accessToken}`;
-            setRefreshToken(refreshToken);
+    if (error.response.status === 401 && !originalRequest._retry) {
+      originalRequest._retry = true;
+      return (
+        // axios
+        //   .post(`${SERVER}/auth/token/refresh`, {
+        //     headers: {
+        //       RefreshToken: `Bearer ` + refreshToken,
+        //     },
+        //   })
+          // .then((res) => {
+          //   if (res.status === 200) {
+          //     const accessToken = res.data.accessToken;
+          //     const refreshToken = res.data.refreshToken;
+          //     parseJwt(accessToken);
+          //     localStorage.setItem("accessToken", accessToken);
+          //     axios.defaults.headers.common[
+          //       "Authorization"
+          //     ] = `Bearer ${accessToken}`;
+          //     setRefreshToken(refreshToken);
 
-            // 새로 받은 토큰 저장 및 원래 요청 다시 보내기
-            originalRequest.headers["Authorization"] = `Bearer ${accessToken}`;
-            return axios(originalRequest);
-          }
-        });
+          //     // 새로 받은 토큰 저장 및 원래 요청 다시 보내기
+          //     originalRequest.headers["Authorization"] = `Bearer ${accessToken}`;
+          //     return axios(originalRequest);
+          //   }
+          // })
+          .catch((err) => {
+            originalRequest._retry = true;
+          })
+      );
     }
-    isTokenRefreshing = false;
     return Promise.reject(error);
   }
 );

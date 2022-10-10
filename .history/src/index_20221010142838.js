@@ -33,7 +33,7 @@ axios.interceptors.request.use((config) => {
   return config;
 });
 
-let isTokenRefreshing = false;
+const isTokenRefreshing = false;
 
 axios.interceptors.response.use(
   (response) => {
@@ -44,12 +44,8 @@ axios.interceptors.response.use(
     const originalRequest = error.config;
 
     if (error.response.status === 401 && !isTokenRefreshing) {
-      const instance = axios.create();
-      delete instance.defaults.headers.common["Authorization"];
-      instance.defaults.headers.post["Content-Type"] = "application/json";
-      instance.defaults.headers.post["RefreshToken"] = `Bearer ${refreshToken}`;
       isTokenRefreshing = true;
-      return instance
+      return axios
         .post(`${SERVER}/auth/token/refresh`, {
           headers: {
             RefreshToken: `Bearer ` + refreshToken,
@@ -72,7 +68,6 @@ axios.interceptors.response.use(
           }
         });
     }
-    isTokenRefreshing = false;
     return Promise.reject(error);
   }
 );

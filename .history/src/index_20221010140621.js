@@ -27,55 +27,48 @@ axios.defaults.headers.post["Content-Type"] = "application/json"; // POST 요청
 // axios.defaults.headers.post["Authorization"] = `Bearer ${accessToken}`; // POST 요청 시 Authorization
 
 axios.interceptors.request.use((config) => {
-  localStorage.getItem("accessToken").then((res) => {
+  const token = localStorage.getItem("accessToken").then((res) => {
     config.headers.Authorization = `Bearer ${res}`;
   });
   return config;
 });
 
-let isTokenRefreshing = false;
+// axios.interceptors.response.use(
+//   (response) => {
+//     return response;
+//   },
+//   async (error) => {
+//     const refreshToken = getRefreshToken();
+//     const originalRequest = error.config;
 
-axios.interceptors.response.use(
-  (response) => {
-    return response;
-  },
-  async (error) => {
-    const refreshToken = getRefreshToken();
-    const originalRequest = error.config;
+//     if (error.response.status === 401 && !originalRequest._retry) {
+//       originalRequest._retry = true;
+//       return axios
+//         .post(`${SERVER}/auth/token/refresh`, {
+//           headers: {
+//             RefreshToken: `Bearer ` + refreshToken,
+//           },
+//         })
+//         .then((res) => {
+//           if (res.status === 200) {
+//             const accessToken = res.data.accessToken;
+//             const refreshToken = res.data.refreshToken;
+//             parseJwt(accessToken);
+//             localStorage.setItem("accessToken", accessToken);
+//             axios.defaults.headers.common[
+//               "Authorization"
+//             ] = `Bearer ${accessToken}`;
+//             setRefreshToken(refreshToken);
 
-    if (error.response.status === 401 && !isTokenRefreshing) {
-      const instance = axios.create();
-      delete instance.defaults.headers.common["Authorization"];
-      instance.defaults.headers.post["Content-Type"] = "application/json";
-      instance.defaults.headers.post["RefreshToken"] = `Bearer ${refreshToken}`;
-      isTokenRefreshing = true;
-      return instance
-        .post(`${SERVER}/auth/token/refresh`, {
-          headers: {
-            RefreshToken: `Bearer ` + refreshToken,
-          },
-        })
-        .then((res) => {
-          if (res.status === 200) {
-            const accessToken = res.data.accessToken;
-            const refreshToken = res.data.refreshToken;
-            parseJwt(accessToken);
-            localStorage.setItem("accessToken", accessToken);
-            axios.defaults.headers.common[
-              "Authorization"
-            ] = `Bearer ${accessToken}`;
-            setRefreshToken(refreshToken);
-
-            // 새로 받은 토큰 저장 및 원래 요청 다시 보내기
-            originalRequest.headers["Authorization"] = `Bearer ${accessToken}`;
-            return axios(originalRequest);
-          }
-        });
-    }
-    isTokenRefreshing = false;
-    return Promise.reject(error);
-  }
-);
+//             // 새로 받은 토큰 저장 및 원래 요청 다시 보내기
+//             originalRequest.headers["Authorization"] = `Bearer ${accessToken}`;
+//             return axios(originalRequest);
+//           }
+//         });
+//     }
+//     return Promise.reject(error);
+//   }
+// );
 const store = configureStore({
   reducer: persistedReducer,
   middleware: [thunk],

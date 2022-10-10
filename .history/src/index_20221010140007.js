@@ -26,30 +26,21 @@ axios.defaults.withCredentials = true; // 쿠키 전달
 axios.defaults.headers.post["Content-Type"] = "application/json"; // POST 요청 시 Content-Type
 // axios.defaults.headers.post["Authorization"] = `Bearer ${accessToken}`; // POST 요청 시 Authorization
 
-axios.interceptors.request.use((config) => {
-  localStorage.getItem("accessToken").then((res) => {
-    config.headers.Authorization = `Bearer ${res}`;
-  });
-  return config;
-});
-
-let isTokenRefreshing = false;
-
-axios.interceptors.response.use(
+axios.interceptors.request.use(
+  (config) => {
+    const token = localStorage.getItem("accessToken");
+    console.log(token);
+  },
   (response) => {
     return response;
   },
   async (error) => {
     const refreshToken = getRefreshToken();
     const originalRequest = error.config;
-
-    if (error.response.status === 401 && !isTokenRefreshing) {
-      const instance = axios.create();
-      delete instance.defaults.headers.common["Authorization"];
-      instance.defaults.headers.post["Content-Type"] = "application/json";
-      instance.defaults.headers.post["RefreshToken"] = `Bearer ${refreshToken}`;
-      isTokenRefreshing = true;
-      return instance
+    console.log(refreshToken);
+    if (error.response.status === 401 && !originalRequest._retry) {
+      originalRequest._retry = true;
+      return axios
         .post(`${SERVER}/auth/token/refresh`, {
           headers: {
             RefreshToken: `Bearer ` + refreshToken,
@@ -72,7 +63,6 @@ axios.interceptors.response.use(
           }
         });
     }
-    isTokenRefreshing = false;
     return Promise.reject(error);
   }
 );

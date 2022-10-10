@@ -33,7 +33,7 @@ axios.interceptors.request.use((config) => {
   return config;
 });
 
-let isTokenRefreshing = false;
+const isTokenRefreshing = false;
 
 axios.interceptors.response.use(
   (response) => {
@@ -43,13 +43,9 @@ axios.interceptors.response.use(
     const refreshToken = getRefreshToken();
     const originalRequest = error.config;
 
-    if (error.response.status === 401 && !isTokenRefreshing) {
-      const instance = axios.create();
-      delete instance.defaults.headers.common["Authorization"];
-      instance.defaults.headers.post["Content-Type"] = "application/json";
-      instance.defaults.headers.post["RefreshToken"] = `Bearer ${refreshToken}`;
-      isTokenRefreshing = true;
-      return instance
+    if (error.response.status === 401 && !originalRequest._retry) {
+      originalRequest._retry = true;
+      return axios
         .post(`${SERVER}/auth/token/refresh`, {
           headers: {
             RefreshToken: `Bearer ` + refreshToken,
@@ -70,9 +66,11 @@ axios.interceptors.response.use(
             originalRequest.headers["Authorization"] = `Bearer ${accessToken}`;
             return axios(originalRequest);
           }
+        })
+        .catch((err) => {
+          originalRequest._retry = true;
         });
     }
-    isTokenRefreshing = false;
     return Promise.reject(error);
   }
 );

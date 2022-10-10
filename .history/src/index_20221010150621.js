@@ -46,8 +46,6 @@ axios.interceptors.response.use(
     if (error.response.status === 401 && !isTokenRefreshing) {
       const instance = axios.create();
       delete instance.defaults.headers.common["Authorization"];
-      instance.defaults.headers.post["Content-Type"] = "application/json";
-      instance.defaults.headers.post["RefreshToken"] = `Bearer ${refreshToken}`;
       isTokenRefreshing = true;
       return instance
         .post(`${SERVER}/auth/token/refresh`, {

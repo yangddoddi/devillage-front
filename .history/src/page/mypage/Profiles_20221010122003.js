@@ -58,7 +58,6 @@ export const Profiles = () => {
     axios
       .get(`${SERVER}/users/profile`)
       .then((res) => {
-        console.log(res);
         setNickname(res.data.nickname);
         setProfileImage(res.data.profileImage);
         setIntroduce(res.data.getStatusMessage);
