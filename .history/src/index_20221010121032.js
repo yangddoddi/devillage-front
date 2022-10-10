@@ -37,6 +37,7 @@ axios.interceptors.response.use(
     }
     return config;
   },
+
   (response) => {
     return response;
   },
