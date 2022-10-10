@@ -100,8 +100,7 @@ export const Profiles = () => {
         introduce: editIntroduce,
       })
       .then((res) => {
-        setEdit(false);
-        console.log(res);
+        setEdit(!edit);
         setNickname(editNickname);
         setProfileImage(editProfileImage);
         setIntroduce(editIntroduce);

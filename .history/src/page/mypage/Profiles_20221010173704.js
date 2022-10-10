@@ -75,21 +75,21 @@ export const Profiles = () => {
   }, []);
 
   function onClickEditBtn() {
-    setEdit(true);
-    // if (!edit) {
-    //   axios
-    //     .patch(`${SERVER}/users/profile`, {
-    //       nickname: nickname,
-    //       profileImage: profileImage,
-    //       introduce: introduce,
-    //     })
-    //     .then((res) => {
-    //       console.log(res);
-    //     })
-    //     .catch((err) => {
-    //       console.log(err);
-    //     });
-    // }
+    setEdit(!edit);
+    if (!edit) {
+      axios
+        .patch(`${SERVER}/users/profile`, {
+          nickname: nickname,
+          profileImage: profileImage,
+          introduce: introduce,
+        })
+        .then((res) => {
+          console.log(res);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
   }
 
   const onClickEditCompleteBtn = () => {
@@ -100,8 +100,7 @@ export const Profiles = () => {
         introduce: editIntroduce,
       })
       .then((res) => {
-        setEdit(false);
-        console.log(res);
+        setEdit(!edit);
         setNickname(editNickname);
         setProfileImage(editProfileImage);
         setIntroduce(editIntroduce);
