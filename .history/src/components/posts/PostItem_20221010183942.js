@@ -41,9 +41,8 @@ export const PostItem = ({
         <div className={styles.boardItem_left_top}>
           <h1>{title.length > 20 ? title.substring(0, 20) + "..." : title}</h1>
           <p className={styles.content}>
-            {content.replace(reg, "").length > 100
-              ? content.replace(reg, "").substring(0, 100) + "..."
-              : content.replace(reg, "")}
+            {content.
+            {content.length > 100 ? content.substring(0, 100) + "..." : content}
           </p>
         </div>
         <div className={styles.boardItem_left_bottom}>
