@@ -24,7 +24,6 @@ export const Profiles = () => {
   const [editIntroduce, setEditIntroduce] = useState("");
   const [editNickname, setEditNickname] = useState("");
   const [editProfileImage, setEditProfileImage] = useState("");
-  const { passwordChecker, setPasswordChecker } = useState(false);
 
   const userId = useSelector((state) => state.token.userId);
   const { confirm } = Modal;
@@ -184,38 +183,27 @@ export const Profiles = () => {
       {modal && (
         <div className={styles.passwordModal}>
           <h1>패스워드 변경</h1>
-          <p>기존 패스워드</p>
-          <input
-            type="password"
-            className={styles.passwordInput}
-            placeholder="기존 패스워드를 입력해주세요."
-            onChange={(e) => setOriginalPassword(e.target.value)}
-          />
-          <p>패스워드</p>
+          <p>기존 패스워드를 입력해주세요</p>
           <input
             type="password"
             className={styles.passwordInput}
             value={password}
-            placeholder="패스워드를 입력해주세요."
+            onChange={(e) => setOriginalPassword(e.target.value)}
+          />
+          <p>패스워드를 입력해주세요</p>
+          <input
+            type="password"
+            className={styles.passwordInput}
+            value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <p>패스워드 확인</p>
+          <p>패스워드를 다시 입력해주세요</p>
           <input
             type="password"
             className={styles.passwordInput}
             value={passwordCheck}
-            placeholder="패스워드를 다시 입력해주세요."
             onChange={(e) => setPasswordCheck(e.target.value)}
           />
-          {password !== passwordCheck ? (
-            <div className={styles.passwordChecker} style={{ color: "red" }}>
-              패스워드가 일치하지 않습니다.
-            </div>
-          ) : (
-            <div className={styles.passwordChecker} style={{ color: "blue" }}>
-              패스워드가 일치합니다.
-            </div>
-          )}
           <div className={styles.passwordBtn}>
             <button className={styles.passwordBtn2}>확인</button>
             <button className={styles.passwordBtn1} onClick={onClickModalBtn}>

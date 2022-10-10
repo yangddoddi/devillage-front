@@ -207,12 +207,12 @@ export const Profiles = () => {
             placeholder="패스워드를 다시 입력해주세요."
             onChange={(e) => setPasswordCheck(e.target.value)}
           />
-          {password !== passwordCheck ? (
-            <div className={styles.passwordChecker} style={{ color: "red" }}>
+          {passwordCheck && password !== passwordCheck ? (
+            <div className={styles.passwordChecker}>
               패스워드가 일치하지 않습니다.
             </div>
           ) : (
-            <div className={styles.passwordChecker} style={{ color: "blue" }}>
+            <div className={styles.passwordChecker} color={blue}>
               패스워드가 일치합니다.
             </div>
           )}

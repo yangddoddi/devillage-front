@@ -196,7 +196,6 @@ export const Profiles = () => {
             type="password"
             className={styles.passwordInput}
             value={password}
-            placeholder="패스워드를 입력해주세요."
             onChange={(e) => setPassword(e.target.value)}
           />
           <p>패스워드 확인</p>
@@ -204,18 +203,8 @@ export const Profiles = () => {
             type="password"
             className={styles.passwordInput}
             value={passwordCheck}
-            placeholder="패스워드를 다시 입력해주세요."
             onChange={(e) => setPasswordCheck(e.target.value)}
           />
-          {password !== passwordCheck ? (
-            <div className={styles.passwordChecker} style={{ color: "red" }}>
-              패스워드가 일치하지 않습니다.
-            </div>
-          ) : (
-            <div className={styles.passwordChecker} style={{ color: "blue" }}>
-              패스워드가 일치합니다.
-            </div>
-          )}
           <div className={styles.passwordBtn}>
             <button className={styles.passwordBtn2}>확인</button>
             <button className={styles.passwordBtn1} onClick={onClickModalBtn}>
