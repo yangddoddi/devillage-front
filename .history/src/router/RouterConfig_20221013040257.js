@@ -33,10 +33,7 @@ export const RouterConfig = () => {
     <HashRouter>
       <Header sendCategory={sendCategory} />
       <Routes>
-        <Route
-          path="/"
-          element={<Navigate to="http://localhost:3000/#/board/all" />}
-        />
+        <Route path="/" element={<Navigate to="/main" />} />
         <Route path="/board/:category" element={<Main category={category} />} />
         <Route path="/login" element={<Login />} />
         <Route path="/join" element={<Join />} />

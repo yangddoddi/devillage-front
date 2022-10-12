@@ -1,10 +1,4 @@
-import {
-  BrowserRouter,
-  Routes,
-  Route,
-  HashRouter,
-  Navigate,
-} from "react-router-dom";
+import { BrowserRouter, Routes, Route, HashRouter } from "react-router-dom";
 import { Header } from "../components/header/Header";
 import { Main } from "../page/main/Main";
 import { Footer } from "../components/footer/Footer";
@@ -33,10 +27,7 @@ export const RouterConfig = () => {
     <HashRouter>
       <Header sendCategory={sendCategory} />
       <Routes>
-        <Route
-          path="/"
-          element={<Navigate to="http://localhost:3000/#/board/all" />}
-        />
+        <Route path="/" element={<Main />} />
         <Route path="/board/:category" element={<Main category={category} />} />
         <Route path="/login" element={<Login />} />
         <Route path="/join" element={<Join />} />
