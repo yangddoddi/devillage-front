@@ -22,8 +22,13 @@ export const SearchList = (props) => {
       .get(
         `${SERVER}/posts/search?q=${encodeURIComponent(
           param
-        )}&page=${page}&size=10`
+        )}$page=${page}&size=10`
       )
+      {}
+          headers: {
+            ContentType: "application/json;charset=UTF-8",
+                  }
+        }
       .then((res) => {
         console.log(res);
         const posts = res.data.data;

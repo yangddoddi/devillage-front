@@ -22,7 +22,7 @@ export const SearchList = (props) => {
       .get(
         `${SERVER}/posts/search?q=${encodeURIComponent(
           param
-        )}&page=${page}&size=10`
+        )}$page=${page}&size=10`
       )
       .then((res) => {
         console.log(res);
