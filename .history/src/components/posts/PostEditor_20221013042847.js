@@ -59,7 +59,7 @@ export const PostEditor = () => {
     };
     if (param.id) {
       axios
-        .patch(`${SERVER}/posts/${param.id}`, body, {
+        .put(`${SERVER}/posts/${param.id}`, body, {
           headers: {
             "Content-Type": "application/json",
           },

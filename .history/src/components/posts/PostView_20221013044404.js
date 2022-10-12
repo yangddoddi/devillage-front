@@ -208,6 +208,10 @@ export const PostView = () => {
       });
   };
 
+  const onClickXBtn = () => {
+    setReportModal(false);
+  };
+
   const onChangePage = (e) => {
     setPage(e);
     axios

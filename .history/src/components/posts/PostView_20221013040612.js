@@ -208,6 +208,10 @@ export const PostView = () => {
       });
   };
 
+  const onClickXBtn = () => {
+    setReportModal(false);
+  };
+
   const onChangePage = (e) => {
     setPage(e);
     axios
@@ -246,11 +250,7 @@ export const PostView = () => {
   };
 
   const clickEditBtn = () => {
-    navigate(`/edit/${id}`);
-  };
-
-  const onClickXBtn = () => {
-    setDeleteModal(false);
+    navigate(`/post/${id}`);
   };
 
   return (
@@ -272,11 +272,7 @@ export const PostView = () => {
                 <span>{clicks}</span> ·{" "}
                 <span>{isModified ? "수정됨" : "원본"}</span>
                 {userId == selector ? (
-                  <Link
-                    to={`/edit/${id}`}
-                    style={{ color: "black" }}
-                    onClick={clickEditBtn}
-                  >
+                  <Link to={`/post/${id}/edit`} style={{ color: "black" }}>
                     &nbsp;· 수정
                   </Link>
                 ) : null}

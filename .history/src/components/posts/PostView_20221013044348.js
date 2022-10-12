@@ -208,6 +208,10 @@ export const PostView = () => {
       });
   };
 
+  const onClickXBtn = () => {
+    setReportModal(false);
+  };
+
   const onChangePage = (e) => {
     setPage(e);
     axios
@@ -247,10 +251,6 @@ export const PostView = () => {
 
   const clickEditBtn = () => {
     navigate(`/edit/${id}`);
-  };
-
-  const onClickXBtn = () => {
-    setDeleteModal(false);
   };
 
   return (

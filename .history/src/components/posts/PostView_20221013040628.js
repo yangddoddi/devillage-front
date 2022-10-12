@@ -208,6 +208,10 @@ export const PostView = () => {
       });
   };
 
+  const onClickXBtn = () => {
+    setReportModal(false);
+  };
+
   const onChangePage = (e) => {
     setPage(e);
     axios
@@ -249,10 +253,6 @@ export const PostView = () => {
     navigate(`/edit/${id}`);
   };
 
-  const onClickXBtn = () => {
-    setDeleteModal(false);
-  };
-
   return (
     <>
       <div className={styles.container}>
@@ -273,7 +273,7 @@ export const PostView = () => {
                 <span>{isModified ? "수정됨" : "원본"}</span>
                 {userId == selector ? (
                   <Link
-                    to={`/edit/${id}`}
+                    to={`/post/${id}/edit`}
                     style={{ color: "black" }}
                     onClick={clickEditBtn}
                   >

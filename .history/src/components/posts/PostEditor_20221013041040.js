@@ -18,10 +18,6 @@ export const PostEditor = () => {
   const [tags, setTags] = useState("");
   const [content, setContent] = useState("");
 
-  const [editTitle, setEditTitle] = useState("");
-  const [editTags, setEditTags] = useState("");
-  const [editCategory, setEditCategory] = useState("");
-
   const navigate = useNavigate();
 
   const param = useParams();
@@ -57,49 +53,30 @@ export const PostEditor = () => {
       tags: tag,
       content: content,
     };
-    if (param.id) {
-      axios
-        .patch(`${SERVER}/posts/${param.id}`, body, {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        })
-        .then((res) => {
-          navigate(`/posts/${param.id}`);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    } else {
-      axios
-        .post(`${SERVER}/posts`, body, {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        })
-        .then((res) => {
-          console.log(category);
-          console.log(res);
-          alert("게시글이 등록되었습니다.");
-          navigate(`/posts/${res.data.postId}`);
-        })
-        .catch((err) => {
-          console.log(err);
-          alert("게시글 등록에 실패했습니다.");
-        });
-    }
+
+    axios
+      .post(`${SERVER}/posts`, body, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+      .then((res) => {
+        console.log(category);
+        console.log(res);
+        alert("게시글이 등록되었습니다.");
+        navigate(`/posts/${res.data.postId}`);
+      })
+      .catch((err) => {
+        console.log(err);
+        alert("게시글 등록에 실패했습니다.");
+      });
   };
 
   useEffect(() => {
     if (param.id) {
       axios
         .get(`${SERVER}/posts/${param.id}`)
-        .then((res) => {
-          console.log(res);
-          setEditTitle(res.data.data.title);
-          setEditCategory(res.data.data.category);
-          editorRef.current.getInstance().setHTML(res.data.data.content);
-        })
+        .then((res) => {})
         .catch((err) => {
           console.log(err);
         });
@@ -119,7 +96,6 @@ export const PostEditor = () => {
             className={styles.category}
             onChange={onChangeHandler}
             name="category"
-            defaultValue={editCategory}
             type="select"
           >
             {selectList.map((item) => (
@@ -128,21 +104,19 @@ export const PostEditor = () => {
               </option>
             ))}
           </select>
-          <h2 ref={tagRef}> 태그 </h2>
+          <h2> 태그 </h2>
           <input
             className={styles.title}
             onChange={onChangeTag}
             name="tag"
-            defaultValue={editTags}
             type="text"
           />
-          <h2 ref={titleRef}> 제목 </h2>
+          <h2> 제목 </h2>
           <input
             className={styles.title}
             onChange={onChangeTitle}
             name="title"
             type="text"
-            defaultValue={editTitle}
           />
           <h2> 내용 </h2>
           <Editor

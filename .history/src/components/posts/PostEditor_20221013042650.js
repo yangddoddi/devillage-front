@@ -57,37 +57,23 @@ export const PostEditor = () => {
       tags: tag,
       content: content,
     };
-    if (param.id) {
-      axios
-        .patch(`${SERVER}/posts/${param.id}`, body, {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        })
-        .then((res) => {
-          navigate(`/posts/${param.id}`);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    } else {
-      axios
-        .post(`${SERVER}/posts`, body, {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        })
-        .then((res) => {
-          console.log(category);
-          console.log(res);
-          alert("게시글이 등록되었습니다.");
-          navigate(`/posts/${res.data.postId}`);
-        })
-        .catch((err) => {
-          console.log(err);
-          alert("게시글 등록에 실패했습니다.");
-        });
-    }
+
+    axios
+      .post(`${SERVER}/posts`, body, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+      .then((res) => {
+        console.log(category);
+        console.log(res);
+        alert("게시글이 등록되었습니다.");
+        navigate(`/posts/${res.data.postId}`);
+      })
+      .catch((err) => {
+        console.log(err);
+        alert("게시글 등록에 실패했습니다.");
+      });
   };
 
   useEffect(() => {
@@ -95,8 +81,11 @@ export const PostEditor = () => {
       axios
         .get(`${SERVER}/posts/${param.id}`)
         .then((res) => {
-          console.log(res);
+          const tags = res.data.data.tag.map((tag) => {
+            setEditTags((prev) => prev + tag + ", ");
+          });
           setEditTitle(res.data.data.title);
+          setEditTags(tags);
           setEditCategory(res.data.data.category);
           editorRef.current.getInstance().setHTML(res.data.data.content);
         })
