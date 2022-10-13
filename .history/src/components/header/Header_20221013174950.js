@@ -112,41 +112,31 @@ export const Header = (props) => {
     <>
       <nav className={styles.nav}>
         <div className={styles.logo} as={Link} to="/main" onClick={onClickLogo}>
-          <Link to="/board/all" style={{ color: "black", padding: "30px" }}>
+          <Link to="/board/all" className={styles.link}>
             Dev_<span>illage</span>
           </Link>
         </div>
         <ul className={styles.list}>
           <li className={styles.listItem} onClick={onClickNotice}>
-            <Link
-              to="/board/notice"
-              style={{ color: "black", padding: "30px" }}
-            >
+            <Link to="/board/notice" className={styles.link}>
               공지사항
             </Link>
           </li>
           <li className={styles.listItem} onClick={onClickRanking}>
-            <Link
-              to="/board/ranking"
-              style={{ color: "black", padding: "30px" }}
-            >
-              회원랭킹
-            </Link>
+            회원랭킹
           </li>
           <li className={styles.listItem} onClick={onClickFree}>
-            <Link to="/board/free" style={{ color: "black", padding: "30px" }}>
+            <Link to="/board/free" className={styles.link}>
               자유게시판
             </Link>
           </li>
           <li className={styles.listItem} onClick={onClickQna}>
-            <Link to="/board/qna" style={{ color: "black", padding: "30px" }}>
+            <Link to="/board/qna" className={styles.link}>
               Q&A
             </Link>
           </li>
           <li className={styles.listItem} onClick={onClickStudy}>
-            <Link to="/board/chat" style={{ color: "black", padding: "30px" }}>
-              채팅
-            </Link>
+            강의
           </li>
         </ul>
         <div className={styles.searchAndLogin}>

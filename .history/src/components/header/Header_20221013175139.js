@@ -144,9 +144,7 @@ export const Header = (props) => {
             </Link>
           </li>
           <li className={styles.listItem} onClick={onClickStudy}>
-            <Link to="/board/chat" style={{ color: "black", padding: "30px" }}>
-              채팅
-            </Link>
+            채팅
           </li>
         </ul>
         <div className={styles.searchAndLogin}>

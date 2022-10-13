@@ -38,6 +38,8 @@
     font-weight: 600;
 
     li {
+        margin: 10px;
+        padding: 20px;
         cursor:pointer;
 
         &:hover {
@@ -87,8 +89,3 @@
         margin-bottom: 1px;
     }
 }
-
-// .link {
-//     color: "black";
-//     padding: "30px"
-// }

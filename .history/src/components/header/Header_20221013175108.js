@@ -126,12 +126,7 @@ export const Header = (props) => {
             </Link>
           </li>
           <li className={styles.listItem} onClick={onClickRanking}>
-            <Link
-              to="/board/ranking"
-              style={{ color: "black", padding: "30px" }}
-            >
-              회원랭킹
-            </Link>
+            회원랭킹
           </li>
           <li className={styles.listItem} onClick={onClickFree}>
             <Link to="/board/free" style={{ color: "black", padding: "30px" }}>
@@ -144,9 +139,7 @@ export const Header = (props) => {
             </Link>
           </li>
           <li className={styles.listItem} onClick={onClickStudy}>
-            <Link to="/board/chat" style={{ color: "black", padding: "30px" }}>
-              채팅
-            </Link>
+            채팅
           </li>
         </ul>
         <div className={styles.searchAndLogin}>
