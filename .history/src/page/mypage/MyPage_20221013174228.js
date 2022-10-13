@@ -56,13 +56,15 @@ export const MyPage = ({ myPage, setMyPage }) => {
     <div className={styles.myPage} onClick={onClickHandler}>
       <ul className={styles.myPageList}>
         <li onClick={() => navi(`/users/${userId}`)} className={styles.link}>
-          마이페이지
+          <Link to={`/users/${userId}`}>마이페이지</Link>
         </li>
-        <li onClick={() => navi(`/bookmark`)} className={styles.link}>
-          북마크
+        <li>
+          <Link to={`/bookmark`} className={styles.link}>
+            북마크
+          </Link>
         </li>
-        <li onClick={() => navi(`/posts`)} className={styles.link}>
-          글쓰기
+        <li>
+          <Link to="/posts">글쓰기</Link>
         </li>
         <li className={styles.logout} onClick={logoutHandler}>
           로그아웃

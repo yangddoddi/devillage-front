@@ -91,10 +91,6 @@ export const PostEditor = () => {
   };
 
   useEffect(() => {
-    editorRef.current.getInstance().removeHook("addImageBlobHook");
-  }, []);
-
-  useEffect(() => {
     if (param.id) {
       axios
         .get(`${SERVER}/posts/${param.id}`)
@@ -165,7 +161,7 @@ export const PostEditor = () => {
                 const formData = new FormData();
                 formData.append("image", blob);
                 axios
-                  .post(`${SERVER}/posts/image`, formData, {
+                  .post(`${SERVER}/posts/${postId}/images`, formData, {
                     headers: {
                       "Content-Type": "multipart/form-data",
                     },
@@ -176,7 +172,6 @@ export const PostEditor = () => {
                   .catch((err) => {
                     console.log(err);
                   });
-                return false;
               },
             }}
           />

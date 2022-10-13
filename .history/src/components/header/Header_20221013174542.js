@@ -129,12 +129,12 @@ export const Header = (props) => {
             회원랭킹
           </li>
           <li className={styles.listItem} onClick={onClickFree}>
-            <Link to="/board/free" style={{ color: "black", padding: "30px" }}>
+            <Link to="/board/free" style={{ color: "black" }}>
               자유게시판
             </Link>
           </li>
           <li className={styles.listItem} onClick={onClickQna}>
-            <Link to="/board/qna" style={{ color: "black", padding: "30px" }}>
+            <Link to="/board/qna" style={{ color: "black" }}>
               Q&A
             </Link>
           </li>
@@ -152,7 +152,7 @@ export const Header = (props) => {
                 MyPage
               </Link>
             ) : (
-              <Link to="/login" style={{ color: "white", padding: "30px" }}>
+              <Link to="/login" style={{ color: "white" }}>
                 Login
               </Link>
             )}

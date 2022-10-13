@@ -251,7 +251,6 @@ export const PostView = () => {
 
   const onClickXBtn = () => {
     setDeleteModal(false);
-    setReportModal(false);
   };
 
   return (
@@ -289,7 +288,12 @@ export const PostView = () => {
                     {" "}
                     · 삭제
                   </span>
-                ) : null}
+                ) : (
+                  <span onClick={submitReport} style={{ cursor: "pointer" }}>
+                    {" "}
+                    · 신고
+                  </span>
+                )}{" "}
               </div>
               {!bookmarkLike ? (
                 <BookOutlined

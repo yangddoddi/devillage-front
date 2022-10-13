@@ -91,10 +91,6 @@ export const PostEditor = () => {
   };
 
   useEffect(() => {
-    editorRef.current.getInstance().removeHook("addImageBlobHook");
-  }, []);
-
-  useEffect(() => {
     if (param.id) {
       axios
         .get(`${SERVER}/posts/${param.id}`)

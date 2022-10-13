@@ -251,7 +251,6 @@ export const PostView = () => {
 
   const onClickXBtn = () => {
     setDeleteModal(false);
-    setReportModal(false);
   };
 
   return (

@@ -61,8 +61,8 @@ export const MyPage = ({ myPage, setMyPage }) => {
         <li onClick={() => navi(`/bookmark`)} className={styles.link}>
           북마크
         </li>
-        <li onClick={() => navi(`/posts`)} className={styles.link}>
-          글쓰기
+        <li>
+          <Link to="/posts">글쓰기</Link>
         </li>
         <li className={styles.logout} onClick={logoutHandler}>
           로그아웃
