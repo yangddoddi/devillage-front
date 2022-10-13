@@ -57,18 +57,11 @@ export const RouterConfig = () => {
         />
         {/* <Route path="/users/:id" element={<Profiles />} /> */}
         <Route path="/login/oauth" element={<OauthLogin />} />
+        <Route path="/temp" element={<Temp />} />
         <Route path="/bookmark" element={<Bookmark />} />
         <Route path="/search/:id" element={<SearchList />} />
         <Route path="/tag" element={<TagList />} />
         <Route path="/edit/:id" element={<PostEditor />} />
-        <Route
-          path="/chat"
-          element={
-            <PrivateRoute path="/chat">
-              <Temp />
-            </PrivateRoute>
-          }
-        />
       </Routes>
       <Footer />
     </HashRouter>

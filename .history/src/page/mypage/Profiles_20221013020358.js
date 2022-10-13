@@ -141,7 +141,7 @@ export const Profiles = () => {
         <div className={styles.profileTop}>
           <div className={styles.profileImg}>
             <UserOutlined />
-            <label for="input-file" className={styles.profileImgBtn}>
+            <label htmlFor="input-file" className={styles.profileImgBtn}>
               <p>프로필 사진 변경</p>
             </label>
             <input

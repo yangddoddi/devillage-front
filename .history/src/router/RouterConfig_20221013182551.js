@@ -20,7 +20,6 @@ import { Temp } from "../page/mypage/Temp";
 import { Bookmark } from "../page/bookmark/Bookmark";
 import { SearchList } from "../page/searchList/searchList";
 import { TagList } from "../page/taglist/tagList";
-import { PrivateRoute } from "./privateRoute";
 
 export const RouterConfig = () => {
   // const isLogin = useSelector((state) => state.token.);
@@ -39,36 +38,15 @@ export const RouterConfig = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/join" element={<Join />} />
         <Route path="/posts/:id" element={<PostView />} />
-        <Route
-          path="/mypage"
-          element={
-            <PrivateRoute path="/mypage">
-              <Profiles />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path="/posts"
-          element={
-            <PrivateRoute path="/posts">
-              <PostEditor />
-            </PrivateRoute>
-          }
-        />
-        {/* <Route path="/users/:id" element={<Profiles />} /> */}
+        <Route path="/mypage" element={<Profiles />} />
+        <Route path="/posts" element={<PostEditor />} />
+        <Route path="/users/:id" element={<Profiles />} />
         <Route path="/login/oauth" element={<OauthLogin />} />
+        <Route path="/temp" element={<Temp />} />
         <Route path="/bookmark" element={<Bookmark />} />
         <Route path="/search/:id" element={<SearchList />} />
         <Route path="/tag" element={<TagList />} />
         <Route path="/edit/:id" element={<PostEditor />} />
-        <Route
-          path="/chat"
-          element={
-            <PrivateRoute path="/chat">
-              <Temp />
-            </PrivateRoute>
-          }
-        />
       </Routes>
       <Footer />
     </HashRouter>

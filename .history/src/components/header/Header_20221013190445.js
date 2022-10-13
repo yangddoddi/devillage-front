@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import styles from "./Header.module.scss";
 import { SearchOutlined } from "@ant-design/icons";
 import { SearchBox } from "../searchBox/SearchBox";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { MyPage } from "../../page/mypage/MyPage";
 import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
@@ -21,7 +21,6 @@ export const Header = (props) => {
     setSearchBox(!searchBox);
   };
 
-  const navigate = useNavigate();
   const { isLogin, userId } = useSelector((state) => state.token);
 
   const dispatch = useDispatch();
@@ -154,18 +153,17 @@ export const Header = (props) => {
           <div className={styles.searchLogo} onClick={onClickHandler}>
             <SearchOutlined onChange={onSearchChangeHandler} />
           </div>
-          {isLogin ? (
-            <button className={styles.loginBtn} onClick={onClickMyPage}>
-              MyPage
-            </button>
-          ) : (
-            <button
-              className={styles.loginBtn}
-              onClick={() => navigate("/login")}
-            >
-              Login
-            </button>
-          )}
+            {isLogin ? (
+              
+                          <button className={styles.loginBtn} onClick={onClickMyPage}>
+                MyPage
+                </button>
+            ) : (
+              <Link to="/login" style={{ color: "white", padding: "30px" }}>
+                Login
+              </Link>
+            )}
+          </button>
         </div>
       </nav>
       {searchBox ? <SearchBox /> : null}

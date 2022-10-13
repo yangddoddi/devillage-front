@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import styles from "./Header.module.scss";
 import { SearchOutlined } from "@ant-design/icons";
 import { SearchBox } from "../searchBox/SearchBox";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { MyPage } from "../../page/mypage/MyPage";
 import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
@@ -21,7 +21,6 @@ export const Header = (props) => {
     setSearchBox(!searchBox);
   };
 
-  const navigate = useNavigate();
   const { isLogin, userId } = useSelector((state) => state.token);
 
   const dispatch = useDispatch();
@@ -159,11 +158,10 @@ export const Header = (props) => {
               MyPage
             </button>
           ) : (
-            <button
-              className={styles.loginBtn}
-              onClick={() => navigate("/login")}
-            >
-              Login
+            <button className={styles.loginBtn} onClick={onClickMyPage}>
+              <Link to="/login" style={{ color: "white", padding: "30px" }}>
+                Login
+              </Link>
             </button>
           )}
         </div>

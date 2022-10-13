@@ -159,11 +159,10 @@ export const Header = (props) => {
               MyPage
             </button>
           ) : (
-            <button
-              className={styles.loginBtn}
-              onClick={() => navigate("/login")}
-            >
-              Login
+            <button className={styles.loginBtn} onClick={()
+              <Link to="/login" style={{ color: "white", padding: "30px" }}>
+                Login
+              </Link>
             </button>
           )}
         </div>

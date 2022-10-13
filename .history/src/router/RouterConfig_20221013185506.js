@@ -39,14 +39,7 @@ export const RouterConfig = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/join" element={<Join />} />
         <Route path="/posts/:id" element={<PostView />} />
-        <Route
-          path="/mypage"
-          element={
-            <PrivateRoute path="/mypage">
-              <Profiles />
-            </PrivateRoute>
-          }
-        />
+        <Route path="/mypage" element={<Profiles />} />
         <Route
           path="/posts"
           element={
@@ -55,20 +48,13 @@ export const RouterConfig = () => {
             </PrivateRoute>
           }
         />
-        {/* <Route path="/users/:id" element={<Profiles />} /> */}
+        <Route path="/users/:id" element={<Profiles />} />
         <Route path="/login/oauth" element={<OauthLogin />} />
+        <Route path="/temp" element={<Temp />} />
         <Route path="/bookmark" element={<Bookmark />} />
         <Route path="/search/:id" element={<SearchList />} />
         <Route path="/tag" element={<TagList />} />
         <Route path="/edit/:id" element={<PostEditor />} />
-        <Route
-          path="/chat"
-          element={
-            <PrivateRoute path="/chat">
-              <Temp />
-            </PrivateRoute>
-          }
-        />
       </Routes>
       <Footer />
     </HashRouter>

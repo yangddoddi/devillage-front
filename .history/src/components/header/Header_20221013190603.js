@@ -161,7 +161,7 @@ export const Header = (props) => {
           ) : (
             <button
               className={styles.loginBtn}
-              onClick={() => navigate("/login")}
+              onClick={() => useNavigate("/login")}
             >
               Login
             </button>
