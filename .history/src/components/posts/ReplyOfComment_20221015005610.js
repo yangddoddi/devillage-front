@@ -21,8 +21,8 @@ export const ReplyOfComment = ({
             <span>
               {reComment.createdAt && reComment.createdAt.split("T")[0]}
             </span>{" "}
-            {reComment.userId == id ? <span> · 수정</span> : null}
-            {reComment.userId == id ? <span> · 삭제</span> : null}
+            {reComment.userId == id ? <span> · 수정</span> : null} ·
+            <span>삭제</span>
           </div>
         </div>
       </div>

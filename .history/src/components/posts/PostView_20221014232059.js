@@ -86,7 +86,7 @@ export const PostView = () => {
         setCreatedAt(time);
         setIsModified(data.modified);
         setClicks(data.clicks);
-        setPostLike(data.liked);
+        setPostLike(data.postLike);
         setBookmarkLike(data.bookmarkLike);
         setLikeCount(data.likeCount);
         setUserId(data.author.authorId);

@@ -24,7 +24,6 @@ export const Reply = ({
 }) => {
   const [replyOfComment, setReplyOfComment] = useState(false);
   const [replyToggle, setReplyToggle] = useState(false);
-  console.log(reply);
 
   const onChangeEditor = () => {
     setContent(editorRef.current.getInstance().getHTML());
@@ -41,16 +40,11 @@ export const Reply = ({
     axios
       .post(`${SERVER}/posts/${postId}/comments/${reply.commentId}/like`)
       .then((res) => {
-        console.log(res);
-        setReply((prev) => {
-          if (prev.commentId === reply.commentId) {
-            return {
-              ...prev,
-              like: prev.likeCount + 1,
-            };
-          } else {
-            return prev;
-          }
+        setReply(() => {
+          return {
+            ...reply,
+            likeCount: res.data.like,
+          };
         });
       })
       .catch((err) => {
@@ -91,12 +85,10 @@ export const Reply = ({
       </div>
 
       <div className={styles.replyToggleBtn} onClick={replyToggleHandler}>
-        {replyToggle
-          ? "▲ 답글 접기"
-          : `▼ 답글 보기 (${reply.reComments.length}개)`}
+        {replyToggle ? "답글 접기" : `답글 보기 (${reply.reComments.length})`}
       </div>
       {/* <div className={styles.replyOfCommentContainer}>{children}</div> */}
-      {replyToggle ? (
+      {!replyToggle ? (
         <div className={styles.replyOfCommentContainer}>
           {reComment &&
             reComment.map((first) => {

@@ -23,8 +23,6 @@ export const Reply = ({
   setReComment,
 }) => {
   const [replyOfComment, setReplyOfComment] = useState(false);
-  const [replyToggle, setReplyToggle] = useState(false);
-  console.log(reply);
 
   const onChangeEditor = () => {
     setContent(editorRef.current.getInstance().getHTML());
@@ -36,30 +34,21 @@ export const Reply = ({
   const onClickReplyOfCommentBtnHandler = () => {
     setReplyOfComment(!replyOfComment);
   };
-
+  SERVER;
   const onClickLikeHandler = () => {
     axios
       .post(`${SERVER}/posts/${postId}/comments/${reply.commentId}/like`)
       .then((res) => {
-        console.log(res);
-        setReply((prev) => {
-          if (prev.commentId === reply.commentId) {
-            return {
-              ...prev,
-              like: prev.likeCount + 1,
-            };
-          } else {
-            return prev;
-          }
+        setReply(() => {
+          return {
+            ...reply,
+            likeCount: res.data.like,
+          };
         });
       })
       .catch((err) => {
         console.log(err);
       });
-  };
-
-  const replyToggleHandler = () => {
-    setReplyToggle(!replyToggle);
   };
 
   const id = useSelector((state) => state.token.userId);
@@ -81,43 +70,33 @@ export const Reply = ({
         </div>
         <div className={styles.replyTopRight}>
           <LikeOutlined className={styles.replyLikeBtn} />
-          <div className={styles.replyLike} onClick={onClickLikeHandler}>
-            {reply.likeCount}
-          </div>
+          <div className={styles.replyLike}>{reply.likeCount}</div>
         </div>
       </div>
       <div className={styles.replyContent}>
         <p>{reply.content && reply.content.replace(reg, " ")}</p>
       </div>
-
-      <div className={styles.replyToggleBtn} onClick={replyToggleHandler}>
-        {replyToggle
-          ? "▲ 답글 접기"
-          : `▼ 답글 보기 (${reply.reComments.length}개)`}
-      </div>
       {/* <div className={styles.replyOfCommentContainer}>{children}</div> */}
-      {replyToggle ? (
-        <div className={styles.replyOfCommentContainer}>
-          {reComment &&
-            reComment.map((first) => {
-              return first.map((item) => {
-                if (item.parentCommentId == reply.commentId) {
-                  console.log("들어옴");
-                  return (
-                    <ReplyOfComment
-                      postId={postId}
-                      reply={reply}
-                      setReply={setReply}
-                      reComment={item}
-                      setReComment={setReComment}
-                      replyOfComment={item}
-                    />
-                  );
-                }
-              });
-            })}
-        </div>
-      ) : null}
+      <div className={styles.replyOfCommentContainer}>
+        {reComment &&
+          reComment.map((first) => {
+            return first.map((item) => {
+              if (item.parentCommentId == reply.commentId) {
+                console.log("들어옴");
+                return (
+                  <ReplyOfComment
+                    postId={postId}
+                    reply={reply}
+                    setReply={setReply}
+                    reComment={item}
+                    setReComment={setReComment}
+                    replyOfComment={item}
+                  />
+                );
+              }
+            });
+          })}
+      </div>
       {replyOfComment && (
         <ReplyOfCommentEditor
           postId={postId}

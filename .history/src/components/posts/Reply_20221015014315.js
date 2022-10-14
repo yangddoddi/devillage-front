@@ -24,7 +24,6 @@ export const Reply = ({
 }) => {
   const [replyOfComment, setReplyOfComment] = useState(false);
   const [replyToggle, setReplyToggle] = useState(false);
-  console.log(reply);
 
   const onChangeEditor = () => {
     setContent(editorRef.current.getInstance().getHTML());
@@ -43,15 +42,12 @@ export const Reply = ({
       .then((res) => {
         console.log(res);
         setReply((prev) => {
-          if (prev.commentId === reply.commentId) {
-            return {
-              ...prev,
-              like: prev.likeCount + 1,
-            };
-          } else {
-            return prev;
-          }
-        });
+          console.log(prev);
+          return {
+            ...prev,
+            like: res.data.like,
+          };
+        }
       })
       .catch((err) => {
         console.log(err);

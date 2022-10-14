@@ -24,7 +24,6 @@ export const Reply = ({
 }) => {
   const [replyOfComment, setReplyOfComment] = useState(false);
   const [replyToggle, setReplyToggle] = useState(false);
-  console.log(reply);
 
   const onChangeEditor = () => {
     setContent(editorRef.current.getInstance().getHTML());

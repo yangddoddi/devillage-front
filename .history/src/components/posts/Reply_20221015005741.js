@@ -12,7 +12,6 @@ import { ReplyEditor } from "./ReplyEditor";
 import { ReplyOfCommentEditor } from "./ReplyOfCommentEditor";
 import axios from "axios";
 import { useSelector } from "react-redux";
-import { SERVER } from "../../util/Variables";
 
 export const Reply = ({
   children,
@@ -23,8 +22,6 @@ export const Reply = ({
   setReComment,
 }) => {
   const [replyOfComment, setReplyOfComment] = useState(false);
-  const [replyToggle, setReplyToggle] = useState(false);
-  console.log(reply);
 
   const onChangeEditor = () => {
     setContent(editorRef.current.getInstance().getHTML());
@@ -36,32 +33,6 @@ export const Reply = ({
   const onClickReplyOfCommentBtnHandler = () => {
     setReplyOfComment(!replyOfComment);
   };
-
-  const onClickLikeHandler = () => {
-    axios
-      .post(`${SERVER}/posts/${postId}/comments/${reply.commentId}/like`)
-      .then((res) => {
-        console.log(res);
-        setReply((prev) => {
-          if (prev.commentId === reply.commentId) {
-            return {
-              ...prev,
-              like: prev.likeCount + 1,
-            };
-          } else {
-            return prev;
-          }
-        });
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-
-  const replyToggleHandler = () => {
-    setReplyToggle(!replyToggle);
-  };
-
   const id = useSelector((state) => state.token.userId);
 
   const reg = /<[^>]*>?/g;
@@ -73,51 +44,41 @@ export const Reply = ({
           <UserOutlined className={styles.replyAvatar} />
           <div className={styles.profileRight}>
             <p className={styles.author}>{reply.nickname}</p>
-            <span>{reply.createdAt && reply.createdAt.split("T")[0]}</span>
-            {reply.userId == id ? <span> · 수정</span> : null}
-            {reply.userId == id ? <span> · 삭제</span> : null}
-            <span onClick={onClickReplyOfCommentBtnHandler}> · 답글</span>
+            <span>
+              {reply.createdAt && reply.createdAt.split("T")[0]}
+            </span> · <span>수정</span> · <span>삭제</span> ·{" "}
+            <span onClick={onClickReplyOfCommentBtnHandler}>답글</span>
           </div>
         </div>
         <div className={styles.replyTopRight}>
           <LikeOutlined className={styles.replyLikeBtn} />
-          <div className={styles.replyLike} onClick={onClickLikeHandler}>
-            {reply.likeCount}
-          </div>
+          <div className={styles.replyLike}>10</div>
         </div>
       </div>
       <div className={styles.replyContent}>
         <p>{reply.content && reply.content.replace(reg, " ")}</p>
       </div>
-
-      <div className={styles.replyToggleBtn} onClick={replyToggleHandler}>
-        {replyToggle
-          ? "▲ 답글 접기"
-          : `▼ 답글 보기 (${reply.reComments.length}개)`}
-      </div>
       {/* <div className={styles.replyOfCommentContainer}>{children}</div> */}
-      {replyToggle ? (
-        <div className={styles.replyOfCommentContainer}>
-          {reComment &&
-            reComment.map((first) => {
-              return first.map((item) => {
-                if (item.parentCommentId == reply.commentId) {
-                  console.log("들어옴");
-                  return (
-                    <ReplyOfComment
-                      postId={postId}
-                      reply={reply}
-                      setReply={setReply}
-                      reComment={item}
-                      setReComment={setReComment}
-                      replyOfComment={item}
-                    />
-                  );
-                }
-              });
-            })}
-        </div>
-      ) : null}
+      <div className={styles.replyOfCommentContainer}>
+        {reComment &&
+          reComment.map((first) => {
+            return first.map((item) => {
+              if (item.parentCommentId == reply.commentId) {
+                console.log("들어옴");
+                return (
+                  <ReplyOfComment
+                    postId={postId}
+                    reply={reply}
+                    setReply={setReply}
+                    reComment={item}
+                    setReComment={setReComment}
+                    replyOfComment={item}
+                  />
+                );
+              }
+            });
+          })}
+      </div>
       {replyOfComment && (
         <ReplyOfCommentEditor
           postId={postId}

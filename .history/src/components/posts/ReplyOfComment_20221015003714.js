@@ -1,5 +1,4 @@
 import styles from "./ReplyOfComment.module.scss";
-import { useSelector } from "react-redux";
 
 export const ReplyOfComment = ({
   postId,
@@ -9,8 +8,7 @@ export const ReplyOfComment = ({
   setReComment,
   replyOfComment,
 }) => {
-  const id = useSelector((state) => state.token.userId);
-
+  console.log(reComment);
   const reg = /<[^>]*>?/g;
   return (
     <div className={styles.replyOfComment}>
@@ -21,8 +19,7 @@ export const ReplyOfComment = ({
             <span>
               {reComment.createdAt && reComment.createdAt.split("T")[0]}
             </span>{" "}
-            {reComment.userId == id ? <span> · 수정</span> : null}
-            {reComment.userId == id ? <span> · 삭제</span> : null}
+            · <span>수정</span> · <span>삭제</span>
           </div>
         </div>
       </div>
