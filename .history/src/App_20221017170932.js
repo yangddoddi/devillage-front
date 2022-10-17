@@ -26,7 +26,7 @@ function App() {
         })
       );
     } else {
-      delete axios.defaults.headers.common["Authorization"];
+      return;
     }
   }, []);
 

@@ -10,12 +10,16 @@ import { setToken } from "./store/Auth";
 
 function App() {
   const dispatch = useDispatch();
+  const token = useSelector((state) => state.token.accessToken);
 
   useEffect(() => {
     const accessToken = localStorage.getItem("accessToken");
-    if (accessToken != null) {
+    if (accessToken) {
       const decoded = jwtDecode(accessToken);
       axios.defaults.headers.common["Authorization"] = `Bearer ${accessToken}`;
+      if (token !== accessToken) {
+        axios.defaults.headers.common["Authorization"] = "";
+      }
       dispatch(
         setToken({
           accessToken: accessToken,
@@ -25,8 +29,6 @@ function App() {
           userRole: decoded.role,
         })
       );
-    } else {
-      delete axios.defaults.headers.common["Authorization"];
     }
   }, []);
 

@@ -13,7 +13,8 @@ function App() {
 
   useEffect(() => {
     const accessToken = localStorage.getItem("accessToken");
-    if (accessToken != null) {
+    console.log(accessToken);
+    if (accessToken.length > 0) {
       const decoded = jwtDecode(accessToken);
       axios.defaults.headers.common["Authorization"] = `Bearer ${accessToken}`;
       dispatch(
@@ -26,7 +27,7 @@ function App() {
         })
       );
     } else {
-      delete axios.defaults.headers.common["Authorization"];
+      return;
     }
   }, []);
 

@@ -1,5 +1,5 @@
 import styles from "./Join.module.scss";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import axios from "axios";
 import { redirect, useNavigate } from "react-router-dom";
 import { SERVER } from "../../util/Variables";
@@ -13,7 +13,7 @@ export const Join = () => {
   const [emailCheckModal, setEmailCheckModal] = useState(false);
   const [emailCheckCode, setEmailCheckCode] = useState("");
   const [emailChangeHandler, setEmailChangeHandler] = useState(false);
-  const [timer, setTimer] = useState(180);
+
   const navigate = useNavigate();
 
   const onJoin = async (e) => {
@@ -61,12 +61,13 @@ export const Join = () => {
       .then((response) => {
         if (response.status === 200) {
           setEmailCheckModal(true);
-          setTimer(180);
         }
       })
       .catch((error) => {
         if (error.response.status === 409) {
           alert("이미 존재하는 이메일입니다.");
+        } else if (error.response.status === 500) {
+          setEmailCheckModal(true);
         }
       });
   };
@@ -81,8 +82,8 @@ export const Join = () => {
     instance.defaults.headers.common["Authorization"] = "";
     instance
       .post(`${SERVER}/auth/email/confirm`, {
-        email: email,
-        authKey: emailCheckCode,
+        email,
+        code: emailCheckCode,
       })
       .then((response) => {
         if (response.status === 200) {
@@ -105,18 +106,6 @@ export const Join = () => {
       setEmailChangeHandler(true);
     }
   };
-
-  useEffect(() => {
-    let interval = null;
-    if (emailCheckModal) {
-      interval = setInterval(() => {
-        setTimer((timer) => timer - 1);
-      }, 1000);
-    } else if (!emailCheckModal) {
-      clearInterval(interval);
-    }
-    return () => clearInterval(interval);
-  }, [emailCheckModal]);
 
   return (
     <div>
@@ -189,9 +178,7 @@ export const Join = () => {
       {emailCheckModal && (
         <div className={styles.emailCheckbackgroud}>
           <div className={styles.emailCheckModal}>
-            <span className={styles.xBtn} onClick={xBtn}>
-              X
-            </span>
+            <span className={styles.xBtn}>X</span>
             <h1>이메일 인증</h1>
             <p>입력하신 이메일로 인증코드를 전송했습니다.</p>
             <p>({email})</p>
@@ -206,11 +193,6 @@ export const Join = () => {
             >
               인증
             </button>
-            {timer > 0 ? (
-              <p className={styles.counter}>남은 시간 : {timer}초</p>
-            ) : (
-              <p className={styles.counter}>인증 시간이 만료되었습니다.</p>
-            )}
           </div>
         </div>
       )}

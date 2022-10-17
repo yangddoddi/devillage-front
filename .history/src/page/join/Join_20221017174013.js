@@ -61,12 +61,13 @@ export const Join = () => {
       .then((response) => {
         if (response.status === 200) {
           setEmailCheckModal(true);
-          setTimer(180);
         }
       })
       .catch((error) => {
         if (error.response.status === 409) {
           alert("이미 존재하는 이메일입니다.");
+        } else if (error.response.status === 500) {
+          setEmailCheckModal(true);
         }
       });
   };
@@ -206,11 +207,7 @@ export const Join = () => {
             >
               인증
             </button>
-            {timer > 0 ? (
-              <p className={styles.counter}>남은 시간 : {timer}초</p>
-            ) : (
-              <p className={styles.counter}>인증 시간이 만료되었습니다.</p>
-            )}
+            <p className={timer}>남은 시간 : </p>
           </div>
         </div>
       )}

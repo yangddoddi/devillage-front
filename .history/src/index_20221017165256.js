@@ -46,7 +46,7 @@ axios.interceptors.response.use(
     if (
       error.response.status === 401 &&
       !isTokenRefreshing &&
-      refreshToken.length > 0
+      refreshToken !== null
     ) {
       const instance = axios.create();
       delete instance.defaults.headers.common["Authorization"];

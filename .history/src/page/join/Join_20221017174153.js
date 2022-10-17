@@ -61,12 +61,13 @@ export const Join = () => {
       .then((response) => {
         if (response.status === 200) {
           setEmailCheckModal(true);
-          setTimer(180);
         }
       })
       .catch((error) => {
         if (error.response.status === 409) {
           alert("이미 존재하는 이메일입니다.");
+        } else if (error.response.status === 500) {
+          setEmailCheckModal(true);
         }
       });
   };

@@ -43,11 +43,7 @@ axios.interceptors.response.use(
     const refreshToken = getRefreshToken();
     const originalRequest = error.config;
 
-    if (
-      error.response.status === 401 &&
-      !isTokenRefreshing &&
-      refreshToken.length > 0
-    ) {
+    if (error.response.status === 401 && !isTokenRefreshing && refreshToken) {
       const instance = axios.create();
       delete instance.defaults.headers.common["Authorization"];
       instance.defaults.headers.post["Content-Type"] = "application/json";
