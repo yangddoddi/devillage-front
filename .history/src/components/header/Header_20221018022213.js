@@ -23,7 +23,6 @@ export const Header = (props) => {
   };
 
   const navigate = useNavigate();
-  const token = useSelector((state) => state.token.accessToken);
 
   useEffect(() => {
     if (!localStorage.getItem("accessToken")) {
@@ -31,7 +30,7 @@ export const Header = (props) => {
     } else {
       setIsLogin(true);
     }
-  }, [token]);
+  }, []);
 
   const dispatch = useDispatch();
 

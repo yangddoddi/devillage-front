@@ -332,7 +332,6 @@ export const PostView = () => {
               setReply={setReply}
               reComment={reComment}
               setReComment={setReComment}
-              setRender={setRender}
             >
               {/* <ReplyOfComment
                 postId={id}

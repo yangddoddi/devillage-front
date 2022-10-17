@@ -37,7 +37,6 @@ axios.interceptors.request.use((config) => {
     } else {
       delete axios.defaults.headers.common["Authorization"];
     }
-  });
   return config;
 });
 
@@ -79,16 +78,12 @@ axios.interceptors.response.use(
             return axios(originalRequest);
           }
         });
-    } else if (error.response.status === 401) {
+    } else {
       alert("로그인이 필요합니다.");
       localStorage.removeItem("accessToken");
       if (refreshToken != null) {
         removeRefreshToken();
       }
-    } else if (error.response.status === 403) {
-      alert("권한이 없습니다.");
-    } else if (error.response.status === 400) {
-      alert("잘못된 요청입니다.");
     }
     isTokenRefreshing = false;
     return Promise.reject(error);

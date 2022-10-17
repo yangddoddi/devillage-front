@@ -31,13 +31,14 @@ axios.defaults.headers.post["Content-Type"] = "application/json"; // POST 요청
 // axios.defaults.headers.post["Authorization"] = `Bearer ${accessToken}`; // POST 요청 시 Authorization
 
 axios.interceptors.request.use((config) => {
-  localStorage.getItem("accessToken").then((accessToken) => {
-    if (accessToken != null) {
-      config.headers["Authorization"] = `Bearer ${accessToken}`;
-    } else {
-      delete axios.defaults.headers.common["Authorization"];
-    }
-  });
+  console.log(localStorage.getItem("accessToken"));
+  if (!localStorage.getItem("accessToken")) {
+    localStorage.getItem("accessToken").then((res) => {
+      config.headers.Authorization = `Bearer ${res}`;
+    });
+  } else {
+    delete axios.defaults.headers.common["Authorization"];
+  }
   return config;
 });
 
@@ -50,6 +51,11 @@ axios.interceptors.response.use(
   async (error) => {
     const refreshToken = getRefreshToken();
     const originalRequest = error.config;
+
+    // if (error.response.status === 401 && !refreshToken) {
+    //   alert("로그인이 필요합니다.");
+    // }
+
     if (error.response.status === 401 && !isTokenRefreshing && refreshToken) {
       const instance = axios.create();
       delete instance.defaults.headers.common["Authorization"];
@@ -79,16 +85,12 @@ axios.interceptors.response.use(
             return axios(originalRequest);
           }
         });
-    } else if (error.response.status === 401) {
+    } else {
       alert("로그인이 필요합니다.");
       localStorage.removeItem("accessToken");
       if (refreshToken != null) {
         removeRefreshToken();
       }
-    } else if (error.response.status === 403) {
-      alert("권한이 없습니다.");
-    } else if (error.response.status === 400) {
-      alert("잘못된 요청입니다.");
     }
     isTokenRefreshing = false;
     return Promise.reject(error);

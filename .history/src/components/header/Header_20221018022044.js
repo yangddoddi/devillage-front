@@ -17,21 +17,12 @@ import { SERVER } from "../../util/Variables";
 export const Header = (props) => {
   const [searchBox, setSearchBox] = useState(false);
   const [search, setSearch] = useState("");
-  const [isLogin, setIsLogin] = useState(false);
   const onClickHandler = () => {
     setSearchBox(!searchBox);
   };
 
   const navigate = useNavigate();
-  const token = useSelector((state) => state.token.accessToken);
-
-  useEffect(() => {
-    if (!localStorage.getItem("accessToken")) {
-      setIsLogin(false);
-    } else {
-      setIsLogin(true);
-    }
-  }, [token]);
+  const { isLogin, userId } = useSelector((state) => state.token);
 
   const dispatch = useDispatch();
 

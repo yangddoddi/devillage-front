@@ -29,8 +29,10 @@ export const Login = () => {
     setPassword(e.target.value);
   };
 
+  const isLogin = useSelector((state) => state.token.isLogin);
+
   useEffect(() => {
-    if (localStorage.getItem("accessToken")) {
+    if (isLogin) {
       navi("/");
     }
   }, []);

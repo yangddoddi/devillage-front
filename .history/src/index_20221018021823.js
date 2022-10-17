@@ -79,7 +79,7 @@ axios.interceptors.response.use(
             return axios(originalRequest);
           }
         });
-    } else if (error.response.status === 401) {
+    } else if (error.response.status === 40) {
       alert("로그인이 필요합니다.");
       localStorage.removeItem("accessToken");
       if (refreshToken != null) {

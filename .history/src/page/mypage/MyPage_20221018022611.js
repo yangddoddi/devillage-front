@@ -12,9 +12,11 @@ import { Dispatch } from "redux";
 import { SERVER } from "../../util/Variables";
 
 export const MyPage = ({ myPage, setMyPage }) => {
+  
+
   const navi = useNavigate();
 
-  useEffect(() => {
+  useEffect() => {
     if (!localStorage.getItem("accessToken")) {
       alert("로그인이 필요한 서비스입니다.");
       navi("/login");

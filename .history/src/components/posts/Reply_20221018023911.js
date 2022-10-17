@@ -72,7 +72,6 @@ export const Reply = ({
       .delete(`${SERVER}/posts/${postId}/comments/${reply.commentId}`)
       .then((res) => {
         console.log(res);
-        setRender((prev) => !prev);
       })
       .catch((err) => {
         console.log(err);

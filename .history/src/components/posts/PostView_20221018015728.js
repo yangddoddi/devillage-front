@@ -49,7 +49,6 @@ export const PostView = () => {
   const [reComment, setReComment] = useState([]);
   const [userId, setUserId] = useState("");
   const [deleteModal, setDeleteModal] = useState(false);
-  const [render, setRender] = useState(false);
 
   const [total, setTotal] = useState(0);
   const [page, setPage] = useState(1);
@@ -106,7 +105,7 @@ export const PostView = () => {
       .catch((err) => {
         console.log(err);
       });
-  }, [id, render]);
+  }, [id]);
 
   // useEffect(() => {
   //   axios
@@ -237,7 +236,7 @@ export const PostView = () => {
     <>
       <div className={styles.container}>
         <div className={styles.postContainer}>
-          <h1 className={styles.category}>{category}</h1>
+          <h1 className={styles.category}>자유게시판</h1>
           <div className={styles.topContainer}>
             <div className={styles.titleContainer}>
               <h2 className={styles.title}>{title}</h2>
@@ -332,7 +331,6 @@ export const PostView = () => {
               setReply={setReply}
               reComment={reComment}
               setReComment={setReComment}
-              setRender={setRender}
             >
               {/* <ReplyOfComment
                 postId={id}

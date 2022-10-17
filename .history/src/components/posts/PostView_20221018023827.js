@@ -106,7 +106,7 @@ export const PostView = () => {
       .catch((err) => {
         console.log(err);
       });
-  }, [id, render]);
+  }, [id]);
 
   // useEffect(() => {
   //   axios
@@ -332,7 +332,6 @@ export const PostView = () => {
               setReply={setReply}
               reComment={reComment}
               setReComment={setReComment}
-              setRender={setRender}
             >
               {/* <ReplyOfComment
                 postId={id}

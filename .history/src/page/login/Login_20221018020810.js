@@ -29,8 +29,10 @@ export const Login = () => {
     setPassword(e.target.value);
   };
 
+  const isLogin = useSelector((state) => state.token.isLogin);
+
   useEffect(() => {
-    if (localStorage.getItem("accessToken")) {
+    if (isLogin) {
       navi("/");
     }
   }, []);
@@ -62,6 +64,7 @@ export const Login = () => {
 
   const onClickHandler = async () => {
     const instance = axios.create();
+    instance.defaults.headers.common["Authorization"] = "";
     instance
       .post(`${SERVER}/auth/token`, {
         email: email,

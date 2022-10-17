@@ -21,7 +21,6 @@ export const Reply = ({
   setReply,
   reComment,
   setReComment,
-  setRender,
 }) => {
   const [replyOfComment, setReplyOfComment] = useState(false);
   const [replyToggle, setReplyToggle] = useState(false);
@@ -33,6 +32,7 @@ export const Reply = ({
 
   const editorRef = useRef();
   const [content, setContent] = useState("");
+  const [render, setRender] = useState(false);
 
   const onClickReplyOfCommentBtnHandler = () => {
     setReplyOfComment(!replyOfComment);
@@ -72,7 +72,6 @@ export const Reply = ({
       .delete(`${SERVER}/posts/${postId}/comments/${reply.commentId}`)
       .then((res) => {
         console.log(res);
-        setRender((prev) => !prev);
       })
       .catch((err) => {
         console.log(err);

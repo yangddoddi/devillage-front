@@ -21,7 +21,6 @@ export const Reply = ({
   setReply,
   reComment,
   setReComment,
-  setRender,
 }) => {
   const [replyOfComment, setReplyOfComment] = useState(false);
   const [replyToggle, setReplyToggle] = useState(false);
@@ -69,15 +68,7 @@ export const Reply = ({
 
   const commentDeleteBtn = () => {
     axios
-      .delete(`${SERVER}/posts/${postId}/comments/${reply.commentId}`)
-      .then((res) => {
-        console.log(res);
-        setRender((prev) => !prev);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
+    .delete(`${SERVER}/posts/${postId}/comments/${reply.commentId}`)
 
   return (
     <div className={styles.replyItem}>
@@ -87,9 +78,7 @@ export const Reply = ({
           <div className={styles.profileRight}>
             <p className={styles.author}>{reply.nickname}</p>
             <span>{reply.createdAt && reply.createdAt.split("T")[0]}</span>
-            {reply.userId == id ? (
-              <span onClick={commentDeleteBtn}> · 삭제</span>
-            ) : null}
+            {reply.userId == id ? <span onClick={commentDeleteBtn}> · 삭제</span> : null}
             <span onClick={onClickReplyOfCommentBtnHandler}> · 답글</span>
           </div>
         </div>
