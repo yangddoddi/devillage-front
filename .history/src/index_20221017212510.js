@@ -47,10 +47,6 @@ axios.interceptors.response.use(
     const refreshToken = getRefreshToken();
     const originalRequest = error.config;
 
-    if (error.response.status === 401 && !refreshToken) {
-      alert("로그인이 필요합니다.");
-    }
-
     if (
       error.response.status === 401 &&
       !isTokenRefreshing &&

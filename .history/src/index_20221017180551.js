@@ -47,10 +47,6 @@ axios.interceptors.response.use(
     const refreshToken = getRefreshToken();
     const originalRequest = error.config;
 
-    if (error.response.status === 401 && !refreshToken) {
-      alert("로그인이 필요합니다.");
-    }
-
     if (
       error.response.status === 401 &&
       !isTokenRefreshing &&
@@ -58,9 +54,7 @@ axios.interceptors.response.use(
     ) {
       const instance = axios.create();
       delete instance.defaults.headers.common["Authorization"];
-      instance.defaults.headers.common[
-        "RefreshToken"
-      ] = `Bearer ${refreshToken}`;
+      instance.defaults.headers.post["RefreshToken"] = `Bearer ${refreshToken}`;
       isTokenRefreshing = true;
       return instance
         .post(`${SERVER}/auth/token/refresh`, {
@@ -86,7 +80,6 @@ axios.interceptors.response.use(
             removeRefreshToken();
             localStorage.removeItem("accessToken");
             delete axios.defaults.headers.common["Authorization"];
-            alert("토큰이 만료되었습니다. 다시 로그인해주세요.");
             window.location.href = "/login";
           }
         });

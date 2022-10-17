@@ -46,10 +46,8 @@ axios.interceptors.response.use(
   async (error) => {
     const refreshToken = getRefreshToken();
     const originalRequest = error.config;
-
-    if (error.response.status === 401 && !refreshToken) {
-      alert("로그인이 필요합니다.");
-    }
+    console.log(error.response.status);
+    alert("로그인이 필요한 서비스입니다.");
 
     if (
       error.response.status === 401 &&
@@ -90,6 +88,8 @@ axios.interceptors.response.use(
             window.location.href = "/login";
           }
         });
+    } else if (error.response.status == 401) {
+      alert("로그인이 필요한 서비스입니다.");
     }
     isTokenRefreshing = false;
     return Promise.reject(error);
