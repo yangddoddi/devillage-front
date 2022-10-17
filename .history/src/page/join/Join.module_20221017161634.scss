@@ -94,14 +94,6 @@ h3 {
     width: 100%;
 }
 
-.emailCheckSuccess {
-    color : blue;
-}
-
-.passwordCheck {
-    color: red;
-}
-
 .emailCheck {
     position: absolute;
     right: 0;
@@ -113,82 +105,5 @@ h3 {
     font-size: 12px;
     font-weight: 600;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0 10px;
-    cursor: pointer;
 }
 
-.emailCheckbackgroud {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 100;
-}
-
-.emailCheckModal {
-    background-color: white;
-    width: 400px;
-    height: 300px;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    
-    h1 {
-        font-size: 20px;
-        font-weight: 600;
-        margin-bottom: 20px;
-    }
-
-    input {
-        width: 300px;
-        height: 40px;
-        border-radius: 10px;
-        border: 1px solid lightgray;
-        padding: 0 10px;
-        margin-bottom: 20px;
-        margin-top: 5px;
-    }
-
-    button {
-        width: 100px;
-        height: 40px;
-        border-radius: 10px;
-        background-color: #292965;
-        color: white;
-        font-size: 16px;
-        font-weight: 600;
-        cursor: pointer;
-    }
-
-    p {
-        padding:0px;
-        margin:0px;
-    }
-
-    .xBtn {
-        position: absolute;
-        top: 0;
-        right: 0;
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        color: black;
-        font-size: 16px;
-        font-weight: 600;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-    }
-
-}

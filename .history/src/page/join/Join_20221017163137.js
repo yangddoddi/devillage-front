@@ -12,7 +12,6 @@ export const Join = () => {
   const [emailCheck, setEmailCheck] = useState(false);
   const [emailCheckModal, setEmailCheckModal] = useState(false);
   const [emailCheckCode, setEmailCheckCode] = useState("");
-  const [emailChangeHandler, setEmailChangeHandler] = useState(false);
 
   const navigate = useNavigate();
 
@@ -29,7 +28,7 @@ export const Join = () => {
     const instance = axios.create();
     instance.defaults.headers.common["Authorization"] = "";
 
-    instance
+    const response = await instance
       .post(`${SERVER}/auth/new`, {
         email,
         password,
@@ -50,61 +49,8 @@ export const Join = () => {
       });
   };
 
-  const onClickEmailCheck = async (e) => {
-    e.preventDefault();
-    const instance = axios.create();
-    instance.defaults.headers.common["Authorization"] = "";
-    instance
-      .post(`${SERVER}/auth/email`, {
-        email,
-      })
-      .then((response) => {
-        if (response.status === 200) {
-          setEmailCheckModal(true);
-        }
-      })
-      .catch((error) => {
-        if (error.response.status === 409) {
-          alert("이미 존재하는 이메일입니다.");
-        } else {
-          console.log(error);
-        }
-      });
-  };
-
   const xBtn = () => {
     setEmailCheckModal(false);
-  };
-
-  const emailCodeCheck = async (e) => {
-    e.preventDefault();
-    const instance = axios.create();
-    instance.defaults.headers.common["Authorization"] = "";
-    instance
-      .post(`${SERVER}/auth/email/confirm`, {
-        email,
-        code: emailCheckCode,
-      })
-      .then((response) => {
-        if (response.status === 200) {
-          setEmailCheck(true);
-          setEmailCheckModal(false);
-          setEmailChangeHandler(false);
-          alert("이메일 인증이 완료되었습니다.");
-        }
-      })
-      .catch((error) => {
-        alert("인증번호가 일치하지 않습니다.");
-      });
-  };
-
-  const emailInputHandler = (e) => {
-    setEmail(e.target.value);
-
-    if (emailCheck) {
-      setEmailCheck(false);
-      setEmailChangeHandler(true);
-    }
   };
 
   return (
@@ -120,23 +66,18 @@ export const Join = () => {
                   className={styles.inputBox}
                   type="email"
                   placeholder="이메일을 입력하세요."
-                  onChange={emailInputHandler}
+                  onChange={(e) => setEmail(e.target.value)}
                 />{" "}
                 <button
                   className={styles.emailCheck}
-                  onClick={onClickEmailCheck}
+                  onClick={() => setEmailCheckModal(true)}
                 >
                   인증
                 </button>
               </div>
-              {emailCheck && (
+              {!emailCheck && (
                 <div className={styles.emailCheckSuccess}>
                   인증이 완료되었습니다.
-                </div>
-              )}
-              {emailChangeHandler && (
-                <div className={styles.emailCheckSuccess}>
-                  이메일이 변경되었습니다. 인증을 다시 해주세요.
                 </div>
               )}
               <br />
@@ -175,7 +116,7 @@ export const Join = () => {
           </div>
         </div>
       </div>
-      {emailCheckModal && (
+      {!emailCheckModal && (
         <div className={styles.emailCheckbackgroud}>
           <div className={styles.emailCheckModal}>
             <span className={styles.xBtn}>X</span>
@@ -188,7 +129,7 @@ export const Join = () => {
               onChange={(e) => setEmailCheckCode(e.target.value)}
             />
             <button
-              onClick={emailCodeCheck}
+              // onClick={emailCodeCheck}
               disabled={emailCheckCode.length == 0}
             >
               인증

@@ -134,11 +134,6 @@ export const Join = () => {
                   인증이 완료되었습니다.
                 </div>
               )}
-              {emailChangeHandler && (
-                <div className={styles.emailCheckSuccess}>
-                  이메일이 변경되었습니다. 인증을 다시 해주세요.
-                </div>
-              )}
               <br />
               <h3>비밀번호</h3>
               <input

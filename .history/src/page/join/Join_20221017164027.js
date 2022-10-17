@@ -89,7 +89,6 @@ export const Join = () => {
         if (response.status === 200) {
           setEmailCheck(true);
           setEmailCheckModal(false);
-          setEmailChangeHandler(false);
           alert("이메일 인증이 완료되었습니다.");
         }
       })
@@ -132,11 +131,6 @@ export const Join = () => {
               {emailCheck && (
                 <div className={styles.emailCheckSuccess}>
                   인증이 완료되었습니다.
-                </div>
-              )}
-              {emailChangeHandler && (
-                <div className={styles.emailCheckSuccess}>
-                  이메일이 변경되었습니다. 인증을 다시 해주세요.
                 </div>
               )}
               <br />
