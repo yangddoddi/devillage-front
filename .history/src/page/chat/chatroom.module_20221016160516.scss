@@ -1,0 +1,52 @@
+
+.chatBox {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    max-width: 1600px;
+    justify-content: center;
+    flex-direction: column;
+    overflow: hidden;
+
+    .chatContainer {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        max-width: 1600px;
+        justify-content: center;
+        flex-direction: column;
+        overflow: hidden;
+    }
+
+    .chat {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        max-width: 1600px;
+        justify-content: center;
+        flex-direction: column;
+        overflow: hidden;
+    }
+
+    .chatInput {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        max-width: 1600px;
+        justify-content: center;
+        flex-direction: column;
+        overflow: hidden;
+    }
+
+
+}
+
+.sendMessage {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    max-width: 1600px;
+    justify-content: center;
+    flex-direction: column;
+    overflow: hidden;
+}
