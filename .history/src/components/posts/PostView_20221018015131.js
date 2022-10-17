@@ -171,10 +171,18 @@ export const PostView = () => {
 
   const submitReport = () => {
     axios
-      .post(`${SERVER}/posts/${id}/report`, {
-        reportType: reportReason,
-        content: reportContent,
-      })
+      .post(
+        `${SERVER}/posts/${id}/report`,
+        {
+          reportType: reportReason,
+          content: reportContent,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ` + localStorage.getItem("accessToken"),
+          },
+        }
+      )
       .then((res) => {
         console.log(res);
         alert("신고가 접수되었습니다.");
@@ -202,7 +210,11 @@ export const PostView = () => {
 
   const clickPostDeleteBtn = () => {
     axios
-      .delete(`${SERVER}/posts/${id}`)
+      .delete(`${SERVER}/posts/${id}`, {
+        headers: {
+          Authorization: `Bearer ` + localStorage.getItem("accessToken"),
+        },
+      })
       .then((res) => {
         console.log(res);
         alert("삭제되었습니다.");

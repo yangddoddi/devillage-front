@@ -143,21 +143,27 @@ export const Profiles = () => {
     (await e.target.files[0]) && (file = e.target.files[0]);
     const formData = new FormData();
     formData.append("file", file);
-    console.log(formData);
-    console.log(file);
-    console.log(formData.file);
-    await axios({
-      method: "post",
-      url: `${SERVER}/files`,
-      data: formData,
+    const config = {
       headers: {
-        "Content-Type": "multipart/form-data",
+        "content-type": "multipart/form-data",
         Authorization: `Bearer ${token}`,
       },
-    }).then((res) => {
-      console.log(res);
-      setEditProfileImage(res.data);
-    });
+    };
+    axios
+      .post(`${SERVER}/files`, {
+        headers: {
+          "content-type": "multipart/form-data",
+          Authorization: `Bearer ${token}`,
+        },
+        multipartFile: formData,
+      })
+      .then((res) => {
+        console.log(res);
+        setEditProfileImage(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (

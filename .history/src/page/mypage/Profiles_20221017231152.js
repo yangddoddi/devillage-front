@@ -170,7 +170,7 @@ export const Profiles = () => {
               <p>프로필 사진 변경</p>
             </label>
             <input
-              type="file"
+              type="image"
               id="input-file"
               accept="image/*"
               className={styles.uploadBtn}

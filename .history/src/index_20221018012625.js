@@ -31,13 +31,9 @@ axios.defaults.headers.post["Content-Type"] = "application/json"; // POST 요청
 // axios.defaults.headers.post["Authorization"] = `Bearer ${accessToken}`; // POST 요청 시 Authorization
 
 axios.interceptors.request.use((config) => {
-  if (!localStorage.getItem("accessToken")) {
-    localStorage.getItem("accessToken").then((res) => {
-      config.headers.Authorization = `Bearer ${res}`;
-    });
-  } else {
-    delete axios.defaults.headers.common["Authorization"];
-  }
+  localStorage.getItem("accessToken").then((res) => {
+    config.headers.Authorization = `Bearer ${res}`;
+  });
   return config;
 });
 
@@ -55,7 +51,13 @@ axios.interceptors.response.use(
     //   alert("로그인이 필요합니다.");
     // }
 
-    if (error.response.status === 401 && !isTokenRefreshing && refreshToken) {
+    console.log(isTokenRefreshing);
+
+    if (
+      error.response.status === 401 &&
+      !isTokenRefreshing &&
+      refreshToken.length > 0
+    ) {
       const instance = axios.create();
       delete instance.defaults.headers.common["Authorization"];
       instance.defaults.headers.common[
@@ -82,13 +84,12 @@ axios.interceptors.response.use(
             // 새로 받은 토큰 저장 및 원래 요청 다시 보내기
             originalRequest.headers["Authorization"] = `Bearer ${accessToken}`;
             return axios(originalRequest);
-          }
-        })
-        .catch((err) => {
-          alert("로그인이 필요합니다.");
-          localStorage.removeItem("accessToken");
-          if (refreshToken != null) {
+          } else {
             removeRefreshToken();
+            localStorage.removeItem("accessToken");
+            delete axios.defaults.headers.common["Authorization"];
+            alert("토큰이 만료되었습니다. 다시 로그인해주세요.");
+            window.location.href = "/login";
           }
         });
     }

@@ -139,25 +139,23 @@ export const Profiles = () => {
   const token = useSelector((state) => state.token.accessToken);
 
   const uploadAvatar = async (e) => {
-    let file = null;
-    (await e.target.files[0]) && (file = e.target.files[0]);
+    const fileUploadInstance = axios.create();
     const formData = new FormData();
-    formData.append("file", file);
-    console.log(formData);
-    console.log(file);
-    console.log(formData.file);
-    await axios({
-      method: "post",
-      url: `${SERVER}/files`,
-      data: formData,
-      headers: {
-        "Content-Type": "multipart/form-data",
-        Authorization: `Bearer ${token}`,
-      },
-    }).then((res) => {
-      console.log(res);
-      setEditProfileImage(res.data);
-    });
+    fileUploadInstance.defaults.headers.common["Content-Type"] =
+      "multipart/form-data";
+    formData.append("file", e.target.files[0]);
+    fileUploadInstance
+      .post(`${SERVER}/files`, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+          Authorization: `Bearer ${token}`,
+        },
+        multipartFile: formData,
+      })
+      .then((res) => {
+        console.log(res);
+        setProfileImage(res.data);
+      });
   };
 
   return (

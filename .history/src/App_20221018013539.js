@@ -13,7 +13,8 @@ function App() {
 
   useEffect(() => {
     const accessToken = localStorage.getItem("accessToken");
-    if (accessToken != null) {
+    console.log(accessToken);
+    if (accessToken) {
       console.log("accessToken: ", accessToken);
       const decoded = jwtDecode(accessToken);
       axios.defaults.headers.common["Authorization"] = `Bearer ${accessToken}`;

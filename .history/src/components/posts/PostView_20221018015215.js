@@ -202,7 +202,11 @@ export const PostView = () => {
 
   const clickPostDeleteBtn = () => {
     axios
-      .delete(`${SERVER}/posts/${id}`)
+      .delete(`${SERVER}/posts/${id}`, {
+        headers: {
+          Authorization: `Bearer ` + localStorage.getItem("accessToken"),
+        },
+      })
       .then((res) => {
         console.log(res);
         alert("삭제되었습니다.");
