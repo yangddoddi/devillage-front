@@ -1,4 +1,5 @@
 const { createProxyMiddleware } = require("http-proxy-middleware");
+const { SERVER } = require('./util/Variables');
 
 // module.exports = (app) => {
 //   app.use(
@@ -10,7 +11,7 @@ const { createProxyMiddleware } = require("http-proxy-middleware");
 
   app.use(
     createProxyMiddleware("/ws", {
-      target: "http://localhost:8080",
+      target: `https://${SERVER}`,
       changeOrigin: true,
       ws: true,
     })

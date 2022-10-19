@@ -23,6 +23,7 @@ import { TagList } from "../page/taglist/tagList";
 import { PrivateRoute } from "./privateRoute";
 import { Chat } from "../page/chat/chat";
 import { ChatRoom } from "../page/chat/chatroom";
+import { Root } from "./root";
 
 export const RouterConfig = () => {
   // const isLogin = useSelector((state) => state.token.);
@@ -36,7 +37,7 @@ export const RouterConfig = () => {
     <HashRouter>
       <Header sendCategory={sendCategory} />
       <Routes>
-        <Route path="/" element={<Navigate to="board/all" />} />
+        <Route path="/" element={<Root />} />
         <Route path="/board/:category" element={<Main category={category} />} />
         <Route path="/login" element={<Login />} />
         <Route path="/join" element={<Join />} />
