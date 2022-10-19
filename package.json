@@ -30,6 +30,7 @@
     "react-social-login-buttons": "^3.6.1",
     "redux": "^4.2.0",
     "redux-persist": "^6.0.0",
+    "rewired": "^0.0.0",
     "sass": "^1.54.9",
     "sockjs": "^0.3.24",
     "sockjs-client": "^1.6.1",
