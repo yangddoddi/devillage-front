@@ -1,0 +1,92 @@
+
+.container {
+  display: flex;
+  flex-direction:column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding-top: 30px;
+
+  h1 {
+    font-size: 60px;
+    color: #333;
+    margin-bottom: 20px;
+  }
+}
+
+.rankList {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 100%;
+    margin-top: 20px;
+}
+
+.sortContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+    height: 100%;
+    margin-top: 20px;
+
+    div {
+        margin-left:20px;
+    }
+}
+
+.rankBox {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 40%;
+    height: 200px;
+    background-color: white;
+    padding: 10px;
+    margin: 20px;
+
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+
+    img {
+        width: 180px;
+        height: 180px;
+    }
+
+    .right {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        padding-left: 20px;
+    }
+
+    .name {
+        font-size: 18px;
+        color: #333;
+        margin-bottom: 20px;
+    }
+
+    .status {
+        font-size: 16px;
+        color: #333;
+        margin-bottom: 20px;
+    }
+
+    .pointList {
+        display: flex;
+        width: 100%;
+        flex-direction: row;
+        justify-content: flex-start;
+    }
+
+    .pointContainer {
+        margin-right: 10px;
+    }
+}

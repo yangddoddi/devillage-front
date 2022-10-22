@@ -66,9 +66,6 @@ export const PostEditor = () => {
           },
         })
         .then((res) => {
-          if (files.length > 0) {
-            fileUpload(res.data.postId);
-          }
           navigate(`/posts/${param.id}`);
         })
         .catch((err) => {
@@ -82,9 +79,6 @@ export const PostEditor = () => {
           },
         })
         .then((res) => {
-          if (files.length > 0) {
-            fileUpload(res.data.postId);
-          }
           alert("게시글이 등록되었습니다.");
           navigate(`/posts/${res.data.postId}`);
         })
@@ -121,25 +115,6 @@ export const PostEditor = () => {
     const formData = new FormData();
     formData.append("image", blob);
     setFiles([...files, blob]);
-  };
-
-  const fileUpload = (id) => {
-    const formData = new FormData();
-    files.forEach((file) => {
-      formData.append("image", file);
-    });
-    axios
-      .post(`${SERVER}/posts/${id}/images`, formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      })
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
   };
 
   return (

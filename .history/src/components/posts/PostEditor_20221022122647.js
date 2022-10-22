@@ -66,9 +66,6 @@ export const PostEditor = () => {
           },
         })
         .then((res) => {
-          if (files.length > 0) {
-            fileUpload(res.data.postId);
-          }
           navigate(`/posts/${param.id}`);
         })
         .catch((err) => {
@@ -82,9 +79,6 @@ export const PostEditor = () => {
           },
         })
         .then((res) => {
-          if (files.length > 0) {
-            fileUpload(res.data.postId);
-          }
           alert("게시글이 등록되었습니다.");
           navigate(`/posts/${res.data.postId}`);
         })
@@ -106,6 +100,7 @@ export const PostEditor = () => {
         .then((res) => {
           setTitle(res.data.data.title);
           editorRef.current.getInstance().setHTML(res.data.data.content);
+          fileUpload(res.data.data.id);
         })
         .catch((err) => {
           console.log(err);

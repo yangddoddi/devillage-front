@@ -73,7 +73,7 @@ export const RouterConfig = () => {
             </PrivateRoute>
           }
         />
-        <Route path="/board/ranking" element={<Rank />} />
+        <Route path="/rank" element={<Rank />} />
       </Routes>
       <Footer />
     </HashRouter>

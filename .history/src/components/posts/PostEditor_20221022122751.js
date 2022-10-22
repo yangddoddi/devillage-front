@@ -67,7 +67,7 @@ export const PostEditor = () => {
         })
         .then((res) => {
           if (files.length > 0) {
-            fileUpload(res.data.postId);
+            fileUpload(res.data.data.id);
           }
           navigate(`/posts/${param.id}`);
         })
@@ -83,7 +83,7 @@ export const PostEditor = () => {
         })
         .then((res) => {
           if (files.length > 0) {
-            fileUpload(res.data.postId);
+            fileUpload(res.data.data.id);
           }
           alert("게시글이 등록되었습니다.");
           navigate(`/posts/${res.data.postId}`);
